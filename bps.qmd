@@ -1,0 +1,19 @@
+---
+title: "Biophysical Settings (BpS) Data"
+format: html
+editor: visual
+---
+
+## LANDFIRE Biophysical Settings Data
+
+Brief description
+
+Links to resources
+
+
+## Skills learned
+
+1. Download LANDFIRE Biophysical Settings (BpS) data, manage and load into R
+2. Crop, mask and build attribute table for the area 
+3. Make a simple bar chart of the top BpSs
+4. Make an interactive hexbin map

@@ -1,0 +1,68 @@
+---
+title: "LANDFIRE R Demos"
+author: "Randy Swaty and Megan Dettenmaier"
+---
+
+<font size="4"> 
+**These LANDFIRE-Powered Landscape Assessments allow users to start exploring trends, landscape conversion and natural resource management options. **
+
+</font> 
+
+
+## Goals of this demonstration
+
+
+## Demonstration Landscape
+
+
+
+<br>
+
+```{r libraries, message=FALSE, warning=FALSE, include=FALSE}
+
+
+library(sf)
+library(terra)
+
+
+```
+
+
+```{r read shapefile, message=FALSE, warning=FALSE, include=FALSE}
+#  read shape
+shp <- st_read("inputs/map_zone_35.shp") %>% 
+  st_transform(crs = 5070) %>%
+  st_union() %>%
+  st_sf()
+
+
+```
+
+```{r locator map, message=FALSE, warning=FALSE, echo=FALSE}
+library(tmap)
+
+# toggle tmap mode to interactive viewing
+tmap_mode("view")
+
+ quickmap <- qtm(shp, 
+                 col  = "darkgreen", 
+                 fill = NULL, 
+                 check.and.fix = TRUE, 
+                 title = 'LANDFIRE Map Zone 35')
+
+ quickmap
+
+
+
+
+
+
+```
+
+## How to use this web report
+
+* All maps, input datasets and further assistance can be obtained by contacting the author, [Randy Swaty](mailto:rswaty@tnc.org){target="blank"}.
+* Review is ongoing.
+* To share this web app, simply share the hyperlink.
+* Toggle between dark and light display of this site in the upper right corner of the page.
+* Learn more about LANDFIRE and The Nature Conservancy [here](about.qmd){target="blank}. 

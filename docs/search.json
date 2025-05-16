@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "LANDFIRE R Demos",
+    "section": "",
+    "text": "These LANDFIRE-Powered Landscape Assessments allow users to start exploring trends, landscape conversion and natural resource management options."
+  },
+  {
+    "objectID": "index.html#goals-of-this-demonstration",
+    "href": "index.html#goals-of-this-demonstration",
+    "title": "LANDFIRE R Demos",
+    "section": "Goals of this demonstration",
+    "text": "Goals of this demonstration"
+  },
+  {
+    "objectID": "index.html#demonstration-landscape",
+    "href": "index.html#demonstration-landscape",
+    "title": "LANDFIRE R Demos",
+    "section": "Demonstration Landscape",
+    "text": "Demonstration Landscape"
+  },
+  {
+    "objectID": "index.html#how-to-use-this-web-report",
+    "href": "index.html#how-to-use-this-web-report",
+    "title": "LANDFIRE R Demos",
+    "section": "How to use this web report",
+    "text": "How to use this web report\n\nAll maps, input datasets and further assistance can be obtained by contacting the author, Randy Swaty.\nReview is ongoing.\nTo share this web app, simply share the hyperlink.\nToggle between dark and light display of this site in the upper right corner of the page.\nLearn more about LANDFIRE and The Nature Conservancy here."
+  },
+  {
+    "objectID": "bps.html",
+    "href": "bps.html",
+    "title": "Biophysical Settings (BpS) Data",
+    "section": "",
+    "text": "Brief description\nLinks to resources"
+  },
+  {
+    "objectID": "bps.html#landfire-biophysical-settings-data",
+    "href": "bps.html#landfire-biophysical-settings-data",
+    "title": "Biophysical Settings (BpS) Data",
+    "section": "",
+    "text": "Brief description\nLinks to resources"
+  },
+  {
+    "objectID": "bps.html#skills-learned",
+    "href": "bps.html#skills-learned",
+    "title": "Biophysical Settings (BpS) Data",
+    "section": "Skills learned",
+    "text": "Skills learned\n\nDownload LANDFIRE Biophysical Settings (BpS) data, manage and load into R\nCrop, mask and build attribute table for the area\nMake a simple bar chart of the top BpSs\nMake an interactive hexbin map"
+  }
+]
