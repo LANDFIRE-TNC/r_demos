@@ -6,11 +6,16 @@ format: html
 
 ## LANDFIRE Biophysical Settings Data
 
-Brief description
+We use LANDFIRE's Biophysical Settings (BpS) data to help us understand the potential of a landscape.  
 
-Links to resources
+> *Biophysical Settings represent the vegetation system that may have been dominant on the landscape prior to Euro-American settlement. These models are based on a combination of the current environment and an approximation of the historical disturbance regime.* [Read more](https://landfire.gov/bps.php){target="blank"}.
+
+
 
 ## Skills learned
+
+Often we want to summarize and visualize spatial data, which can be challenging. Making a simple bar chart is not too hard, but what about making an accessible map that might have several categories (of ecosystems for example), is attractive and is 'scale appropriate' in level of detail.  Below we make that simple bar chanrt, and also present one way to summarize and map categorical raster data in R, using BpS data. 
+
 
 1.  Download LANDFIRE Biophysical Settings (BpS) data, manage and load into R
 2.  Crop, mask and build attribute table for the area
@@ -19,12 +24,23 @@ Links to resources
 
 ### Set up
 
+To run the code below you will need to:
+
+1. Set up a new R-Studio project 
+2. Create two directories, "inputs" and "outputs"
+3. Download the following and place into the "inputs" directory (click Download button to the right of the "Raw" button in the top right corner)
+    * zipped [shapefile](https://github.com/LANDFIRE-TNC/r_demos/blob/main/inputs/map_zone_35.zip) of our demonstration area (unzip into "inputs" directory)
+    * [.csv file of BpS attributes](https://github.com/LANDFIRE-TNC/r_demos/blob/main/inputs/LF20_BPS_220.csv) 
+
+**Or, download the Git [Repo](https://github.com/LANDFIRE-TNC/r_demos.git)**.  
+
 ```{r}
 #| label: Set up
 #| message: false
 #| warning: false
 #| echo: true
 #| results: "hide"
+#| code-overflow: wrap
 
 
 # install packages if needed
@@ -54,8 +70,6 @@ shp <- st_read("inputs/map_zone_35.shp", quiet = TRUE) %>%
   st_sf()
 
 
-plot(shp)
-
 # read in .csv of CONUS-wide attributes
 
 bps_conus_atts <- read_csv("inputs/LF20_BPS_220.csv")
@@ -64,8 +78,14 @@ bps_conus_atts <- read_csv("inputs/LF20_BPS_220.csv")
 # set landscape name---not really needed here but useful if working with many datasets and need to make multiple charts with the same landscape name for example
 landscape_name <- "LANDFIRE Map Zone 35 (central Texas)"
 
-
+# create an accessible pallette (from https://thenode.biologists.com/data-visualization-with-flying-colors/research/)
 custom_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999", "#E6AB02", "#F4A582")
+
+# plot the shape for fun
+plot(shp)
+
+# look at the first few rows of the CONUS-wide attribute table
+head(bps_conus_atts)
 ```
 
 ### Download manage and load data
@@ -87,22 +107,23 @@ To obtain and manage LANDFIRE data we need to:
 
 Finally we load the data into R.
 
-The code below does that in roughly 2 minutes with an internet download speed of \~450mbs. Your times may very.
+The code below does that in roughly 2 minutes with an internet download speed of \~450mbs. Your times may vary.
 
-```{r}
+```{{r}}
 #| label: Download manage and load data
 #| echo: true
 #| message: false
 #| warning: false
+#| code-overflow: wrap
 #| include: true
-#| results: 'hide'
+#| results: hide
 
 aoi <- getAOI(shp)
 
 products <-  c("200BPS")
 projection <- 5070  
 resolution <- 30
-email <- "rswaty@tnc.org" # Replace with your email address. LANDFIRE APIv2 requires a valid email address.
+email <- "rswaty@tnc.org" # Replace with your email address. 
 
 # R specific arguments
 save_file <- tempfile(fileext = ".zip")
@@ -145,15 +166,22 @@ for (file in unzipped_files) {
 unlink(temp_dir, recursive = TRUE)
 
 
-# load downloaded stacked raster
-US_200BPS <- rast("inputs/landfire_data.tif")
-
-
-
 
 ```
 
 ### Crop, mask and build attribute table for the area
+
+Now that we have the BpS data for the *extent* of our area of interest, we need to crop/mask it to the exact area of interest, build the raster attribute table and do a few calculations:
+
+* First, we load our stacked raster data from the file landfire_data.tif.
+* Next, we crop and mask this raster using a shapefile to focus on our area of interest.
+* We then plot the cropped and masked raster to visualize our area of interest.
+* We set the levels of the raster to match our attribute data and specify the active category.
+
+Extracting and Processing Values: We extract values from the raster, remove any NA values, and convert the data into a dataframe. This dataframe is then processed to create a frequency table, which is further refined and joined with the raster categories.
+
+Saving the Results: Finally, we save the processed raster and the attributes dataframe to files for future use.
+
 
 ```{r}
 #| label: Crop, mask and build attributes
@@ -161,15 +189,18 @@ US_200BPS <- rast("inputs/landfire_data.tif")
 #| warning: false
 #| echo: true
 #| results: "hide"
+#| code-overflow: wrap
+
+
+
+# load downloaded stacked raster
+US_200BPS <- rast("inputs/landfire_data.tif")
 
 
 # crop and mask the us_200bps raster using the shapefile
 bps_aoi <- US_200BPS %>%
   crop(shp) %>%
   mask(shp)
-
-# plot the cropped and masked raster
-plot(bps_aoi)
 
 # set the levels of the raster to bps_conus_atts
 levels(bps_aoi)[[1]] <- bps_conus_atts
@@ -208,6 +239,14 @@ write.dbf(bps_aoi_atts, "outputs/bps_aoi.tif.vat.dbf")
 # write the attributes dataframe to a csv file
 write.csv(bps_aoi_atts, "outputs/bps_aoi_attributes.csv")
 
+# plot the cropped and masked raster
+plot(bps_aoi)
+
+# look at the first few rows of the aoi attributes
+head(bps_aoi_atts)
+
+
+
     
 ```
 
@@ -220,6 +259,7 @@ write.csv(bps_aoi_atts, "outputs/bps_aoi_attributes.csv")
 #| echo: true
 #| fig.width: 10
 #| fig.height: 10
+#| code-overflow: wrap
 
 bps_name_10 <- bps_aoi_atts %>%
   group_by(BPS_NAME) %>%
@@ -263,6 +303,7 @@ ggsave("outputs/bpsChart.png", width = 12, height = 5)
 #| warning: false
 #| echo: true
 #| results: "hide"
+#| code-overflow: wrap
 
 
 # Calculate the side length for hexagons with 200 km² area
@@ -313,10 +354,9 @@ hexs_bps<- hex_grid %>%
 #| message: false
 #| warning: false
 #| echo: true
-
-
 #| fig.width: 10
-#| fig.height: 10
+#| fig.height: 12
+#| code-overflow: wrap
 
 bps_names <- unique(bps_name_10$BPS_NAME)
 
