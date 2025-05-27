@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Randy Swaty and Megan Dettenmaier">
+
+<title>LANDFIRE R Demos – LANDFIRE-Powered Landscape Assessment</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-f3c2ea88cadbcfb37ba28ffa2c97cfc1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-ae2d0dcda2edce4ab590422bb373b64f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+
+<script src="site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
+
+<script src="site_libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
+
+<script src="site_libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
+
+<script src="site_libs/clipboard-0.0.1/setClipboardText.js"></script>
+
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">LANDFIRE-Powered Landscape Assessment</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./bps.html"> 
+<span class="menu-text">BpS</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.qmd"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#how-to-use-this-web-report" id="toc-how-to-use-this-web-report" class="nav-link active" data-scroll-target="#how-to-use-this-web-report">How to use this web report</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">LANDFIRE R Demos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Randy Swaty and Megan Dettenmaier </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>We are excited to share some R code bits that we think will help you in your use of LANDFIRE data to assess and visualize ecological patterns on your landscape Over time we will be adding pages that present code we have developed over time for several LANDFIRE datasets including:</p>
+<ol type="1">
+<li><a href="https://landfire.gov/vegetation/bps">Biophysical Settings</a></li>
+<li><a href="https://landfire.gov/vegetation/evt">Existing Vegetation Type</a></li>
+<li><a href="https://landfire.gov/vegetation/evc">Existing Vegetation Cover</a></li>
+<li><a href="https://landfire.gov/vegetation/evh">Existing Vegetation Height</a></li>
+<li><a href="https://landfire.gov/fuel">Fuels</a></li>
+<li><a href="https://landfire.gov/disturbance/annualdisturbance">Annual Disturbance</a></li>
+</ol>
+<p>We share these bits of code in hopes of not only helping you accelerate your use of LANDFIRE data, but also as a way to start a conversation. We’d love to hear your suggestions, and stories of LANDFIRE data processing with R!</p>
+<p><br></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-1955414c64b6c22eda40" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-1955414c64b6c22eda40">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}},"attributionControl":true},"calls":[{"method":"createMapPane","args":["tmap401",401]},{"method":"addLayersControl","args":[["Esri.WorldGrayCanvas","OpenStreetMap","Esri.WorldTopoMap"],"structure(list(geometry = structure(list(structure(list(structure(c(-76239.2882492654, ",{"collapsed":true,"autoZIndex":true,"position":"topleft"}]},{"method":"addProviderTiles","args":["Esri.WorldGrayCanvas",null,"Esri.WorldGrayCanvas",{"minZoom":0,"maxZoom":18,"maxNativeZoom":17,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["OpenStreetMap",null,"OpenStreetMap",{"minZoom":0,"maxZoom":18,"maxNativeZoom":17,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"pane":"tilePane"}]},{"method":"addProviderTiles","args":["Esri.WorldTopoMap",null,"Esri.WorldTopoMap",{"minZoom":0,"maxZoom":18,"maxNativeZoom":17,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"pane":"tilePane"}]},{"method":"addPolygons","args":[[[[{"lng":[-96.80221207294184,-96.80245758397018,-96.8174678203238,-96.82228013548908,-96.81363260774587,-96.82023036425524,-96.85023783553513,-96.87844394751625,-96.91837199670952,-96.92797741417874,-96.93063433546898,-96.93165630328114,-96.94291531065653,-96.967755391414,-97.01106811249153,-97.02923183718804,-97.05412920295782,-97.08400522925642,-97.1528444658652,-97.15407157436545,-97.16521013877863,-97.19679859797948,-97.23953559396541,-97.2787228352597,-97.3078872822052,-97.34873216893332,-97.38952325539577,-97.38094753571026,-97.37184745716401,-97.35122350461444,-97.33551730171199,-97.33479348162435,-97.35083123217882,-97.39165455576085,-97.41597882230462,-97.44543810163718,-97.46625033444514,-97.49540995800416,-97.54421655076435,-97.58147938610016,-97.61405055225832,-97.66310863678149,-97.69429028470363,-97.74182649146131,-97.80269337911707,-97.87669948320988,-97.94351629076904,-97.97743300030864,-98.02323249216683,-98.07899080255392,-98.13428113532883,-98.16500283372578,-98.18101168846431,-98.23713908080651,-98.26954131711193,-98.27872514876132,-98.29955978234499,-98.3304322074362,-98.36479164289752,-98.42757156103669,-98.44933229720718,-98.46471876344296,-98.48310833924359,-98.51082770505101,-98.53359586076664,-98.58299135910791,-98.61640369103661,-98.62871595342423,-98.69153600794851,-98.70638383130365,-98.76393102169094,-98.80017230669957,-98.83301473072368,-98.8622557171186,-98.87145359494046,-98.91520859522302,-98.95703633813773,-98.99930113853418,-99.03496126642067,-99.04697503229144,-99.05404314805493,-99.06312140216487,-99.07919977372779,-99.11379661115367,-99.14435642403352,-99.14534695200341,-99.18916514871611,-99.22940228131593,-99.28014929959156,-99.32907480235802,-99.35312740679879,-99.38232966560054,-99.42671190939947,-99.44605378028413,-99.48586813037102,-99.51347066331073,-99.55682142069189,-99.58900395461713,-99.63030514366939,-99.70539160589,-99.72753926805969,-99.78590990604029,-99.81052464437866,-99.86578262202087,-99.9296320367234,-99.98322709947359,-99.96682053819792,-99.95717405854589,-99.96552518932434,-100.005115785848,-100.0601323215052,-100.1132379147619,-100.1441942105675,-100.1862507681145,-100.213558776845,-100.2776984837558,-100.3057245235873,-100.3005578427195,-100.278776855628,-100.2793697490115,-100.291638535063,-100.3240493150466,-100.3620832853425,-100.3711325891875,-100.3844344480377,-100.4110438661347,-100.4454475445827,-100.475996314853,-100.5005871741581,-100.5021641185625,-100.5092185410218,-100.5125065560098,-100.5288199214676,-100.5710067210869,-100.6183927930759,-100.6738779410951,-100.6944599243228,-100.7452027988896,-100.7660756829398,-100.7695152982923,-100.7990351837818,-100.8292165414149,-100.8529753476435,-100.8919234719441,-100.9033516855596,-100.914445200868,-100.9313763534435,-100.9399511152481,-100.9519388176562,-100.9884372802797,-100.9891307813334,-100.9849559359311,-100.9848641227239,-100.9896431911401,-100.9839856912231,-100.9754525379803,-100.944638404867,-100.9227708934739,-100.9241423052449,-100.9310187323189,-100.9536671709607,-100.9750022107086,-100.9925024363762,-101.0042603751172,-101.0173329027373,-101.0062676073786,-100.9910069999481,-100.9917903503426,-101.0058342051034,-101.0216268569716,-101.0211954304918,-100.9988538919593,-100.9969316798666,-101.0015598092746,-101.0171069033513,-101.0405160590878,-101.0563163682383,-101.0821537439871,-101.0929968498138,-101.0876036196653,-101.0886701254375,-101.1063401885089,-101.1213725554562,-101.1371229299718,-101.1666151225198,-101.1759153053751,-101.1713499070079,-101.1841614995141,-101.209346175457,-101.2352814810952,-101.2568941884728,-101.2694664080749,-101.2568730886295,-101.2518660794417,-101.2587109803737,-101.257221364608,-101.2536009821489,-101.2448803009303,-101.234669692946,-101.2209304881864,-101.1990165713452,-101.178851148857,-101.1709521080834,-101.1464800504473,-101.1293974073802,-101.1304340046761,-101.1480760343006,-101.1808821249803,-101.1954648613355,-101.2067041672953,-101.2105827711796,-101.2027314920235,-101.1958165207633,-101.180694722709,-101.1790771401669,-101.1829819290725,-101.1946097509567,-101.2159294892646,-101.2312131494236,-101.2491266418197,-101.2738623822765,-101.29122937298,-101.3188742429241,-101.3080467003202,-101.3125372090378,-101.315347303809,-101.3401234428514,-101.345475834618,-101.3527050847247,-101.3433813204356,-101.3202845748398,-101.2786232119411,-101.2329028303615,-101.2254904156574,-101.2499442388918,-101.2281819170855,-101.1995578247668,-101.1927767483633,-101.1885404952881,-101.1873753177911,-101.1657742290069,-101.1519384629529,-101.1645068176651,-101.1910961455949,-101.220205691023,-101.2436757252015,-101.2541881290571,-101.262823406128,-101.2574435102566,-101.26506130815,-101.2440419475385,-101.2241377708277,-101.2127971039382,-101.2096589173334,-101.219156606898,-101.2273378757522,-101.2077528407077,-101.1890134361342,-101.171501044048,-101.1504407855843,-101.1312897674545,-101.147972956357,-101.1634331938926,-101.1754978612034,-101.178601774798,-101.1796261896313,-101.1773861118964,-101.1547513811258,-101.078713268032,-100.9810270216056,-100.9312010652421,-100.9102744993608,-100.8785781643103,-100.8489114990688,-100.7986930298228,-100.7447585154709,-100.6957580177629,-100.6467029686912,-100.5905543645955,-100.5502315142601,-100.5177261404491,-100.4874147024155,-100.4444865297227,-100.4234825828054,-100.4081078362953,-100.3656174238689,-100.3101992413001,-100.2569705268009,-100.2333978805395,-100.1957323921496,-100.1563391591457,-100.131621391355,-100.1313964719544,-100.1128731022031,-100.0609511235108,-99.99165243315856,-99.96029159572819,-99.91773953764222,-99.88614556276845,-99.85062052779658,-99.80084681679655,-99.74679856080013,-99.67751295137209,-99.62776332131313,-99.58210915233015,-99.51598146894996,-99.49166371190877,-99.45658034120852,-99.41786592818191,-99.38893546443691,-99.34632726457305,-99.28155579591157,-99.28030091031756,-99.18464253866729,-99.1699000389051,-99.12216617004837,-99.10727699215207,-99.08402210199056,-99.03437041620418,-98.95750376228243,-98.88365521815074,-98.8526239967062,-98.83892000524912,-98.80998682807808,-98.80456887949401,-98.75879507321051,-98.6977792727418,-98.64486389918997,-98.58673954511545,-98.51298016209155,-98.42915628716315,-98.37003816759217,-98.28694936902636,-98.20896968070716,-98.1464161160572,-98.07980689449464,-98.05126326005674,-98.02373686799648,-98.00143424477167,-97.98315640661686,-97.945848981183,-97.90658147498466,-97.8677392366598,-97.80806969769603,-97.7588604035581,-97.74270686749746,-97.72265797027478,-97.69413524224241,-97.66266128118298,-97.60189570842802,-97.5395434830413,-97.51321823741296,-97.47501112204472,-97.41985446450586,-97.40010202751581,-97.36517664331789,-97.31144366329634,-97.28170423092938,-97.25156596945666,-97.22713372099024,-97.20274225422737,-97.16111602306569,-97.12963565538448,-97.09544812205058,-97.07906329911573,-97.07005052691507,-97.02376414453204,-96.97580640306255,-96.93989935789958,-96.92117522572893,-96.8869076399297,-96.85604356389544,-96.85918226144889,-96.87062506371296,-96.86701209836231,-96.84803278336837,-96.82714862721137,-96.81830273546673,-96.81624318446059,-96.82594081649307,-96.84585925018995,-96.84880694666481,-96.84641234236469,-96.8247805258035,-96.80247857404956,-96.79026437408481,-96.79153237081091,-96.79963687894573,-96.8010404401591,-96.80221207294184],"lat":[31.15066025022598,31.14590925617444,31.12851587360243,31.10399368843886,31.08244977859284,31.06799658200551,31.03607853459058,30.9955202626006,30.95197261523616,30.90866469055322,30.84667503822169,30.78901590125686,30.74567807955486,30.71663238077109,30.69029583506829,30.66706063991825,30.64664185051768,30.62328257396047,30.51154682590589,30.47980378170026,30.43929970456373,30.42597815018662,30.37645790804798,30.31685590268882,30.26023740368121,30.20634769059931,30.15243642482995,30.13811034417272,30.09203240903532,30.05331052927511,30.00874596531849,29.96399334271844,29.92769488003956,29.88385758968372,29.84888073427278,29.82393914119191,29.78032452079068,29.74092170427621,29.68967128624526,29.64434044949883,29.62023122117902,29.5838697933834,29.57038038639923,29.54794723513362,29.531054609887,29.51100886799706,29.46790777370689,29.43403999315066,29.41439828456752,29.39743701908161,29.3631015214588,29.33790537027706,29.3187819169193,29.31908303562153,29.29671242466128,29.27048165016103,29.24834119215998,29.23176703815873,29.22234071215786,29.22673752399687,29.23782143264076,29.25628008309252,29.26453980176023,29.25377306689894,29.24311483026992,29.24050063389835,29.25416564577155,29.27846248251867,29.33333761567845,29.33296774361065,29.32572841495582,29.3233512513629,29.31815731491073,29.30436787722465,29.28387020572839,29.26099804790059,29.2309239752551,29.21384197783804,29.19692873660582,29.16475173842302,29.13271056421791,29.11074175861021,29.10015165027786,29.10060683627472,29.03747065259752,29.02006797960688,29.00430176959194,28.9813844751323,28.97550747606167,28.9653183995242,28.95009106407495,28.94048860558466,28.9405342368743,28.93122747627988,28.94008477436422,28.93194619086997,28.94645478257442,28.96856053147747,28.97297003552777,28.96027610514612,28.94068226303752,28.92271296597466,28.92184470190561,28.9082849472831,28.90307636044225,28.92428599945636,28.9596582288735,28.99912134022756,29.03647109182761,29.07266176532469,29.08653592990413,29.09466238140477,29.12099280638052,29.1381949106237,29.12409995843696,29.12157793803124,29.15377127529374,29.18148992153516,29.20696950684715,29.21852829192774,29.23252011709839,29.25294536256242,29.25431378547041,29.23802293731538,29.20852681362354,29.18138048449407,29.17707421540877,29.19318999327062,29.21802451268434,29.21961604919031,29.22800970685977,29.2582786570207,29.2547009435131,29.24134288966858,29.26249701570804,29.28038539879071,29.29397297710585,29.31492595305041,29.33265473784636,29.33557469396811,29.36033011714312,29.36767553166808,29.37819528134679,29.39381608685365,29.41935708855703,29.43912085675366,29.44558990465545,29.47849188368977,29.48518280114929,29.4864058465336,29.49795328812341,29.51117126963892,29.53722686899525,29.56161025976954,29.57778834401021,29.6013325912296,29.61286781852818,29.63556381838229,29.65865116260947,29.66268011899952,29.65296957524482,29.64910306326876,29.66421614892144,29.69405891256675,29.71805107154613,29.75472539317773,29.77712297432298,29.79010514105673,29.80247878642246,29.81621610902944,29.83648424446505,29.85197262484775,29.87519982881399,29.89667931938693,29.90608850472534,29.90790251939997,29.89415651922719,29.88138716862232,29.89534362252057,29.91584051079036,29.93314358558928,29.94967080819108,29.95041315444026,29.96268757441965,29.98154010796711,29.99700510594952,30.03047546880954,30.04866341133664,30.07782665869606,30.11851141190754,30.16951319311464,30.20937953141545,30.24755928910985,30.27381129118411,30.30238391969943,30.3313538533123,30.35319950745655,30.37384317452633,30.3974461148574,30.41832309730237,30.44247414122868,30.46798091682428,30.47557424620585,30.51282843415731,30.56128245516839,30.60455427429851,30.61817130699348,30.63251850188319,30.65060280309101,30.66884316313758,30.70331044669795,30.7383283316359,30.76175072955276,30.78844251502251,30.81594305164752,30.82442024181898,30.84841130873379,30.89214779790647,30.92028940951665,30.93675810217405,30.95434348678881,30.96217321926443,30.97239461258476,30.98734336528237,31.00444362612329,31.02162346351021,31.03919019431059,31.06923078258884,31.10206487934853,31.14002173561202,31.17430669332599,31.2094671652672,31.23470292810942,31.2509153403122,31.26274256644315,31.29260909368053,31.3213459200103,31.34761582706978,31.36078927834491,31.39544511422129,31.40221494268144,31.42447881038186,31.43543065561234,31.42698850151251,31.43139747322893,31.45336244660948,31.48458223970356,31.53894984278324,31.61270754731354,31.65125920647294,31.6940350324436,31.7281055394524,31.76321225301119,31.79361187874155,31.83494787025278,31.88210331021847,31.92190275005393,31.94869432967299,31.96822292871988,32.01239312378728,32.08670437817291,32.1334553190533,32.18745517763632,32.24160488296638,32.26960557961198,32.27884040975495,32.32356255966648,32.34474665051052,32.36257992609299,32.39138732197576,32.41803138966778,32.44052302870408,32.48361605412711,32.53236250543872,32.55463819523902,32.57272985032997,32.61647768533066,32.66020242959607,32.70131086699939,32.74894293976623,32.78330737452815,32.79600731854646,32.79913040459616,32.82438701550942,32.85804494236521,32.86974348729527,32.86610401959313,32.87098107731799,32.8819206185057,32.88762530546447,32.89338061497743,32.91583594283858,32.94458658875963,32.9869284489596,33.01896276441619,33.05014189408377,33.07996678641071,33.1288402600462,33.19024902533207,33.24315576414244,33.28933898288624,33.31983959358082,33.35941755770617,33.40981850580765,33.43709366656575,33.47359160337196,33.51309155943898,33.54573111726069,33.57559469375157,33.59080261833542,33.61214219557964,33.61541494062084,33.61547756393248,33.61816265379036,33.60909089806996,33.57968999727419,33.5638514049408,33.539098303858,33.51458563125125,33.50510593009174,33.48258340257104,33.44173600154406,33.39901464115728,33.36671274744243,33.36411144446321,33.34211767896042,33.33352073574395,33.30747882107107,33.28009522532171,33.25015522089222,33.22899387414528,33.22161897523872,33.2233080919396,33.22196841991016,33.21454363186879,33.18419255448755,33.15169031387776,33.09044729818451,33.02910251667586,32.98921650998933,32.94678022751208,32.89287344020011,32.85474100324658,32.80830890313358,32.76455413594356,32.73463844035521,32.68323175358717,32.63625373422308,32.61085859773198,32.58012433430609,32.55368945351948,32.52387036544196,32.49994690481375,32.48628242914027,32.43623486490775,32.39929704114807,32.36256578078042,32.32410231023157,32.2583222137775,32.22696602560871,32.19704088724268,32.15578602115452,32.10434724862944,31.97670820977717,31.89920403561753,31.86189330311888,31.83643310693089,31.81096746792317,31.79544939672315,31.79416652397351,31.77142536454118,31.74720855199222,31.72272639055945,31.68091378599373,31.66079820537621,31.63216422710387,31.58195465787211,31.54604156229586,31.51007520114178,31.46394495374314,31.424930424004,31.38315958271049,31.37987903958273,31.35022768646179,31.31871533493186,31.27992642104514,31.23671789574052,31.20209807017973,31.17328390653568,31.15066025022598]}]]],"X1","structure(list(geometry = structure(list(structure(list(structure(c(-76239.2882492654, ",{"interactive":false,"className":"","pane":"tmap401","stroke":true,"color":"#006400","weight":1,"opacity":1,"fill":true,"fillColor":"#00000000","fillOpacity":1,"dashArray":"","smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":true,"updateWhenIdle":true,"position":"bottomright"}]}],"fitBounds":[28.80877463457529,-101.4439538989375,33.71246437965733,-96.69901555987201,[]],"limits":{"lat":[28.90307636044225,33.61816265379036],"lng":[-101.3527050847247,-96.79026437408481]}},"evals":[],"jsHooks":{"render":[{"code":"function(el, x, data) {\n  return (\n\t\t\t\t\t\tfunction(el, x) {\n\t\t\t\t\t\t\tvar tldiv = el.getElementsByClassName(\"leaflet-top leaflet-left\")[0];\n\t\t\t\t\t\t\tvar titlediv = document.createElement('div');\n\t\t\t\t\t\t\ttitlediv.className = \"info legend leaflet-control\";\n\t\t\t\t\t\t\ttitlediv.innerHTML = \"<b>LANDFIRE Map Zone 35<\/b>\";\n\t\t\t\t\t\t\ttldiv.insertBefore(titlediv, tldiv.childNodes[0]);\n\t\t\t\t\t\t}).call(this.getMap(), el, x, data);\n}","data":null},{"code":"function(el, x, data) {\n  return (\n      function(el, x, data) {\n      // get the leaflet map\n      var map = this; //HTMLWidgets.find('#' + el.id);\n      // we need a new div element because we have to handle\n      // the mouseover output separately\n      // debugger;\n      function addElement () {\n      // generate new div Element\n      var newDiv = $(document.createElement('div'));\n      // append at end of leaflet htmlwidget container\n      $(el).append(newDiv);\n      //provide ID and style\n      newDiv.addClass('lnlt');\n      newDiv.css({\n      'position': 'relative',\n      'bottomleft':  '0px',\n      'background-color': 'rgba(255, 255, 255, 0.7)',\n      'box-shadow': '0 0 2px #bbb',\n      'background-clip': 'padding-box',\n      'margin': '0',\n      'padding-left': '5px',\n      'color': '#333',\n      'font': '9px/1.5 \"Helvetica Neue\", Arial, Helvetica, sans-serif',\n      'z-index': '700',\n      });\n      return newDiv;\n      }\n\n\n      // check for already existing lnlt class to not duplicate\n      var lnlt = $(el).find('.lnlt');\n\n      if(!lnlt.length) {\n      lnlt = addElement();\n\n      // grab the special div we generated in the beginning\n      // and put the mousmove output there\n\n      map.on('mousemove', function (e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                           ' lon: ' + (e.latlng.lng).toFixed(5) +\n                           ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                           ' | zoom: ' + map.getZoom() +\n                           ' | x: ' + L.CRS.EPSG3857.project(e.latlng).x.toFixed(0) +\n                           ' | y: ' + L.CRS.EPSG3857.project(e.latlng).y.toFixed(0) +\n                           ' | epsg: 3857 ' +\n                           ' | proj4: +proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +no_defs ');\n      } else {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      }\n      });\n\n      // remove the lnlt div when mouse leaves map\n      map.on('mouseout', function (e) {\n      var strip = document.querySelector('.lnlt');\n      if( strip !==null) strip.remove();\n      });\n\n      };\n\n      //$(el).keypress(67, function(e) {\n      map.on('preclick', function(e) {\n      if (e.originalEvent.ctrlKey) {\n      if (document.querySelector('.lnlt') === null) lnlt = addElement();\n      lnlt.text(\n                      ' lon: ' + (e.latlng.lng).toFixed(5) +\n                      ' | lat: ' + (e.latlng.lat).toFixed(5) +\n                      ' | zoom: ' + map.getZoom() + ' ');\n      var txt = document.querySelector('.lnlt').textContent;\n      console.log(txt);\n      //txt.innerText.focus();\n      //txt.select();\n      setClipboardText('\"' + txt + '\"');\n      }\n      });\n\n      }\n      ).call(this.getMap(), el, x, data);\n}","data":null}]}}</script>
+</div>
+</div>
+<section id="how-to-use-this-web-report" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-this-web-report">How to use this web report</h2>
+<ul>
+<li>All maps, input datasets and further assistance can be obtained by contacting the author, <a href="mailto:rswaty@tnc.org" target="blank">Randy Swaty</a>.</li>
+<li>Review is ongoing.</li>
+<li>To share this web app, simply share the hyperlink.</li>
+<li>Toggle between dark and light display of this site in the upper right corner of the page.</li>
+<li>Learn more about LANDFIRE and The Nature Conservancy <a href="about.qmd" target="&quot;blank">here</a>.</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = true;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
