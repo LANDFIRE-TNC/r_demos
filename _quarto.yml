@@ -26,6 +26,8 @@ format:
       light: flatly
     css: styles.css
     toc: true
+    toc-depth: 3
+    toc-expand: 3
 
 editor: source
 

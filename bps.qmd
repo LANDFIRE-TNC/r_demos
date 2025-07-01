@@ -27,10 +27,19 @@ In this demonstration we:
 
 To run the code below you will need to:
 
-1. Set up a new R-Studio project 
+1. Set up a new R-Studio project named something such as "r_landfire_demos"
 2. Create two directories, "inputs" and "outputs"
-3. Download "the following and place into the "inputs" directory (click Download button to the right of the "Raw" button in the top right corner)
+3. Download ["bps_demo.zip"](https://github.com/LANDFIRE-TNC/r_demos/raw/refs/heads/main/inputs/bps_demo.zip?download=) (clicking will initiate the download that will likely land in your "C:\Users\YOURNAME\Downloads" directory) which contains:
+    * LANDFIRE Map Zone 35 shapefile
+    * BpS attributes file as a .csv
+4. Extract the "bps_demo.zip" files into the "inputs" directory
+5. Create and save a new r-script with a name such as "bps_demo_code".
 
+
+Once this set up is complete, you should be able to copy/paste the code below into the r script you created above.  
+
+
+## Code to load packages, read in datasets, and create accessible palette for maps
 
 ```{r}
 #| label: Set up
@@ -75,7 +84,7 @@ bps_conus_atts <- read_csv("inputs/LF20_BPS_220.csv")
 
 
 # set landscape name---not really needed here but useful if working with many datasets and need to make multiple charts with the same landscape name for example
-landscape_name <- "LANDFIRE Map Zone 35 (central Texas)"
+landscape_name <- "LANDFIRE Map Zone 35 (central Texas)"  ## CHANGE THIS WHEN YOU ADD IN YOUR AREA OF INTEREST
 
 # create an accessible pallette (from https://thenode.biologists.com/data-visualization-with-flying-colors/research/)
 custom_palette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999", "#E6AB02", "#F4A582")
@@ -122,7 +131,7 @@ aoi <- getAOI(shp)
 products <-  c("200BPS")
 projection <- 5070  
 resolution <- 30
-email <- "rswaty@tnc.org" # Replace with your email address. 
+email <- "rswaty@tnc.org" # REPLACE WITH YOUR E-MAIL ADDRESS PLEASE! 
 
 # R specific arguments
 save_file <- tempfile(fileext = ".zip")
@@ -279,8 +288,8 @@ bps_chart <-
     subtitle = landscape_name,
     x = "",
     y = "Percent",
-    caption = "Represents dominant vegetation systems pre-European colonization. \n Based on LANDFIRE's Biophysical Settings.  Data available at https://www.landfire.gov/viewer. Randy Swaty, Ecologist, rswaty@tnc.org") +
-  theme(plot.title.position = "plot", #NEW parameter. Apply for subtitle too.
+    caption = "Represents dominant vegetation systems pre-European colonization. \n Based on LANDFIRE's Biophysical Settings.  Data available at https://www.landfire.gov/viewer. ") + ## SUGGEST ADDING YOUR NAME AND EMAIL IN CAPTION 
+  theme(plot.title.position = "plot", 
         plot.caption.position =  "plot",
         panel.grid.minor.y = element_blank(),
         panel.grid.major.y = element_blank())

@@ -5,6 +5,17 @@ author: "Randy Swaty and Megan Dettenmaier"
 
 We are excited to share some R code bits that we think will help you in your use of LANDFIRE data to assess and visualize ecological patterns on your landscape.  We share these bits of code in hopes of not only helping you accelerate your use of LANDFIRE data, but also as a way to start a conversation.  We'd love to hear your suggestions, and stories of LANDFIRE data processing with R!
 
+## Disclaimers and how to get help
+
+Here we are sharing code that we use often.  It works for us and has been tested.  That said, we are not programmers and have not dealt with every possible user environment (e.g., R-Studio, R and/or package versions), do not intend for this to be a general R coding tutorial and cannot take responsibility for outcomes of you trying this code.
+
+All of that said, we do want you to be successful and ask that you follow these steps if you run into issues:
+
+1. Check your R, R-Studio and package versions.  Are they relatively up to date?
+2. Ensure that you have set up your R-Studio project correctly so that file paths work as expected.
+3. As possible troubleshoot with Google and/or your favorite AI
+4. If all else fails e-mail [landfire@tnc.org](mailto:landfire@tnc.org)
+
 
 <br>
 
@@ -20,6 +31,10 @@ In this demonstration we:
 2.  Crop, mask and build attribute table for the area
 3.  Make a simple bar chart of the top BpSs using ggplot2
 4.  Make an interactive hexbin map as one way to tackle some of the challenges of mapping categorical raster data. 
+
+<br>
+
+**One example output:**
 
 ![Interactive Hexbin Map with Biophysical Settings Data](assets/bps_map.jpg){fig-alt="A hexbin map for LANDFIRE Map ZOne 35 in central Texas with an arrow inditating the Biophysical Setting for one hexbin."}
 
