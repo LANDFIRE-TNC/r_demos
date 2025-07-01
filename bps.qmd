@@ -6,21 +6,22 @@ format: html
 
 ## LANDFIRE Biophysical Settings Data
 
-We use LANDFIRE's Biophysical Settings (BpS) data to help us understand the potential of a landscape.  
+We use LANDFIRE's Biophysical Settings (BpS) data to help us understand the ecological potential of a landscape.  
 
-> *Biophysical Settings represent the vegetation system that may have been dominant on the landscape prior to Euro-American settlement. These models are based on a combination of the current environment and an approximation of the historical disturbance regime.* [Read more](https://landfire.gov/bps.php){target="blank"}.
+> *Biophysical Settings represent the vegetation system that may have been dominant on the landscape prior to Euro-American settlement.* [Read more](https://landfire.gov/bps.php){target="blank"}.
 
 
 
 ## Skills learned
 
-Often we want to summarize and visualize spatial data, which can be challenging. Making a simple bar chart is not too hard, but what about making an accessible map that might have several categories (of ecosystems for example), is attractive and is 'scale appropriate' in level of detail.  Below we make that simple bar chanrt, and also present one way to summarize and map categorical raster data in R, using BpS data. 
+Often we want to summarize and visualize spatial data, which can be challenging. Making a simple bar chart is not too hard, but what about making an accessible map that might have several categories (of ecosystems for example), is attractive and is 'scale appropriate' in level of detail?  
 
+In this demonstration we:
 
 1.  Download LANDFIRE Biophysical Settings (BpS) data, manage and load into R
 2.  Crop, mask and build attribute table for the area
-3.  Make a simple bar chart of the top BpSs
-4.  Make an interactive hexbin map
+3.  Make a simple bar chart of the top BpSs using ggplot2
+4.  Make an interactive hexbin map as one way to tackle some of the challenges of mapping categorical raster data. 
 
 ### Set up
 
@@ -28,11 +29,8 @@ To run the code below you will need to:
 
 1. Set up a new R-Studio project 
 2. Create two directories, "inputs" and "outputs"
-3. Download the following and place into the "inputs" directory (click Download button to the right of the "Raw" button in the top right corner)
-    * zipped [shapefile](https://github.com/LANDFIRE-TNC/r_demos/blob/main/inputs/map_zone_35.zip) of our demonstration area (unzip into "inputs" directory)
-    * [.csv file of BpS attributes](https://github.com/LANDFIRE-TNC/r_demos/blob/main/inputs/LF20_BPS_220.csv) 
+3. Download "the following and place into the "inputs" directory (click Download button to the right of the "Raw" button in the top right corner)
 
-**Or, download the Git [Repo](https://github.com/LANDFIRE-TNC/r_demos.git)**.  
 
 ```{r}
 #| label: Set up
@@ -55,6 +53,7 @@ To run the code below you will need to:
 # load packages
 library(exactextractr)
 library(foreign)
+library(htmlwidgets)
 library(leaflet)
 library(rlandfire)
 library(sf)
@@ -373,7 +372,7 @@ hexs_bps_4326 <- st_transform(hexs_bps, crs = 4326)
 
 
 
-leaflet(hexs_bps_4326) %>%
+map <- leaflet(hexs_bps_4326) %>%
   addTiles() %>%
   #fitBounds(lng1 = bbox_list$xmin, lat1 = bbox_list$ymin, lng2 = bbox_list$xmax, lat2 = bbox_list$ymax) %>%
   addPolygons(
@@ -396,6 +395,12 @@ leaflet(hexs_bps_4326) %>%
     )
   ) %>%
   addScaleBar(position = "bottomleft", options = scaleBarOptions(metric = TRUE, imperial = FALSE))
+
+map
+
+# save map as stand alone HTML file
+
+saveWidget(map, file = "bps_hexbin_map.html")
 
 
 ```

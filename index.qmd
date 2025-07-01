@@ -3,69 +3,36 @@ title: "LANDFIRE R Demos"
 author: "Randy Swaty and Megan Dettenmaier"
 ---
 
-We are excited to share some R code bits that we think will help you in your use of LANDFIRE data to assess and visualize ecological patterns on your landscape  Over time we will be adding pages that present code we have developed over time for several LANDFIRE datasets including:
-
-1. [Biophysical Settings](https://landfire.gov/vegetation/bps)
-2. [Existing Vegetation Type](https://landfire.gov/vegetation/evt)
-3. [Existing Vegetation Cover](https://landfire.gov/vegetation/evc)
-4. [Existing Vegetation Height](https://landfire.gov/vegetation/evh)
-5. [Fuels](https://landfire.gov/fuel)
-6. [Annual Disturbance](https://landfire.gov/disturbance/annualdisturbance)
-
-We share these bits of code in hopes of not only helping you accelerate your use of LANDFIRE data, but also as a way to start a conversation.  We'd love to hear your suggestions, and stories of LANDFIRE data processing with R!
-
-
-
-
+We are excited to share some R code bits that we think will help you in your use of LANDFIRE data to assess and visualize ecological patterns on your landscape.  We share these bits of code in hopes of not only helping you accelerate your use of LANDFIRE data, but also as a way to start a conversation.  We'd love to hear your suggestions, and stories of LANDFIRE data processing with R!
 
 
 <br>
 
-```{r libraries, message=FALSE, warning=FALSE, include=FALSE}
+## Example outputs
 
+Over time we will be adding to the list of demos and outputs you will create.
 
-library(sf)
-library(terra)
+### Biophysical Settings
 
+In this demonstration we:
 
-```
+1.  Download LANDFIRE Biophysical Settings (BpS) data, manage and load into R
+2.  Crop, mask and build attribute table for the area
+3.  Make a simple bar chart of the top BpSs using ggplot2
+4.  Make an interactive hexbin map as one way to tackle some of the challenges of mapping categorical raster data. 
 
-
-```{r read shapefile, message=FALSE, warning=FALSE, include=FALSE}
-#  read shape
-shp <- st_read("inputs/map_zone_35.shp") %>% 
-  st_transform(crs = 5070) %>%
-  st_union() %>%
-  st_sf()
-
-
-```
-
-```{r locator map, message=FALSE, warning=FALSE, echo=FALSE}
-library(tmap)
-
-# toggle tmap mode to interactive viewing
-tmap_mode("view")
-
- quickmap <- qtm(shp, 
-                 col  = "darkgreen", 
-                 fill = NULL, 
-                 check.and.fix = TRUE, 
-                 title = 'LANDFIRE Map Zone 35')
-
- quickmap
+![Interactive Hexbin Map with Biophysical Settings Data](assets/bps_map.jpg){fig-alt="A hexbin map for LANDFIRE Map ZOne 35 in central Texas with an arrow inditating the Biophysical Setting for one hexbin."}
 
 
 
 
+## Area of Interest for these demonstrations
+
+For the demonstrations we used LANDFIRE Map Zone 35 that is located in central Texas.  This area contains multiple ecosystems, and was fun for us to work with.  
 
 
-```
 
-## How to use this web report
 
-* All maps, input datasets and further assistance can be obtained by contacting the author, [Randy Swaty](mailto:rswaty@tnc.org){target="blank"}.
-* Review is ongoing.
-* To share this web app, simply share the hyperlink.
-* Toggle between dark and light display of this site in the upper right corner of the page.
-* Learn more about LANDFIRE and The Nature Conservancy [here](about.qmd){target="blank}. 
+![Area of Interest for these demos: LANDFIRE Map Zone 35](assets/mz35.jpg){fig-alt="A map of LANDFIRE Map Zone 35, which is a large circular area in central Texas."}
+
+
