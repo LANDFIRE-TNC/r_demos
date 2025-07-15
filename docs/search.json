@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "LANDFIRE R Demos",
     "section": "",
-    "text": "We are excited to share some R code bits that we think will help you in your use of LANDFIRE data to assess and visualize ecological patterns on your landscape. We share these bits of code in hopes of not only helping you accelerate your use of LANDFIRE data, but also as a way to start a conversation. We’d love to hear your suggestions, and stories of LANDFIRE data processing with R!"
+    "text": "We are excited to share some R code bits that will help you in your use of LANDFIRE data to assess and visualize ecological patterns on your landscape. We share these bits of code in hopes of not only helping you accelerate your use of LANDFIRE data, but also as a way to start a conversation. We’d love to hear your suggestions, and stories of LANDFIRE data processing with R!"
   },
   {
     "objectID": "index.html#disclaimers-and-how-to-get-help",
