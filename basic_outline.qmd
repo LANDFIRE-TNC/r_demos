@@ -1,4 +1,4 @@
----
+ ---
 title: "Basic Outline"
 ---
 
@@ -14,7 +14,7 @@ Task centric
 
 This would be easier to deal with---i.e, would make sense to work with data on charts page you already downloaded in that page.  
 
-OR is it product-centric?
+OR is it product-centric? (no no no)
 
 1. BpS download, clip, chart
 2. EVT download, clip, map
