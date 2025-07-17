@@ -3,7 +3,7 @@ title: "LANDFIRE R Demos"
 author: "Randy Swaty and Megan Dettenmaier"
 ---
 
-We are excited to share some R code bits that we think will help you in your use of LANDFIRE data to assess and visualize ecological patterns on your landscape.  We share these bits of code in hopes of not only helping you accelerate your use of LANDFIRE data, but also as a way to start a conversation.  We'd love to hear your suggestions, and stories of LANDFIRE data processing with R!
+We are excited to share some R code bits that will help you in your use of LANDFIRE data to assess and visualize ecological patterns on your landscape.  We share these bits of code in hopes of not only helping you accelerate your use of LANDFIRE data, but also as a way to start a conversation.  We'd love to hear your suggestions, and stories of LANDFIRE data processing with R!
 
 ## Disclaimers and how to get help
 
