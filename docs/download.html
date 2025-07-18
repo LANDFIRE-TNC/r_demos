@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Randy Swaty and Megan Dettenmaier">
 
-<title>LANDFIRE R Demos – LANDFIRE-Powered Landscape Assessment</title>
+<title>Download LANDFIRE data into R – LANDFIRE-Powered Landscape Assessment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -252,12 +286,16 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./download.html"> 
+    <a class="nav-link active" href="./download.html" aria-current="page"> 
 <span class="menu-text">Download data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./prep_rasters.html"> 
+<span class="menu-text">Prepare rasters</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./prep_rasters.html"> 
@@ -288,12 +326,12 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#disclaimers-and-how-to-get-help" id="toc-disclaimers-and-how-to-get-help" class="nav-link active" data-scroll-target="#disclaimers-and-how-to-get-help">Disclaimers and how to get help</a></li>
-  <li><a href="#example-outputs" id="toc-example-outputs" class="nav-link" data-scroll-target="#example-outputs">Example outputs</a>
+  <li><a href="#skills-learned" id="toc-skills-learned" class="nav-link active" data-scroll-target="#skills-learned">Skills learned</a></li>
+  <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set up</a>
   <ul class="collapse">
-  <li><a href="#biophysical-settings" id="toc-biophysical-settings" class="nav-link" data-scroll-target="#biophysical-settings">Biophysical Settings</a></li>
+  <li><a href="#code-to-load-packages-and-inputs" id="toc-code-to-load-packages-and-inputs" class="nav-link" data-scroll-target="#code-to-load-packages-and-inputs">Code to load packages and inputs</a></li>
   </ul></li>
-  <li><a href="#area-of-interest-for-these-demonstrations" id="toc-area-of-interest-for-these-demonstrations" class="nav-link" data-scroll-target="#area-of-interest-for-these-demonstrations">Area of Interest for these demonstrations</a></li>
+  <li><a href="#download-manage-and-load-data" id="toc-download-manage-and-load-data" class="nav-link" data-scroll-target="#download-manage-and-load-data">Download manage and load data</a></li>
   </ul>
 </nav>
     </div>
@@ -303,19 +341,13 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">LANDFIRE R Demos</h1>
+<h1 class="title">Download LANDFIRE data into R</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Randy Swaty and Megan Dettenmaier </p>
-          </div>
-  </div>
     
   
     
@@ -326,50 +358,152 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>We are excited to share some R code bits that will help you in your use of LANDFIRE data to assess and visualize ecological patterns on your landscape. We share these bits of code in hopes of not only helping you accelerate your use of LANDFIRE data, but also as a way to start a conversation. We’d love to hear your suggestions, and stories of LANDFIRE data processing with R!</p>
-<section id="disclaimers-and-how-to-get-help" class="level2">
-<h2 class="anchored" data-anchor-id="disclaimers-and-how-to-get-help">Disclaimers and how to get help</h2>
-<p>Here we are sharing code that we use often. It works for us and has been tested. That said, we are not programmers and have not dealt with every possible user environment (e.g., R-Studio, R and/or package versions), do not intend for this to be a general R coding tutorial and cannot take responsibility for outcomes of you trying this code.</p>
-<p>All of that said, we do want you to be successful and ask that you follow these steps if you run into issues:</p>
-<ol type="1">
-<li>Check your R, R-Studio and package versions. Are they relatively up to date?</li>
-<li>Ensure that you have set up your R-Studio project correctly so that file paths work as expected.</li>
-<li>As possible troubleshoot with Google and/or your favorite AI</li>
-<li>If all else fails e-mail <a href="mailto:landfire@tnc.org">landfire@tnc.org</a></li>
-</ol>
-<p><br></p>
+<section id="skills-learned" class="level2">
+<h2 class="anchored" data-anchor-id="skills-learned">Skills learned</h2>
+<p>First step in using LANDFIRE data is getting the data. There are many ways to get the data-here we will use the <a href="https://github.com/bcknr/rlandfire">rlandfire</a> package by Mark Buckner to download LANDFIRE data then prep it for use.</p>
+<p>In this demonstration we download LANDFIRE Biophysical Settings (BpS) data, manage and load into R.</p>
 </section>
-<section id="example-outputs" class="level2">
-<h2 class="anchored" data-anchor-id="example-outputs">Example outputs</h2>
-<p>Over time we will be adding to the list of demos and outputs you will create.</p>
-<section id="biophysical-settings" class="level3">
-<h3 class="anchored" data-anchor-id="biophysical-settings">Biophysical Settings</h3>
-<p>In this demonstration we:</p>
+<section id="set-up" class="level2">
+<h2 class="anchored" data-anchor-id="set-up">Set up</h2>
+<p>To run the code below you will need to:</p>
 <ol type="1">
-<li>Download LANDFIRE Biophysical Settings (BpS) data, manage and load into R</li>
-<li>Crop, mask and build attribute table for the area</li>
-<li>Make a simple bar chart of the top BpSs using ggplot2</li>
-<li>Make an interactive hexbin map as one way to tackle some of the challenges of mapping categorical raster data.</li>
+<li>Set up a new R-Studio project named something such as “r_landfire_demos”</li>
+<li>Create two directories, “inputs” and “outputs”</li>
+<li>Download <a href="https://github.com/LANDFIRE-TNC/r_demos/raw/refs/heads/main/inputs/bps_demo.zip?download=">“bps_demo.zip”</a> (clicking will initiate the download that will likely land in your “C:” directory) which contains:
+<ul>
+<li>LANDFIRE Map Zone 35 shapefile</li>
+<li>BpS attributes file as a .csv</li>
+</ul></li>
+<li>Extract the “bps_demo.zip” files into the “inputs” directory</li>
+<li>Create and save a new r-script with a name such as “bps_demo_code”.</li>
 </ol>
-<p><br></p>
-<p><strong>One example output:</strong></p>
-<div class="quarto-figure quarto-figure-center">
+<p>Once this set up is complete, you should be able to copy/paste the code below into the r script you created above.</p>
+<section id="code-to-load-packages-and-inputs" class="level3">
+<h3 class="anchored" data-anchor-id="code-to-load-packages-and-inputs">Code to load packages and inputs</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install packages if needed</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install.packages("foreign")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install.packages("rlandfire")</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install.packages("sf")</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install.packages("terra")</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install.packages("tidyverse")</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rlandfire)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># read in Area of Interest (aoi) shapefile, plot to check</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>shp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"inputs/map_zone_35.shp"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="dv">5070</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_union</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_sf</span>()</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># read in .csv of CONUS-wide attributes</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>bps_conus_atts <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"inputs/LF20_BPS_220.csv"</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first few rows of the CONUS-wide attribute table</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bps_conus_atts)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the shape for fun</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(shp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
 <figure class="figure">
-<p><img src="assets/bps_map.jpg" class="img-fluid figure-img" alt="A hexbin map for LANDFIRE Map ZOne 35 in central Texas with an arrow inditating the Biophysical Setting for one hexbin."></p>
-<figcaption>Interactive Hexbin Map with Biophysical Settings Data</figcaption>
+<p><img src="download_files/figure-html/Set up-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
+</div>
+</div>
 </div>
 </section>
 </section>
-<section id="area-of-interest-for-these-demonstrations" class="level2">
-<h2 class="anchored" data-anchor-id="area-of-interest-for-these-demonstrations">Area of Interest for these demonstrations</h2>
-<p>For the demonstrations we used LANDFIRE Map Zone 35 that is located in central Texas. This area contains multiple ecosystems, and was fun for us to work with.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/mz35.jpg" class="img-fluid figure-img" alt="A map of LANDFIRE Map Zone 35, which is a large circular area in central Texas."></p>
-<figcaption>Area of Interest for these demos: LANDFIRE Map Zone 35</figcaption>
-</figure>
-</div>
+<section id="download-manage-and-load-data" class="level2">
+<h2 class="anchored" data-anchor-id="download-manage-and-load-data">Download manage and load data</h2>
+<p>To obtain and manage LANDFIRE data we need to:</p>
+<ul>
+<li>Define the Area of Interest (AOI): The code gets the area of interest from a shapefile.</li>
+<li>Set Parameters for the API Call: It specifies the product code, coordinate system (EPSG:4326), resolution (30 meters), and your email address for the API.</li>
+<li>Create a Temporary File: A temporary file is created to save the downloaded data.</li>
+<li>Call the LANDFIRE API: The API is called with the specified parameters, and the data is saved to the temporary file.</li>
+<li>Make sure the downloaded data lands in a place where you can find and use it easily
+<ul>
+<li>Define the Destination Path: The destination path for the downloaded file is set.</li>
+<li>Move and Rename the File: The temporary file is moved to the destination path and renamed.</li>
+<li>Create a Temporary Directory for Unzipping: A temporary directory is created to unzip the downloaded file.</li>
+<li>Unzip the File: The file is unzipped into the temporary directory.</li>
+<li>Get the List of Unzipped Files: A list of unzipped files is obtained.</li>
+<li>Rename Each Unzipped File: Each unzipped file is renamed to “landfire_data” followed by its original extension.</li>
+<li>Clean Up the Temporary Directory: The temporary directory and its contents are deleted.</li>
+</ul></li>
+</ul>
+<p>Finally we load the data into R.</p>
+<p>The code below does that in roughly 2 minutes with an internet download speed of ~450mbs. Your times may vary.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: Download manage and load data</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-overflow: wrap</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: true</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: hide</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>aoi <span class="ot">&lt;-</span> <span class="fu">getAOI</span>(shp)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>products <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"200BPS"</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>projection <span class="ot">&lt;-</span> <span class="dv">5070</span>  </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>resolution <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>email <span class="ot">&lt;-</span> <span class="st">"rswaty@tnc.org"</span> <span class="co"># REPLACE WITH YOUR E-MAIL ADDRESS PLEASE! </span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># R specific arguments</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>save_file <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">".zip"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># call API</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>ncal <span class="ot">&lt;-</span> <span class="fu">landfireAPIv2</span>(</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  products, </span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  aoi, </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  projection, </span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  resolution, </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> save_file,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">email =</span> email)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># define the destination path</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>dest_file <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"inputs"</span>, <span class="st">"landfire_data.zip"</span>)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co"># move and rename the file</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="fu">file.rename</span>(save_file, dest_file)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co"># create a temporary directory for unzipping</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>temp_dir <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(temp_dir)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co"># unzip the file into the temporary directory</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(dest_file, <span class="at">exdir =</span> temp_dir)</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co"># get the list of unzipped files</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>unzipped_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(temp_dir, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co"># rename each unzipped file to "landfire_data" with its full original extension</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (file <span class="cf">in</span> unzipped_files) {</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>  file_name <span class="ot">&lt;-</span> <span class="fu">basename</span>(file)</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>  file_extension <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">"^[^.]*"</span>, <span class="st">""</span>, file_name)  <span class="co"># Extract the full extension</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>  new_file_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="st">"inputs"</span>, <span class="fu">paste0</span>(<span class="st">"landfire_data"</span>, file_extension))</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">file.rename</span>(file, new_file_path)</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co"># clean up the temporary directory</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(temp_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

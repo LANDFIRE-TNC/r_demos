@@ -1,0 +1,162 @@
+---
+title: "Clip and prep LANDFIRE rasters"
+---
+
+## Skills learned
+
+Once we have LANDFIRE data, we often want to clip it to a specific landscape, which in this demo is LANDFIRE Map Zone 35.
+
+In this demonstration we crop, mask and build attribute table for the area
+ 
+
+## Set up
+
+To run the code below you will need to:
+
+1. Set up a new R-Studio project named something such as "r_landfire_demos"
+2. Create two directories, "inputs" and "outputs"
+3. Download ["bps_demo.zip"](https://github.com/LANDFIRE-TNC/r_demos/raw/refs/heads/main/inputs/bps_demo.zip?download=) (clicking will initiate the download that will likely land in your "C:\Users\YOURNAME\Downloads" directory) which contains:
+    * LANDFIRE Map Zone 35 shapefile
+    * BpS attributes file as a .csv
+4. Extract the "bps_demo.zip" files into the "inputs" directory
+5. Create and save a new r-script with a name such as "bps_demo_code".
+
+
+Once this set up is complete, you should be able to copy/paste the code below into the r script you created above.  
+
+
+### Code to load packages and inputs
+
+```{r}
+#| label: Set up
+#| message: false
+#| warning: false
+#| echo: true
+#| results: "hide"
+#| code-overflow: wrap
+
+
+# install packages if needed
+  # install.packages("foreign")
+  # install.packages("rlandfire")
+  # install.packages("sf")
+  # install.packages("terra")
+  # install.packages("tidyverse")
+
+# load packages
+
+library(foreign)
+library(rlandfire)
+library(sf)
+library(terra)
+library(tidyverse)
+
+
+# read in Area of Interest (aoi) shapefile, plot to check
+
+shp <- st_read("inputs/map_zone_35.shp", quiet = TRUE) %>% 
+  st_transform(crs = 5070) %>%
+  st_union() %>%
+  st_sf()
+
+
+# read in .csv of CONUS-wide attributes
+
+bps_conus_atts <- read_csv("inputs/LF20_BPS_220.csv")
+
+# look at the first few rows of the CONUS-wide attribute table
+head(bps_conus_atts)
+
+# plot the shape for fun
+plot(shp)
+
+
+```
+
+
+
+
+
+
+## Crop, mask and build attribute table for the area
+
+Now that we have the BpS data for the *extent* of our area of interest, we need to crop/mask it to the exact area of interest, build the raster attribute table and do a few calculations:
+
+* First, we load our stacked raster data from the file landfire_data.tif.
+* Next, we crop and mask this raster using a shapefile to focus on our area of interest.
+* We then plot the cropped and masked raster to visualize our area of interest.
+* We set the levels of the raster to match our attribute data and specify the active category.
+
+Extracting and Processing Values: We extract values from the raster, remove any NA values, and convert the data into a dataframe. This dataframe is then processed to create a frequency table, which is further refined and joined with the raster categories.
+
+Saving the Results: Finally, we save the processed raster and the attributes dataframe to files for future use.
+
+
+```{{r}}
+#| label: Crop, mask and build attributes
+#| echo: true
+#| message: false
+#| warning: false
+#| code-overflow: wrap
+#| include: true
+#| results: hide
+
+
+# load downloaded stacked raster
+US_200BPS <- rast("inputs/landfire_data.tif")
+
+
+# crop and mask the us_200bps raster using the shapefile
+bps_aoi <- US_200BPS %>%
+  crop(shp) %>%
+  mask(shp)
+
+# set the levels of the raster to bps_conus_atts
+levels(bps_aoi)[[1]] <- bps_conus_atts
+# set the active category of the raster to "value"
+activeCat(bps_aoi) <- "VALUE"
+
+# extract values from the raster, remove na values, and convert to dataframe
+bps_aoi_atts <- values(bps_aoi, dataframe = T, na.rm = T) %>%
+  # create a frequency table of the values
+  table(dnn = "VALUE") %>%
+  # convert the table to a dataframe
+  as.data.frame() %>%
+  # convert all columns to character type
+  mutate_all(as.character) %>%
+  # convert all columns to integer type
+  mutate_all(as.integer) %>%
+  # join the dataframe with the raster categories
+  left_join(cats(bps_aoi)[[1]], by = "VALUE") %>%
+  # filter out rows with a frequency of 0
+  filter(Freq != 0) %>%
+  # calculate acres and relative percentage
+  mutate(ACRES = round((Freq * 900 / 4046.86), 0),
+         REL_PERCENT = round((Freq / sum(Freq)), 3) * 100) %>%
+  # arrange the dataframe by relative percentage in descending order
+  arrange(desc(REL_PERCENT))
+
+# write the raster to a file with specified options
+writeRaster(bps_aoi, "outputs/bps_aoi.tif",
+            gdal = c("COMPRESS=NONE", "TFW=YES"),
+            datatype = "INT2S",
+            overwrite = T)
+
+# write the attributes dataframe to a dbf file
+write.dbf(bps_aoi_atts, "outputs/bps_aoi.tif.vat.dbf")
+
+# write the attributes dataframe to a csv file
+write.csv(bps_aoi_atts, "outputs/bps_aoi_attributes.csv")
+
+# plot the cropped and masked raster
+plot(bps_aoi)
+
+# look at the first few rows of the aoi attributes
+head(bps_aoi_atts)
+
+
+
+    
+```
+
+

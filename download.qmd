@@ -1,0 +1,158 @@
+---
+title: "Download LANDFIRE data into R"
+---
+
+
+## Skills learned
+
+First step in using LANDFIRE data is getting the data.  There are many ways to get the data-here we will use the [rlandfire](https://github.com/bcknr/rlandfire) package by Mark Buckner to download LANDFIRE data then prep it for use. 
+
+In this demonstration we download LANDFIRE Biophysical Settings (BpS) data, manage and load into R.
+
+ 
+
+## Set up
+
+To run the code below you will need to:
+
+1. Set up a new R-Studio project named something such as "r_landfire_demos"
+2. Create two directories, "inputs" and "outputs"
+3. Download ["bps_demo.zip"](https://github.com/LANDFIRE-TNC/r_demos/raw/refs/heads/main/inputs/bps_demo.zip?download=) (clicking will initiate the download that will likely land in your "C:\Users\YOURNAME\Downloads" directory) which contains:
+    * LANDFIRE Map Zone 35 shapefile
+    * BpS attributes file as a .csv
+4. Extract the "bps_demo.zip" files into the "inputs" directory
+5. Create and save a new r-script with a name such as "bps_demo_code".
+
+
+Once this set up is complete, you should be able to copy/paste the code below into the r script you created above.  
+
+
+### Code to load packages and inputs
+
+```{r}
+#| label: Set up
+#| message: false
+#| warning: false
+#| echo: true
+#| results: "hide"
+#| code-overflow: wrap
+
+
+# install packages if needed
+  # install.packages("foreign")
+  # install.packages("rlandfire")
+  # install.packages("sf")
+  # install.packages("terra")
+  # install.packages("tidyverse")
+
+# load packages
+
+library(foreign)
+library(rlandfire)
+library(sf)
+library(terra)
+library(tidyverse)
+
+
+# read in Area of Interest (aoi) shapefile, plot to check
+
+shp <- st_read("inputs/map_zone_35.shp", quiet = TRUE) %>% 
+  st_transform(crs = 5070) %>%
+  st_union() %>%
+  st_sf()
+
+
+# read in .csv of CONUS-wide attributes
+
+bps_conus_atts <- read_csv("inputs/LF20_BPS_220.csv")
+
+# look at the first few rows of the CONUS-wide attribute table
+head(bps_conus_atts)
+
+# plot the shape for fun
+plot(shp)
+
+
+```
+
+## Download manage and load data
+
+To obtain and manage LANDFIRE data we need to:
+
+-   Define the Area of Interest (AOI): The code gets the area of interest from a shapefile.
+-   Set Parameters for the API Call: It specifies the product code, coordinate system (EPSG:4326), resolution (30 meters), and your email address for the API.
+-   Create a Temporary File: A temporary file is created to save the downloaded data.
+-   Call the LANDFIRE API: The API is called with the specified parameters, and the data is saved to the temporary file.
+-   Make sure the downloaded data lands in a place where you can find and use it easily
+    -   Define the Destination Path: The destination path for the downloaded file is set.
+    -   Move and Rename the File: The temporary file is moved to the destination path and renamed.
+    -   Create a Temporary Directory for Unzipping: A temporary directory is created to unzip the downloaded file.
+    -   Unzip the File: The file is unzipped into the temporary directory.
+    -   Get the List of Unzipped Files: A list of unzipped files is obtained.
+    -   Rename Each Unzipped File: Each unzipped file is renamed to "landfire_data" followed by its original extension.
+    -   Clean Up the Temporary Directory: The temporary directory and its contents are deleted.
+
+Finally we load the data into R.
+
+The code below does that in roughly 2 minutes with an internet download speed of \~450mbs. Your times may vary.
+
+```{{r}}
+#| label: Download manage and load data
+#| echo: true
+#| message: false
+#| warning: false
+#| code-overflow: wrap
+#| include: true
+#| results: hide
+
+aoi <- getAOI(shp)
+
+products <-  c("200BPS")
+projection <- 5070  
+resolution <- 30
+email <- "rswaty@tnc.org" # REPLACE WITH YOUR E-MAIL ADDRESS PLEASE! 
+
+# R specific arguments
+save_file <- tempfile(fileext = ".zip")
+
+# call API
+ncal <- landfireAPIv2(
+  products, 
+  aoi, 
+  projection, 
+  resolution, 
+  path = save_file,
+  email = email)
+
+
+# define the destination path
+dest_file <- file.path("inputs", "landfire_data.zip")
+
+# move and rename the file
+file.rename(save_file, dest_file)
+
+# create a temporary directory for unzipping
+temp_dir <- tempfile()
+dir.create(temp_dir)
+
+# unzip the file into the temporary directory
+unzip(dest_file, exdir = temp_dir)
+
+# get the list of unzipped files
+unzipped_files <- list.files(temp_dir, full.names = TRUE)
+
+# rename each unzipped file to "landfire_data" with its full original extension
+for (file in unzipped_files) {
+  file_name <- basename(file)
+  file_extension <- sub("^[^.]*", "", file_name)  # Extract the full extension
+  new_file_path <- file.path("inputs", paste0("landfire_data", file_extension))
+  file.rename(file, new_file_path)
+}
+
+# clean up the temporary directory
+unlink(temp_dir, recursive = TRUE)
+
+
+
+```
+

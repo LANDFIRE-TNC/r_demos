@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Randy Swaty and Megan Dettenmaier">
 
-<title>LANDFIRE R Demos – LANDFIRE-Powered Landscape Assessment</title>
+<title>Comparing past and present – LANDFIRE-Powered Landscape Assessment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -252,12 +251,16 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./download.html"> 
 <span class="menu-text">Download data</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./prep_rasters.html"> 
+<span class="menu-text">Prepare rasters</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./prep_rasters.html"> 
@@ -283,19 +286,8 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="3">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#disclaimers-and-how-to-get-help" id="toc-disclaimers-and-how-to-get-help" class="nav-link active" data-scroll-target="#disclaimers-and-how-to-get-help">Disclaimers and how to get help</a></li>
-  <li><a href="#example-outputs" id="toc-example-outputs" class="nav-link" data-scroll-target="#example-outputs">Example outputs</a>
-  <ul class="collapse">
-  <li><a href="#biophysical-settings" id="toc-biophysical-settings" class="nav-link" data-scroll-target="#biophysical-settings">Biophysical Settings</a></li>
-  </ul></li>
-  <li><a href="#area-of-interest-for-these-demonstrations" id="toc-area-of-interest-for-these-demonstrations" class="nav-link" data-scroll-target="#area-of-interest-for-these-demonstrations">Area of Interest for these demonstrations</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -303,19 +295,13 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">LANDFIRE R Demos</h1>
+<h1 class="title">Comparing past and present</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Randy Swaty and Megan Dettenmaier </p>
-          </div>
-  </div>
     
   
     
@@ -326,53 +312,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>We are excited to share some R code bits that will help you in your use of LANDFIRE data to assess and visualize ecological patterns on your landscape. We share these bits of code in hopes of not only helping you accelerate your use of LANDFIRE data, but also as a way to start a conversation. We’d love to hear your suggestions, and stories of LANDFIRE data processing with R!</p>
-<section id="disclaimers-and-how-to-get-help" class="level2">
-<h2 class="anchored" data-anchor-id="disclaimers-and-how-to-get-help">Disclaimers and how to get help</h2>
-<p>Here we are sharing code that we use often. It works for us and has been tested. That said, we are not programmers and have not dealt with every possible user environment (e.g., R-Studio, R and/or package versions), do not intend for this to be a general R coding tutorial and cannot take responsibility for outcomes of you trying this code.</p>
-<p>All of that said, we do want you to be successful and ask that you follow these steps if you run into issues:</p>
-<ol type="1">
-<li>Check your R, R-Studio and package versions. Are they relatively up to date?</li>
-<li>Ensure that you have set up your R-Studio project correctly so that file paths work as expected.</li>
-<li>As possible troubleshoot with Google and/or your favorite AI</li>
-<li>If all else fails e-mail <a href="mailto:landfire@tnc.org">landfire@tnc.org</a></li>
-</ol>
-<p><br></p>
-</section>
-<section id="example-outputs" class="level2">
-<h2 class="anchored" data-anchor-id="example-outputs">Example outputs</h2>
-<p>Over time we will be adding to the list of demos and outputs you will create.</p>
-<section id="biophysical-settings" class="level3">
-<h3 class="anchored" data-anchor-id="biophysical-settings">Biophysical Settings</h3>
-<p>In this demonstration we:</p>
-<ol type="1">
-<li>Download LANDFIRE Biophysical Settings (BpS) data, manage and load into R</li>
-<li>Crop, mask and build attribute table for the area</li>
-<li>Make a simple bar chart of the top BpSs using ggplot2</li>
-<li>Make an interactive hexbin map as one way to tackle some of the challenges of mapping categorical raster data.</li>
-</ol>
-<p><br></p>
-<p><strong>One example output:</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/bps_map.jpg" class="img-fluid figure-img" alt="A hexbin map for LANDFIRE Map ZOne 35 in central Texas with an arrow inditating the Biophysical Setting for one hexbin."></p>
-<figcaption>Interactive Hexbin Map with Biophysical Settings Data</figcaption>
-</figure>
-</div>
-</section>
-</section>
-<section id="area-of-interest-for-these-demonstrations" class="level2">
-<h2 class="anchored" data-anchor-id="area-of-interest-for-these-demonstrations">Area of Interest for these demonstrations</h2>
-<p>For the demonstrations we used LANDFIRE Map Zone 35 that is located in central Texas. This area contains multiple ecosystems, and was fun for us to work with.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/mz35.jpg" class="img-fluid figure-img" alt="A map of LANDFIRE Map Zone 35, which is a large circular area in central Texas."></p>
-<figcaption>Area of Interest for these demos: LANDFIRE Map Zone 35</figcaption>
-</figure>
-</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
