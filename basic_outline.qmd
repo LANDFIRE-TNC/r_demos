@@ -4,6 +4,7 @@ title: "Basic Outline"
 
 
 Task centric
+
 1. Download
 2. Clip and prep
 3. Chart
@@ -14,15 +15,4 @@ Task centric
 
 This would be easier to deal with---i.e, would make sense to work with data on charts page you already downloaded in that page.  
 
-OR is it product-centric? (no no no)
 
-1. BpS download, clip, chart
-2. EVT download, clip, map
-3. EVC, chart, maybe map?
-4. Fuels-map in a different way
-
-This is more LANDFIRE forward and totally workable
-
-
-
-Regardless need to do a good job highlighting/formatting so readers can find the code they want
