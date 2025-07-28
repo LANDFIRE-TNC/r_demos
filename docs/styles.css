@@ -1,0 +1,13 @@
+
+.mermaid svg {
+  font-size: 28px !important;
+}
+
+
+/* Font Awesome Icon Styling */
+.fa {
+  margin-right: 8px;
+  color: #2c3e50; /* dark gray-blue */
+  font-size: 1.2em;
+  vertical-align: middle;
+}

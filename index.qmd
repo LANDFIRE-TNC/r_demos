@@ -1,53 +1,78 @@
 ---
-title: "LANDFIRE R Demos"
+title: "Explore LANDFIRE with R: Quick Code Demos to Kickstart Your Analysis"
 author: "Randy Swaty and Megan Dettenmaier"
 ---
 
-We are excited to share some R code bits that will help you in your use of LANDFIRE data to assess and visualize ecological patterns on your landscape.  We share these bits of code in hopes of not only helping you accelerate your use of LANDFIRE data, but also as a way to start a conversation.  We'd love to hear your suggestions, and stories of LANDFIRE data processing with R!
+## Why this site?
 
-## Disclaimers and how to get help
+Do you work with LANDFIRE data and want a faster way to dig into ecological patterns across your landscape? You’re in the right place.
 
-Here we are sharing code that we use often.  It works for us and has been tested.  That said, we are not programmers and have not dealt with every possible user environment (e.g., R-Studio, R and/or package versions), do not intend for this to be a general R coding tutorial and cannot take responsibility for outcomes of you trying this code.
+This site features quick R code demonstrations to help you get started (or go deeper) with LANDFIRE data. We recognize the power of well-written code and encourage the LANDFIRE community to build on this foundation of work. These r code examples are designed to be practical, repeatable, and flexible to fit your needs. We hope the coding tools provided can help you automate your work, leverage LANDFIRE, and get solution-oriented support.
 
-All of that said, we do want you to be successful and ask that you follow these steps if you run into issues:
+We want to hear from you. Do you have feedback, ideas, or a cool way you’re using LANDFIRE data with R? [Send them our way](landfire@tnc.org). 
 
-1. Check your R, R-Studio and package versions.  Are they relatively up to date?
-2. Ensure that you have set up your R-Studio project correctly so that file paths work as expected.
-3. As possible troubleshoot with Google and/or your favorite AI
-4. If all else fails e-mail [landfire@tnc.org](mailto:landfire@tnc.org)
+Let’s build a community of practice together.
+
+## 🔍 Overview
+```{dot}
+graph LANDFIRE {
+  layout=neato;
+  node [
+    shape=box,
+    style="rounded,filled",
+    fontname="Helvetica",
+    fontsize=16,
+    fillcolor="#F5F5F5",
+    color="#CCCCCC",
+    penwidth=1.0,
+    fontcolor=black,
+    margin="0.3,0.2"  // Increased horizontal and vertical padding
+  ];
+
+  A [label="LANDFIRE Data", pos="0,4!"];
+  B [label=<
+    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD><B>R Code Demos</B></TD></TR>
+      <TR><TD><FONT POINT-SIZE="12">(You are here)</FONT></TD></TR>
+    </TABLE>
+  >, pos="1,3!", fillcolor="#D0E6FA"];
+  C [label="Tinker around", pos="2,2!"];
+  D [label="Insights & Connections", pos="3,1!"];
+
+  A -- B;
+  B -- C;
+  C -- D;
+}
+
+```
+
+## Why does this matter?
+
+LANDFIRE's Product Suite is vast and updated regularly. With a rapid annual update schedule, it can be challenging to ensure you're working with the most current version. Automating this step with LANDFIRE's API toolbox using the R demo code provided on this site can ensure you are using the latest products without any extra work.
+
+
+
+## Connecting Code & LANDFIRE: Example
+
+Using R and LANDFIRE products to explore trends and automate analyses can improve outcomes. Based on current LANDFIRE Products, the example code and visualizations will be based on [Map Zone 35, located in Central Texas](assets/mz35.jpg){fig-alt="A map of LANDFIRE Map Zone 35, which is a large circular area in central Texas."}. Contained in this map zone are multiple ecosystems that provided a colorful sandbox to explore these coding demonstrations. 
+
+
+![Area of Interest for these demos: LANDFIRE Map Zone 35](assets/mz35.jpg) 
+
+
+## Getting Started
+
+1. Check your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio.
+2. Check file paths - is your your R-Studio project correctly set up?
+3. Let us know if you run into code bugs [landfire@tnc.org](mailto:landfire@tnc.org)
+
+
+## Disclaimer
+
+The code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose. Like any open-source code, it may not perform identically across all systems, versions of R, RStudio, or associated packages. This content is intended for educational and illustrative purposes only and should not be considered a comprehensive guide to R programming. Users are responsible for validating and adapting the code to suit their specific needs and environments. We cannot assume responsibility for any issues, errors, or outcomes resulting from its use.
 
 
 <br>
 
-## Example outputs
-
-Over time we will be adding to the list of demos and outputs you will create.
-
-### Biophysical Settings
-
-In this demonstration we:
-
-1.  Download LANDFIRE Biophysical Settings (BpS) data, manage and load into R
-2.  Crop, mask and build attribute table for the area
-3.  Make a simple bar chart of the top BpSs using ggplot2
-4.  Make an interactive hexbin map as one way to tackle some of the challenges of mapping categorical raster data. 
-
-<br>
-
-**One example output:**
-
-![Interactive Hexbin Map with Biophysical Settings Data](assets/bps_map.jpg){fig-alt="A hexbin map for LANDFIRE Map ZOne 35 in central Texas with an arrow inditating the Biophysical Setting for one hexbin."}
-
-
-
-
-## Area of Interest for these demonstrations
-
-For the demonstrations we used LANDFIRE Map Zone 35 that is located in central Texas.  This area contains multiple ecosystems, and was fun for us to work with.  
-
-
-
-
-![Area of Interest for these demos: LANDFIRE Map Zone 35](assets/mz35.jpg){fig-alt="A map of LANDFIRE Map Zone 35, which is a large circular area in central Texas."}
-
-
+## Up Next
+- insert
