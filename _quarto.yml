@@ -21,7 +21,10 @@ website:
 
       - href: make_charts.qmd
         text: Make charts
-
+        
+      - href: make_hex_map.qmd
+        text: Make hex map
+        
       - href: about.qmd
         text: About
 

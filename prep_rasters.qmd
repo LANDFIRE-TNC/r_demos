@@ -13,7 +13,8 @@ In this demonstration we crop, mask and build attribute table for the area
 
 To run the code below you will need to:
 
-1. Run
+1. Follow the set up instructions and run the code on the [Download data](docs/download.html) page, or similar for your landscape and LANDFIRE datasets of interest.
+2. Create a new script for the following code. 
 
 
 Once this set up is complete, you should be able to copy/paste the code below into the r script you created above.  
@@ -21,7 +22,7 @@ Once this set up is complete, you should be able to copy/paste the code below in
 
 ### Code to load packages and inputs
 
-```{r}
+```{{r}}
 #| label: Set up
 #| message: false
 #| warning: false
@@ -32,7 +33,6 @@ Once this set up is complete, you should be able to copy/paste the code below in
 
 # install packages if needed
   # install.packages("foreign")
-  # install.packages("rlandfire")
   # install.packages("sf")
   # install.packages("terra")
   # install.packages("tidyverse")
@@ -40,7 +40,6 @@ Once this set up is complete, you should be able to copy/paste the code below in
 # load packages
 
 library(foreign)
-library(rlandfire)
 library(sf)
 library(terra)
 library(tidyverse)
@@ -57,9 +56,11 @@ shp <- st_read("inputs/map_zone_35.shp", quiet = TRUE) %>%
 # read in .csv of CONUS-wide attributes
 
 bps_conus_atts <- read_csv("inputs/LF20_BPS_220.csv")
+evt_conus_atts <- read_csv("inputs/LF23_EVT_240.csv")
 
-# look at the first few rows of the CONUS-wide attribute table
+# look at the first few rows of the CONUS-wide attribute tables
 head(bps_conus_atts)
+head(evt_conus_atts)
 
 # plot the shape for fun
 plot(shp)
@@ -96,8 +97,13 @@ Saving the Results: Finally, we save the processed raster and the attributes dat
 #| results: hide
 
 
-# load downloaded stacked raster
-US_200BPS <- rast("inputs/landfire_data.tif")
+## Split stacked rasters ----
+
+# read in stacked raster
+stacked_rasters <- rast("inputs/landfire_data_dbnf.tif")
+
+# "split" downloaded raster into separate layers
+for(lyr in names(stacked_rasters)) assign(lyr, stacked_rasters[[lyr]])
 
 
 # crop and mask the us_200bps raster using the shapefile
@@ -152,5 +158,15 @@ head(bps_aoi_atts)
 
     
 ```
+
+## Next steps
+
+Above we only processed the BpS data.  We have the EVT data and the process is similar.  We suggest challenging yourself to process the EVT data next.  The steps are very similar for these categorical LANDFIRE datasets.
+
+Additionally, you can now open up the processed raster(s) in ArcGIS pro and/or QGIS to do further GIS.  This process really shines when you do multiple LANDFIRE datasets at once and/or process data for multiple landscapes.
+
+While we are sure it is possible to make attractive, accessible maps with the processed LANDFIRE rasters in R, we typically move to a different GIS software for mapping, or summarize the data by polygons (e.g., watersheds or hexagons) in R.  See 
+
+
 
 
