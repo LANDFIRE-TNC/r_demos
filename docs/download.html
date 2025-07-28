@@ -298,10 +298,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Prepare rasters</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./prep_rasters.html"> 
-<span class="menu-text">Prepare rasters</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="./make_charts.html"> 
 <span class="menu-text">Make charts</span></a>
   </li>  
@@ -332,6 +328,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#code-to-load-packages-and-inputs" id="toc-code-to-load-packages-and-inputs" class="nav-link" data-scroll-target="#code-to-load-packages-and-inputs">Code to load packages and inputs</a></li>
   </ul></li>
   <li><a href="#download-manage-and-load-data" id="toc-download-manage-and-load-data" class="nav-link" data-scroll-target="#download-manage-and-load-data">Download manage and load data</a></li>
+  <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a></li>
+  <li><a href="#more-resources" id="toc-more-resources" class="nav-link" data-scroll-target="#more-resources">More resources</a></li>
   </ul>
 </nav>
     </div>
@@ -361,7 +359,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="skills-learned" class="level2">
 <h2 class="anchored" data-anchor-id="skills-learned">Skills learned</h2>
 <p>First step in using LANDFIRE data is getting the data. There are many ways to get the data-here we will use the <a href="https://github.com/bcknr/rlandfire">rlandfire</a> package by Mark Buckner to download LANDFIRE data then prep it for use.</p>
-<p>In this demonstration we download LANDFIRE Biophysical Settings (BpS) data, manage and load into R.</p>
+<p>In this demonstration we download LANDFIRE Biophysical Settings (BpS) and Existing Vegetation Type (EVT) data, extract and rename the files.</p>
 </section>
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set up</h2>
@@ -374,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>LANDFIRE Map Zone 35 shapefile</li>
 <li>BpS attributes file as a .csv</li>
 </ul></li>
-<li>Extract the “bps_demo.zip” files into the “inputs” directory</li>
+<li>Extract the “bps_demo.zip” files into the “inputs” sub-directory of your r-studio project.</li>
 <li>Create and save a new r-script with a name such as “bps_demo_code”.</li>
 </ol>
 <p>Once this set up is complete, you should be able to copy/paste the code below into the r script you created above.</p>
@@ -443,7 +441,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Clean Up the Temporary Directory: The temporary directory and its contents are deleted.</li>
 </ul></li>
 </ul>
-<p>Finally we load the data into R.</p>
 <p>The code below does that in roughly 2 minutes with an internet download speed of ~450mbs. Your times may vary.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: Download manage and load data</span></span>
@@ -456,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>aoi <span class="ot">&lt;-</span> <span class="fu">getAOI</span>(shp)</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>products <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"200BPS"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>products <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="st">"200BPS"</span>, <span class="st">"240EVT"</span>)  <span class="co"># note, you can download multiple datasets at once</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>projection <span class="ot">&lt;-</span> <span class="dv">5070</span>  </span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>resolution <span class="ot">&lt;-</span> <span class="dv">30</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>email <span class="ot">&lt;-</span> <span class="st">"rswaty@tnc.org"</span> <span class="co"># REPLACE WITH YOUR E-MAIL ADDRESS PLEASE! </span></span>
@@ -504,6 +501,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
+<p>You should see a set of files with “landfire” in the name. Next go to the <a href="docs/prep_rasters.html">Prepare rasters</a> page to learn how to load them into R, clip/mask and view them.</p>
+</section>
+<section id="more-resources" class="level2">
+<h2 class="anchored" data-anchor-id="more-resources">More resources</h2>
+<ul>
+<li>Add Mark’s site and note he has tutorial</li>
+<li>R python (not tested)</li>
+</ul>
 
 
 </section>

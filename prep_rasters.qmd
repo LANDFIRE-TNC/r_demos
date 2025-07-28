@@ -13,13 +13,7 @@ In this demonstration we crop, mask and build attribute table for the area
 
 To run the code below you will need to:
 
-1. Set up a new R-Studio project named something such as "r_landfire_demos"
-2. Create two directories, "inputs" and "outputs"
-3. Download ["bps_demo.zip"](https://github.com/LANDFIRE-TNC/r_demos/raw/refs/heads/main/inputs/bps_demo.zip?download=) (clicking will initiate the download that will likely land in your "C:\Users\YOURNAME\Downloads" directory) which contains:
-    * LANDFIRE Map Zone 35 shapefile
-    * BpS attributes file as a .csv
-4. Extract the "bps_demo.zip" files into the "inputs" directory
-5. Create and save a new r-script with a name such as "bps_demo_code".
+1. Run
 
 
 Once this set up is complete, you should be able to copy/paste the code below into the r script you created above.  

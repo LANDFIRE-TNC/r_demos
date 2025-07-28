@@ -7,9 +7,8 @@ title: "Download LANDFIRE data into R"
 
 First step in using LANDFIRE data is getting the data.  There are many ways to get the data-here we will use the [rlandfire](https://github.com/bcknr/rlandfire) package by Mark Buckner to download LANDFIRE data then prep it for use. 
 
-In this demonstration we download LANDFIRE Biophysical Settings (BpS) data, manage and load into R.
+In this demonstration we download LANDFIRE Biophysical Settings (BpS) and Existing Vegetation Type (EVT) data, extract and rename the files.
 
- 
 
 ## Set up
 
@@ -20,7 +19,7 @@ To run the code below you will need to:
 3. Download ["bps_demo.zip"](https://github.com/LANDFIRE-TNC/r_demos/raw/refs/heads/main/inputs/bps_demo.zip?download=) (clicking will initiate the download that will likely land in your "C:\Users\YOURNAME\Downloads" directory) which contains:
     * LANDFIRE Map Zone 35 shapefile
     * BpS attributes file as a .csv
-4. Extract the "bps_demo.zip" files into the "inputs" directory
+4. Extract the "bps_demo.zip" files into the "inputs" sub-directory of your r-studio project. 
 5. Create and save a new r-script with a name such as "bps_demo_code".
 
 
@@ -92,7 +91,6 @@ To obtain and manage LANDFIRE data we need to:
     -   Rename Each Unzipped File: Each unzipped file is renamed to "landfire_data" followed by its original extension.
     -   Clean Up the Temporary Directory: The temporary directory and its contents are deleted.
 
-Finally we load the data into R.
 
 The code below does that in roughly 2 minutes with an internet download speed of \~450mbs. Your times may vary.
 
@@ -107,7 +105,7 @@ The code below does that in roughly 2 minutes with an internet download speed of
 
 aoi <- getAOI(shp)
 
-products <-  c("200BPS")
+products <-  c("200BPS", "240EVT")  # note, you can download multiple datasets at once
 projection <- 5070  
 resolution <- 30
 email <- "rswaty@tnc.org" # REPLACE WITH YOUR E-MAIL ADDRESS PLEASE! 
@@ -155,4 +153,19 @@ unlink(temp_dir, recursive = TRUE)
 
 
 ```
+
+
+## Next steps
+
+You should see a set of files with "landfire" in the name. Next go to the [Prepare rasters](docs/prep_rasters.html) page to learn how to load them into R, clip/mask and view them. 
+
+
+## More resources
+
+* Add Mark's site and note he has tutorial
+* R python (not tested)
+
+
+
+
 
