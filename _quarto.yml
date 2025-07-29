@@ -21,6 +21,7 @@ website:
 
 format:
   html:
+    page-layout: full
     theme: 
       dark: darkly
       light: flatly

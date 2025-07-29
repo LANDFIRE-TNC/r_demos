@@ -49,16 +49,19 @@ graph LANDFIRE {
 ## Why does this matter?
 
 LANDFIRE's Product Suite is vast and updated regularly. With a rapid annual update schedule, it can be challenging to ensure you're working with the most current version. Automating this step with LANDFIRE's API toolbox using the R demo code provided on this site can ensure you are using the latest products without any extra work.
+<br>
+<br>
 
-
+![Area of Interest for these demos: LANDFIRE Map Zone 35](assets/mz35.jpg){style="float:right; margin-left: 25px;" fig-alt="\"Rivers and streams of the Driftless region." fig-align="right" width="450" }
 
 ## Connecting Code & LANDFIRE: Example
 
 Using R and LANDFIRE products to explore trends and automate analyses can improve outcomes. Based on current LANDFIRE Products, the example code and visualizations will be based on [Map Zone 35, located in Central Texas](assets/mz35.jpg){fig-alt="A map of LANDFIRE Map Zone 35, which is a large circular area in central Texas."}. Contained in this map zone are multiple ecosystems that provided a colorful sandbox to explore these coding demonstrations. 
+<br>
 
 
-![Area of Interest for these demos: LANDFIRE Map Zone 35](assets/mz35.jpg) 
 
+<br>
 
 ## Getting Started
 
