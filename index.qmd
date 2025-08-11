@@ -1,5 +1,5 @@
 ---
-title: "Explore LANDFIRE with R: Quick Code Demos to Kickstart Your Analysis"
+title: "LANDFIRE, Automation, & Coding: We Provide the Code to Kickstart Your Analysis"
 author: "Randy Swaty and Megan Dettenmaier"
 ---
 
@@ -9,55 +9,56 @@ Do you work with LANDFIRE data and want a faster way to dig into ecological patt
 
 This site features quick R code demonstrations to help you get started (or go deeper) with LANDFIRE data. We recognize the power of well-written code and encourage the LANDFIRE community to build on this foundation of work. These r code examples are designed to be practical, repeatable, and flexible to fit your needs. We hope the coding tools provided can help you automate your work, leverage LANDFIRE, and get solution-oriented support.
 
-We want to hear from you. Do you have feedback, ideas, or a cool way you’re using LANDFIRE data with R? [Send them our way](landfire@tnc.org). 
+We want to hear from you. Do you have feedback, ideas, or a cool way you’re using LANDFIRE data with R? -> [Send them our way](mailto:landfire@tnc.org){target="blank"}. Let’s build a community of practice together.
 
-Let’s build a community of practice together.
 
+::: {.columns}
+
+::: {.column width="40%"}
 ## 🔍 Overview
-```{dot}
-graph LANDFIRE {
-  layout=neato;
-  node [
-    shape=box,
-    style="rounded,filled",
-    fontname="Helvetica",
-    fontsize=16,
-    fillcolor="#F5F5F5",
-    color="#CCCCCC",
-    penwidth=1.0,
-    fontcolor=black,
-    margin="0.3,0.2"  // Increased horizontal and vertical padding
-  ];
 
-  A [label="LANDFIRE Data", pos="0,4!"];
-  B [label=<
-    <TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0">
-      <TR><TD><B>R Code Demos</B></TD></TR>
-      <TR><TD><FONT POINT-SIZE="12">(You are here)</FONT></TD></TR>
-    </TABLE>
-  >, pos="1,3!", fillcolor="#D0E6FA"];
-  C [label="Tinker around", pos="2,2!"];
-  D [label="Insights & Connections", pos="3,1!"];
+**Step 1:** LANDFIRE Data – Choose the LANDFIRE Product for your analysis. 
+*(Need help deciding? Check our cheatsheet here)*  
 
-  A -- B;
-  B -- C;
-  C -- D;
-}
+**Step 2:** R Code Demos – Use the sample R code on this site to explore your area of interest.
 
-```
+**Step 3:** Adjust LANDFIRE to match local conditions.
+*(Not sure how to do that? Try our tutorial)*  
 
-## Why does this matter?
+**Step 4:** Insights & Innovations – Build your own tools, share your work, connect with us.
 
-LANDFIRE's Product Suite is vast and updated regularly. With a rapid annual update schedule, it can be challenging to ensure you're working with the most current version. Automating this step with LANDFIRE's API toolbox using the R demo code provided on this site can ensure you are using the latest products without any extra work.
-<br>
-<br>
+:::
 
-![Area of Interest for these demos: LANDFIRE Map Zone 35](assets/mz35.jpg){style="float:right; margin-left: 25px;" fig-alt="\"Rivers and streams of the Driftless region." fig-align="right" width="450" }
+::: {.column width="60%"}
+## 🔍 Making Connections
+![](assets/connect.png){fig-alt="4 boxes LANDFIRE Data, R code Demos (you are here), Tinker around, Insights and Innovations." width="100%"}
+::: 
 
-## Connecting Code & LANDFIRE: Example
+:::
 
-Using R and LANDFIRE products to explore trends and automate analyses can improve outcomes. Based on current LANDFIRE Products, the example code and visualizations will be based on [Map Zone 35, located in Central Texas](assets/mz35.jpg){fig-alt="A map of LANDFIRE Map Zone 35, which is a large circular area in central Texas."}. Contained in this map zone are multiple ecosystems that provided a colorful sandbox to explore these coding demonstrations. 
-<br>
+
+## Working Example
+
+::: {.columns}
+
+::: {.column width="40%"}
+## 🔧 Use this Code
+
+Using R and LANDFIRE products to explore trends and automate analyses can improve outcomes. Based on current LANDFIRE Products, the example code and visualizations will **all** be based on Map Zone 35, located in Central Texas.
+
+Contained in Map Zone 35 are multiple ecosystems that provide a colorful sandbox to explore these coding demonstrations.
+
+:::
+
+::: {.column width="60%"}
+## 🗺 Map Zone 35
+![](assets/mz35.jpg){fig-alt="A map of LANDFIRE Map Zone 35, which is a large circular area in central Texas." width="100%"}
+
+
+:::
+
+:::
+
 
 
 
