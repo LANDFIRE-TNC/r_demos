@@ -94,14 +94,15 @@ To obtain and manage LANDFIRE data we need to:
 
 The code below does that in roughly 2 minutes with an internet download speed of \~450mbs. Your times may vary.
 
-```{{r}}
+```{r}
 #| label: Download manage and load data
 #| echo: true
 #| message: false
 #| warning: false
 #| code-overflow: wrap
-#| include: true
+#| include: false
 #| results: hide
+#| eval: false
 
 aoi <- getAOI(shp)
 

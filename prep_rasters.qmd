@@ -22,7 +22,7 @@ Once this set up is complete, you should be able to copy/paste the code below in
 
 ### Code to load packages and inputs
 
-```{{r}}
+```{r}
 #| label: Set up
 #| message: false
 #| warning: false
@@ -87,7 +87,7 @@ Extracting and Processing Values: We extract values from the raster, remove any 
 Saving the Results: Finally, we save the processed raster and the attributes dataframe to files for future use.
 
 
-```{{r}}
+```{r}
 #| label: Crop, mask and build attributes
 #| echo: true
 #| message: false
@@ -95,12 +95,13 @@ Saving the Results: Finally, we save the processed raster and the attributes dat
 #| code-overflow: wrap
 #| include: true
 #| results: hide
+#| eval: false
 
 
 ## Split stacked rasters ----
 
 # read in stacked raster
-stacked_rasters <- rast("inputs/landfire_data_dbnf.tif")
+stacked_rasters <- rast("inputs/landfire_data.tif")
 
 # "split" downloaded raster into separate layers
 for(lyr in names(stacked_rasters)) assign(lyr, stacked_rasters[[lyr]])
@@ -149,10 +150,10 @@ write.dbf(bps_aoi_atts, "outputs/bps_aoi.tif.vat.dbf")
 write.csv(bps_aoi_atts, "outputs/bps_aoi_attributes.csv")
 
 # plot the cropped and masked raster
-plot(bps_aoi)
+#plot(bps_aoi)
 
 # look at the first few rows of the aoi attributes
-head(bps_aoi_atts)
+#head(bps_aoi_atts)
 
 
 
