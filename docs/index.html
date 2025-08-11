@@ -8,7 +8,7 @@
 
 <meta name="author" content="Randy Swaty and Megan Dettenmaier">
 
-<title>Explore LANDFIRE with R: Quick Code Demos to Kickstart Your Analysis – LANDFIRE-Powered Landscape Assessment</title>
+<title>LANDFIRE, Automation, &amp; Coding: We Provide the Code to Kickstart Your Analysis – LANDFIRE-Powered Landscape Assessment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Download data</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./prep_rasters.qmd"> 
+    <a class="nav-link" href="./prep_rasters.html"> 
 <span class="menu-text">Prepare rasters</span></a>
   </li>  
   <li class="nav-item">
@@ -132,9 +132,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#why-this-site" id="toc-why-this-site" class="nav-link active" data-scroll-target="#why-this-site">Why this site?</a></li>
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">🔍 Overview</a></li>
-  <li><a href="#why-does-this-matter" id="toc-why-does-this-matter" class="nav-link" data-scroll-target="#why-does-this-matter">Why does this matter?</a></li>
-  <li><a href="#connecting-code-landfire-example" id="toc-connecting-code-landfire-example" class="nav-link" data-scroll-target="#connecting-code-landfire-example">Connecting Code &amp; LANDFIRE: Example</a></li>
+  <li><a href="#working-example" id="toc-working-example" class="nav-link" data-scroll-target="#working-example">Working Example</a></li>
   <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a></li>
   <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link" data-scroll-target="#disclaimer">Disclaimer</a></li>
   <li><a href="#up-next" id="toc-up-next" class="nav-link" data-scroll-target="#up-next">Up Next</a></li>
@@ -146,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Explore LANDFIRE with R: Quick Code Demos to Kickstart Your Analysis</h1>
+<h1 class="title">LANDFIRE, Automation, &amp; Coding: We Provide the Code to Kickstart Your Analysis</h1>
 </div>
 
 
@@ -173,83 +171,42 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="why-this-site">Why this site?</h2>
 <p>Do you work with LANDFIRE data and want a faster way to dig into ecological patterns across your landscape? You’re in the right place.</p>
 <p>This site features quick R code demonstrations to help you get started (or go deeper) with LANDFIRE data. We recognize the power of well-written code and encourage the LANDFIRE community to build on this foundation of work. These r code examples are designed to be practical, repeatable, and flexible to fit your needs. We hope the coding tools provided can help you automate your work, leverage LANDFIRE, and get solution-oriented support.</p>
-<p>We want to hear from you. Do you have feedback, ideas, or a cool way you’re using LANDFIRE data with R? <a href="landfire@tnc.org">Send them our way</a>.</p>
-<p>Let’s build a community of practice together.</p>
+<p>We want to hear from you. Do you have feedback, ideas, or a cool way you’re using LANDFIRE data with R? -&gt; <a href="mailto:landfire@tnc.org" target="blank">Send them our way</a>. Let’s build a community of practice together.</p>
 </section>
+<div class="columns">
+<div class="column" style="width:40%;">
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">🔍 Overview</h2>
-<div class="cell" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<svg width="672" height="480" viewbox="0.00 0.00 408.51 271.20" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 267.2)">
-<title>LANDFIRE</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-267.2 404.51,-267.2 404.51,4 -4,4"></polygon>
-<!-- A -->
-<g id="node1" class="node">
-<title>A</title>
-<path fill="#f5f5f5" stroke="#cccccc" d="M149.55,-263.3C149.55,-263.3 11.82,-263.3 11.82,-263.3 5.82,-263.3 -0.18,-257.3 -0.18,-251.3 -0.18,-251.3 -0.18,-227.9 -0.18,-227.9 -0.18,-221.9 5.82,-215.9 11.82,-215.9 11.82,-215.9 149.55,-215.9 149.55,-215.9 155.55,-215.9 161.55,-221.9 161.55,-227.9 161.55,-227.9 161.55,-251.3 161.55,-251.3 161.55,-257.3 155.55,-263.3 149.55,-263.3"></path>
-<text text-anchor="middle" x="80.68" y="-234.8" font-family="Helvetica,sans-Serif" font-size="16.00">LANDFIRE Data</text>
-</g>
-<!-- B -->
-<g id="node2" class="node">
-<title>B</title>
-<path fill="#d0e6fa" stroke="#cccccc" d="M221.18,-202.1C221.18,-202.1 84.18,-202.1 84.18,-202.1 78.18,-202.1 72.18,-196.1 72.18,-190.1 72.18,-190.1 72.18,-145.1 72.18,-145.1 72.18,-139.1 78.18,-133.1 84.18,-133.1 84.18,-133.1 221.18,-133.1 221.18,-133.1 227.18,-133.1 233.18,-139.1 233.18,-145.1 233.18,-145.1 233.18,-190.1 233.18,-190.1 233.18,-196.1 227.18,-202.1 221.18,-202.1"></path>
-<text text-anchor="start" x="96.29" y="-172.2" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">R Code Demos</text>
-<text text-anchor="start" x="114.5" y="-151.8" font-family="Helvetica,sans-Serif" font-size="12.00">(You are here)</text>
-</g>
-<!-- A&#45;&#45;B -->
-<g id="edge1" class="edge">
-<title>A--B</title>
-<path fill="none" stroke="black" d="M104.66,-215.63C108.99,-211.29 113.59,-206.69 118.16,-202.12"></path>
-</g>
-<!-- C -->
-<g id="node3" class="node">
-<title>C</title>
-<path fill="#f5f5f5" stroke="#cccccc" d="M283.9,-119.3C283.9,-119.3 165.46,-119.3 165.46,-119.3 159.46,-119.3 153.46,-113.3 153.46,-107.3 153.46,-107.3 153.46,-83.9 153.46,-83.9 153.46,-77.9 159.46,-71.9 165.46,-71.9 165.46,-71.9 283.9,-71.9 283.9,-71.9 289.9,-71.9 295.9,-77.9 295.9,-83.9 295.9,-83.9 295.9,-107.3 295.9,-107.3 295.9,-113.3 289.9,-119.3 283.9,-119.3"></path>
-<text text-anchor="middle" x="224.68" y="-90.8" font-family="Helvetica,sans-Serif" font-size="16.00">Tinker around</text>
-</g>
-<!-- B&#45;&#45;C -->
-<g id="edge2" class="edge">
-<title>B--C</title>
-<path fill="none" stroke="black" d="M187.42,-132.87C192.02,-128.26 196.65,-123.63 201.01,-119.28"></path>
-</g>
-<!-- D -->
-<g id="node4" class="node">
-<title>D</title>
-<path fill="#f5f5f5" stroke="#cccccc" d="M388.33,-47.3C388.33,-47.3 205.03,-47.3 205.03,-47.3 199.03,-47.3 193.03,-41.3 193.03,-35.3 193.03,-35.3 193.03,-11.9 193.03,-11.9 193.03,-5.9 199.03,0.1 205.03,0.1 205.03,0.1 388.33,0.1 388.33,0.1 394.33,0.1 400.33,-5.9 400.33,-11.9 400.33,-11.9 400.33,-35.3 400.33,-35.3 400.33,-41.3 394.33,-47.3 388.33,-47.3"></path>
-<text text-anchor="middle" x="296.68" y="-18.8" font-family="Helvetica,sans-Serif" font-size="16.00">Insights &amp; Connections</text>
-</g>
-<!-- C&#45;&#45;D -->
-<g id="edge3" class="edge">
-<title>C--D</title>
-<path fill="none" stroke="black" d="M248.66,-71.63C256.51,-63.77 265.23,-55.05 273.06,-47.23"></path>
-</g>
-</g>
-</svg>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
+<p><strong>Step 1:</strong> LANDFIRE Data – Choose the LANDFIRE Product for your analysis. <em>(Need help deciding? Check our cheatsheet here)</em></p>
+<p><strong>Step 2:</strong> R Code Demos – Use the sample R code on this site to explore your area of interest.</p>
+<p><strong>Step 3:</strong> Adjust LANDFIRE to match local conditions. <em>(Not sure how to do that? Try our tutorial)</em></p>
+<p><strong>Step 4:</strong> Insights &amp; Innovations – Build your own tools, share your work, connect with us.</p>
 </section>
-<section id="why-does-this-matter" class="level2">
-<h2 class="anchored" data-anchor-id="why-does-this-matter">Why does this matter?</h2>
-<p>LANDFIRE’s Product Suite is vast and updated regularly. With a rapid annual update schedule, it can be challenging to ensure you’re working with the most current version. Automating this step with LANDFIRE’s API toolbox using the R demo code provided on this site can ensure you are using the latest products without any extra work. <br> <br></p>
-<div class="quarto-figure quarto-figure-right" style="float:right; margin-left: 25px;">
-<figure class="figure">
-<p><img src="assets/mz35.jpg" class="img-fluid figure-img" alt="&quot;Rivers and streams of the Driftless region." width="450"></p>
-<figcaption>Area of Interest for these demos: LANDFIRE Map Zone 35</figcaption>
-</figure>
-</div>
+</div><div class="column" style="width:60%;">
+<section id="making-connections" class="level2">
+<h2 class="anchored" data-anchor-id="making-connections">🔍 Making Connections</h2>
+<p><img src="assets/connect.png" class="img-fluid" style="width:100.0%" alt="4 boxes LANDFIRE Data, R code Demos (you are here), Tinker around, Insights and Innovations."></p>
 </section>
-<section id="connecting-code-landfire-example" class="level2">
-<h2 class="anchored" data-anchor-id="connecting-code-landfire-example">Connecting Code &amp; LANDFIRE: Example</h2>
-<p>Using R and LANDFIRE products to explore trends and automate analyses can improve outcomes. Based on current LANDFIRE Products, the example code and visualizations will be based on <a href="assets/mz35.jpg" data-fig-alt="A map of LANDFIRE Map Zone 35, which is a large circular area in central Texas.">Map Zone 35, located in Central Texas</a>. Contained in this map zone are multiple ecosystems that provided a colorful sandbox to explore these coding demonstrations. <br></p>
+</div>
+</div>
+<section id="working-example" class="level2">
+<h2 class="anchored" data-anchor-id="working-example">Working Example</h2>
+</section>
+<div class="columns">
+<div class="column" style="width:40%;">
+<section id="use-this-code" class="level2">
+<h2 class="anchored" data-anchor-id="use-this-code">🔧 Use this Code</h2>
+<p>Using R and LANDFIRE products to explore trends and automate analyses can improve outcomes. Based on current LANDFIRE Products, the example code and visualizations will <strong>all</strong> be based on Map Zone 35, located in Central Texas.</p>
+<p>Contained in Map Zone 35 are multiple ecosystems that provide a colorful sandbox to explore these coding demonstrations.</p>
+</section>
+</div><div class="column" style="width:60%;">
+<section id="map-zone-35" class="level2">
+<h2 class="anchored" data-anchor-id="map-zone-35">🗺 Map Zone 35</h2>
+<p><img src="assets/mz35.jpg" class="img-fluid" style="width:100.0%" alt="A map of LANDFIRE Map Zone 35, which is a large circular area in central Texas."></p>
+</section>
+</div>
+</div>
 <p><br></p>
-</section>
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
 <ol type="1">
