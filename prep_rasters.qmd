@@ -6,7 +6,7 @@ title: "Clip and prep LANDFIRE rasters"
 
 Once we have LANDFIRE data, we often want to clip it to a specific landscape, which in this demo is LANDFIRE Map Zone 35.
 
-In this demonstration we crop, mask and build attribute table for the area
+In this demonstration we crop, mask and build attribute table for the area then write the files to our 'outputs' folder for later use. 
  
 
 ## Set up
@@ -53,29 +53,34 @@ shp <- st_read("inputs/map_zone_35.shp", quiet = TRUE) %>%
   st_sf()
 
 
-# read in .csv of CONUS-wide attributes
+# read in .csv of CONUS-wide attributes for later joining to AoI BpS table
 
 bps_conus_atts <- read_csv("inputs/LF20_BPS_220.csv")
+
+# another way is directly from landfire.gov
+# bps_url <- "https://landfire.gov/sites/default/files/CSV/LF2016/LF16_BPS.csv" # will likely get warning, but it's OK
+# bps_conus_atts <- read.csv(bps_url)
+
+
 evt_conus_atts <- read_csv("inputs/LF23_EVT_240.csv")
 
-# look at the first few rows of the CONUS-wide attribute tables
-head(bps_conus_atts)
-head(evt_conus_atts)
+# evt_url <- "https://landfire.gov/sites/default/files/CSV/2024/LF2024_EVT.csv" # will likely get warning, but it's OK
+# evt_conus_atts <- read.csv(evt_url)
 
-# plot the shape for fun
-plot(shp)
+
+# look at the first few rows of the CONUS-wide attribute tables
+print(head(bps_conus_atts))
+print(head(evt_conus_atts))
+
 
 
 ```
 
 
 
+## Crop, mask and split out the raster layers
 
-
-
-## Crop, mask and build attribute table for the area
-
-Now that we have the BpS data for the *extent* of our area of interest, we need to crop/mask it to the exact area of interest, build the raster attribute table and do a few calculations:
+Now that we have LANDFIRE data for the *extent* of our area of interest, we need to crop/mask it to the exact area of interest, build the raster attribute table and do a few calculations:
 
 * First, we load our stacked raster data from the file landfire_data.tif.
 * Next, we crop and mask this raster using a shapefile to focus on our area of interest.
@@ -84,11 +89,44 @@ Now that we have the BpS data for the *extent* of our area of interest, we need 
 
 Extracting and Processing Values: We extract values from the raster, remove any NA values, and convert the data into a dataframe. This dataframe is then processed to create a frequency table, which is further refined and joined with the raster categories.
 
-Saving the Results: Finally, we save the processed raster and the attributes dataframe to files for future use.
+Saving the Results: Finally, we save the processed raster and the attributes dataframe to files for future use.  
+
 
 
 ```{r}
-#| label: Crop, mask and build attributes
+#| label: Crop, mask and separate out the raster layers
+#| echo: true
+#| message: false
+#| warning: false
+#| code-overflow: wrap
+#| include: true
+#| results: hide
+#| eval: true
+
+
+
+# load in landfire stacked raster
+stacked_rasters <- rast("inputs/landfire_data.tif")
+
+# crop and mask stacked raster 
+aoi_stacked_rasters <- stacked_rasters %>%
+  crop(shp) %>%
+  mask(shp)
+
+# "split" cropped and masked stacked raster into separate layers
+for(lyr in names(aoi_stacked_rasters)) assign(lyr, aoi_stacked_rasters[[lyr]])
+
+
+
+    
+```
+
+
+## Build Raster Attribute Table for Biophysical Settings Data, write files
+
+```{r}
+
+#| label: Build Raster Attribute Table for Biophysical Settings Data, write files
 #| echo: true
 #| message: false
 #| warning: false
@@ -98,47 +136,30 @@ Saving the Results: Finally, we save the processed raster and the attributes dat
 #| eval: false
 
 
-## Split stacked rasters ----
-
-# read in stacked raster
-stacked_rasters <- rast("inputs/landfire_data.tif")
-
-# "split" downloaded raster into separate layers
-for(lyr in names(stacked_rasters)) assign(lyr, stacked_rasters[[lyr]])
 
 
-# crop and mask the us_200bps raster using the shapefile
-bps_aoi <- US_200BPS %>%
-  crop(shp) %>%
-  mask(shp)
+# Assign categories
+levels(US_200BPS) <- bps_conus_atts
+activeCat(US_200BPS) <- "VALUE"
 
-# set the levels of the raster to bps_conus_atts
-levels(bps_aoi)[[1]] <- bps_conus_atts
-# set the active category of the raster to "value"
-activeCat(bps_aoi) <- "VALUE"
+# Get frequency table 
+bps_freq <- freq(US_200BPS) %>%
+  as.data.frame()
 
-# extract values from the raster, remove na values, and convert to dataframe
-bps_aoi_atts <- values(bps_aoi, dataframe = T, na.rm = T) %>%
-  # create a frequency table of the values
-  table(dnn = "VALUE") %>%
-  # convert the table to a dataframe
-  as.data.frame() %>%
-  # convert all columns to character type
-  mutate_all(as.character) %>%
-  # convert all columns to integer type
-  mutate_all(as.integer) %>%
-  # join the dataframe with the raster categories
-  left_join(cats(bps_aoi)[[1]], by = "VALUE") %>%
-  # filter out rows with a frequency of 0
-  filter(Freq != 0) %>%
-  # calculate acres and relative percentage
-  mutate(ACRES = round((Freq * 900 / 4046.86), 0),
-         REL_PERCENT = round((Freq / sum(Freq)), 3) * 100) %>%
-  # arrange the dataframe by relative percentage in descending order
-  arrange(desc(REL_PERCENT))
+# Join with attributes and calculate acres and percent
+bps_aoi_atts <- bps_freq %>%
+  rename(VALUE = value, COUNT = count) %>%
+  mutate(VALUE = as.integer(VALUE)) %>%
+  left_join(bps_conus_atts, by = "VALUE") %>%
+  filter(COUNT != 0) %>%
+  mutate(
+    ACRES = round((COUNT * 900 / 4046.86), 0),
+    REL_PERCENT = round((COUNT / sum(COUNT)) * 100, 3)) %>%
+  arrange(desc(REL_PERCENT)) %>%
+  select(-layer)  # Optional: remove 'layer' column
 
 # write the raster to a file with specified options
-writeRaster(bps_aoi, "outputs/bps_aoi.tif",
+writeRaster(US_200BPS, "outputs/bps_aoi.tif",
             gdal = c("COMPRESS=NONE", "TFW=YES"),
             datatype = "INT2S",
             overwrite = T)
@@ -149,24 +170,77 @@ write.dbf(bps_aoi_atts, "outputs/bps_aoi.tif.vat.dbf")
 # write the attributes dataframe to a csv file
 write.csv(bps_aoi_atts, "outputs/bps_aoi_attributes.csv")
 
-# plot the cropped and masked raster
-#plot(bps_aoi)
+# plot the cropped and masked raster-will just show values in the map.  Output not shown here.
+plot(US_200BPS)
 
-# look at the first few rows of the aoi attributes
-#head(bps_aoi_atts)
+# look at the first few rows of the aoi attributes. Output not shown here.
+print(head(bps_aoi_atts))
 
 
-
-    
 ```
+
+
+## Build Raster Attribute Table for Existing Vegetation Type Data, write files
+
+```{r}
+#| label: Build Raster Attribute Table for Existing Vegetation Type Data, write files
+#| echo: true
+#| message: false
+#| warning: false
+#| code-overflow: wrap
+#| include: true
+#| results: hide
+#| eval: false
+
+# Assign categories
+levels(US_240EVT) <- evt_conus_atts
+activeCat(US_240EVT) <- "VALUE"
+
+# Get frequency table 
+evt_freq <- freq(US_240EVT) %>%
+  as.data.frame()
+
+# Join with attributes and calculate acres and percent
+evt_aoi_atts <- evt_freq %>%
+  rename(VALUE = value, COUNT = count) %>%
+  mutate(VALUE = as.integer(VALUE)) %>%
+  left_join(evt_conus_atts, by = "VALUE") %>%
+  filter(COUNT != 0) %>%
+  mutate(
+    ACRES = round((COUNT * 900 / 4046.86), 0),
+    REL_PERCENT = round((COUNT / sum(COUNT)) * 100, 3)
+  ) %>%
+  arrange(desc(REL_PERCENT)) %>%
+  select(-layer)  # Optional: remove 'layer' column
+
+# write the raster to a file with specified options
+writeRaster(US_240EVT, "outputs/evt_aoi.tif",
+            gdal = c("COMPRESS=NONE", "TFW=YES"),
+            datatype = "INT2S",
+            overwrite = T)
+
+# write the attributes dataframe to a dbf file
+write.dbf(evt_aoi_atts, "outputs/evt_aoi.tif.vat.dbf")
+
+# write the attributes dataframe to a csv file
+write.csv(evt_aoi_atts, "outputs/evt_aoi_attributes.csv")
+
+# plot the cropped and masked raster-will just show values in the map.  Output not shown here.
+plot(US_240EVT)
+
+# look at the first few rows of the aoi attributes. Output not shown here.
+print(head(evt_aoi_atts))
+
+
+```
+
+
 
 ## Next steps
 
-Above we only processed the BpS data.  We have the EVT data and the process is similar.  We suggest challenging yourself to process the EVT data next.  The steps are very similar for these categorical LANDFIRE datasets.
+You can now open up the processed raster(s) in ArcGIS pro and/or QGIS to do further GIS.  This process really shines when you do multiple LANDFIRE datasets at once and/or process data for multiple landscapes.  Further, you can work in Excel, R or other software to make charts of the attributes that are saved as a .csv file.  Go to the [Make Charts](docs/make_charts.html) page to get started. 
 
-Additionally, you can now open up the processed raster(s) in ArcGIS pro and/or QGIS to do further GIS.  This process really shines when you do multiple LANDFIRE datasets at once and/or process data for multiple landscapes.
-
-While we are sure it is possible to make attractive, accessible maps with the processed LANDFIRE rasters in R, we typically move to a different GIS software for mapping, or summarize the data by polygons (e.g., watersheds or hexagons) in R.  See 
+While we are sure it is possible to make attractive, accessible maps with the processed LANDFIRE rasters in R, we typically move to a different GIS software for mapping, or summarize the data by polygons (e.g., watersheds or hexagons) in R.  Try the code on the [Make hex map](docs/make_hex_map.html) for ways you might map LANDFIRE data in R. 
 
 
 

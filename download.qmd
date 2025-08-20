@@ -61,14 +61,9 @@ shp <- st_read("inputs/map_zone_35.shp", quiet = TRUE) %>%
   st_sf()
 
 
-# read in .csv of CONUS-wide attributes
 
-bps_conus_atts <- read_csv("inputs/LF20_BPS_220.csv")
 
-# look at the first few rows of the CONUS-wide attribute table
-head(bps_conus_atts)
-
-# plot the shape for fun
+# plot the shape for fun (not much to look at on it's own!)
 plot(shp)
 
 
@@ -109,7 +104,7 @@ aoi <- getAOI(shp)
 products <-  c("200BPS", "240EVT")  # note, you can download multiple datasets at once
 projection <- 5070  
 resolution <- 30
-email <- "rswaty@tnc.org" # REPLACE WITH YOUR E-MAIL ADDRESS PLEASE! 
+email <- "your_email@wah.org" # REPLACE WITH YOUR E-MAIL ADDRESS PLEASE! 
 
 # R specific arguments
 save_file <- tempfile(fileext = ".zip")
@@ -163,8 +158,8 @@ You should see a set of files with "landfire" in the name. Next go to the [Prepa
 
 ## More resources
 
-* Add Mark's site and note he has tutorial
-* R python (not tested)
+* Mark Buckner's [rlandfire](https://github.com/bcknr/rlandfire) site also has a nice tutorial. 
+* There is also a Python package for downloading LANDFIRE data, [landfire-python])(https://landfire-python.firesci.io/en/latest/).  If you try this please let us know!
 
 
 
