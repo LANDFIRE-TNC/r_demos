@@ -5,7 +5,7 @@ project:
     watch-inputs: false
 
 website:
-  title: "LANDFIRE-Powered Landscape Assessment"
+  title: "LANDFIRE R Toolkit"
   navbar:
     search: TRUE
     pinned: true
