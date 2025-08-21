@@ -18,7 +18,7 @@ To run the code below you will need to:
 
 
 
-### Code to load packages and inputs, summarize data
+## Code to load packages and inputs, summarize data
 
 ```{r}
 #| label: Load packages and data
@@ -38,6 +38,23 @@ library(stringr)
 # read in data for our Area of Interest
 bps_data <- read.csv("outputs/bps_aoi_attributes.csv")
 evt_data <- read.csv("outputs/evt_aoi_attributes.csv")
+
+```
+
+
+
+## Basic bar chart of the Biophysical Settings
+
+```{r}
+#| label: BpS bar chart
+#| echo: true
+#| message: false
+#| warning: false
+#| code-overflow: wrap
+#| include: true
+#| results: hide
+#| fig.width: 10
+#| fig.height: 10
 
 # summarize data by BpS Name attribute for chart.  We do this as an AoI may have multiple variants if it crosses multiple Map Zones. We also limit output dataframe to the top 10 BpSs.  Customize as needed!
 
@@ -81,14 +98,86 @@ bps_acres_chart <-
 
 bps_acres_chart
 
-
-
-
-
-
 ```
 
+<br>
 
+This chart can be easily replicated for the Existing Vegetation Type data by swapping out input data and names in the chart code.  Give it a try!
+
+## Fire return interval per BpS
+
+```{r}
+#| label: FRI chart
+#| echo: true
+#| message: false
+#| warning: false
+#| code-overflow: wrap
+#| include: true
+#| results: hide
+#| fig.width: 10
+#| fig.height: 10
+
+# Rename columns for clarity
+bps_data_clean <- bps_data %>%
+  rename(
+    Replacement = FRI_REPLAC,
+    Mixed = FRI_MIXED,
+    Surface = FRI_SURFAC
+  )
+
+# Filter top 10 BPS_NAMEs by REL_PERCENT
+top_bps <- bps_data_clean %>%
+  arrange(desc(REL_PERCENT)) %>%
+  slice_head(n = 10) %>%
+  mutate(
+    BPS_LABEL = paste0(BPS_NAME, " (", round(REL_PERCENT), "%)")
+  )
+
+# Reshape to long format
+bps_long <- top_bps %>%
+  select(BPS_LABEL, REL_PERCENT, Replacement, Mixed, Surface) %>%
+  pivot_longer(cols = c(Replacement, Mixed, Surface),
+               names_to = "Fire_Regime",
+               values_to = "Years") %>%
+  filter(Years >= 0)
+
+# Set order of Fire types
+bps_long$Fire_Regime <- factor(bps_long$Fire_Regime, levels = c(
+  "Surface",
+  "Mixed",
+  "Replacement"
+))
+
+# Order BPS_LABEL by REL_PERCENT
+bps_long$BPS_LABEL <- factor(bps_long$BPS_LABEL,
+                             levels = top_bps$BPS_LABEL[order(top_bps$REL_PERCENT, decreasing = TRUE)])
+
+# Plot
+ fri_chart <- 
+  ggplot(bps_long, aes(x = Years, y = Fire_Regime)) +
+  geom_bar(stat = "identity", 
+           fill = "grey50",
+           width = 0.8, ) +  # grey bars
+  facet_wrap(~ BPS_LABEL, 
+             scales = "free_x",
+             labeller = label_wrap_gen(width = 25), 
+             nrow(3)) +
+  theme_minimal(base_size = 12) +
+  labs(
+    title = "Historical Fire Regimes",
+    subtitle = "Top 10 BpSs selected for illustration. Replacement = 75 - 100% top kill, Mixed = 26 - 74%, Surface = 0 - 25%",
+    caption = "\nData from landfire.gov.",
+    x = "Average years between fires",
+    y = "") +
+  theme(plot.caption = element_text(hjust = 0, face= "italic"), #Default is hjust=1
+        plot.title.position = "plot", #NEW parameter. Apply for subtitle too.
+        plot.caption.position =  "plot") +
+  theme(panel.spacing = unit(.05, "lines"),
+        panel.border = element_rect(color = "black", fill = NA, linewidth = 1), 
+        strip.background = element_rect(color = "black", linewidth  = 1))
+
+ fri_chart 
+```
 
 
 
