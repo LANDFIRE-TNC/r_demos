@@ -1,0 +1,41 @@
+---
+title: "Make simple charts with LANDFIRE data"
+---
+
+
+
+## Skills learned
+
+Summarizing data in charts is a quick way to convey patterns and, in the case below, demonstrate which LANDFIRE Biophysical Settings were mapped as most dominant on our landscape
+
+
+## Set up
+
+To run the code below you will need to:
+
+1. Work through the preceding pages, [Download data](docs/download.html) and [Prepare rasters](docs/prep_rasters.html), or otherwise make sure you have a datasheet with BpS names and Relative Percentages at the least. 
+2. 
+
+
+### Code to load packages and inputs
+
+```{r}
+#| label: Load packages and data
+#| echo: true
+#| message: false
+#| warning: false
+#| code-overflow: wrap
+#| include: true
+#| results: hide
+
+library(tidyverse)
+
+
+
+
+
+
+
+
+```
+

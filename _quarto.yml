@@ -5,7 +5,7 @@ project:
     watch-inputs: false
 
 website:
-  title: "LANDFIRE-Powered Landscape Assessment"
+  title: "LANDFIRE R Toolkit"
   navbar:
     search: TRUE
     pinned: true
@@ -13,14 +13,24 @@ website:
       - href: index.qmd
         text: Home
         
-      - href: bps.qmd
-        text: BpS
+      - href: download.qmd
+        text: Download data
+        
+      - href: prep_rasters.qmd
+        text: Prepare rasters
 
+      - href: make_charts.qmd
+        text: Make charts
+        
+      - href: make_hex_map.qmd
+        text: Make hex map
+        
       - href: about.qmd
         text: About
 
 format:
   html:
+    page-layout: full
     theme: 
       dark: darkly
       light: flatly
@@ -28,6 +38,5 @@ format:
     toc: true
     toc-depth: 3
     toc-expand: 3
-
+    
 editor: source
-
