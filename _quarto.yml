@@ -16,7 +16,7 @@ resources:
   - archive\
 
 website:
-  title: "LANDFIRE-Powered Landscape Assessment"
+  title: "LANDFIRE R Toolkit"
   navbar:
     search: TRUE
     pinned: true

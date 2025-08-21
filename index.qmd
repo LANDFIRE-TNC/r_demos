@@ -1,5 +1,5 @@
 ---
-title: "LANDFIRE, Automation, & Coding: We Provide the Code to Kickstart Your Analysis"
+title: "LANDFIRE + R: Accelerate Your Analysis"
 author: "Randy Swaty and Megan Dettenmaier"
 ---
 

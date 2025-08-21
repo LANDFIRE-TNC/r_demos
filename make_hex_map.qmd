@@ -144,5 +144,3 @@ hexs_bps_evt <- hex_grid_clipped %>%
 
 
 
-
-
