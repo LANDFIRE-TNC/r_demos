@@ -30,21 +30,21 @@
   {
     "objectID": "make_charts.html",
     "href": "make_charts.html",
-    "title": "Make simple charts with LANDFIRE data",
+    "title": "Make charts with LANDFIRE data",
     "section": "",
-    "text": "Summarizing data in charts is a quick way to convey patterns and, in the case below, demonstrate which LANDFIRE Biophysical Settings were mapped as most dominant on our landscape."
+    "text": "Use this page to:\n\nPractice summarizing LANDFIRE Biophysical Settings data using R to identify dominant vegetation types across the example landscape\nCreate bar charts to visualize relative percentages and acerage, gaining experience in data grouping, plotting, and interpretation"
   },
   {
     "objectID": "make_charts.html#skills-learned",
     "href": "make_charts.html#skills-learned",
-    "title": "Make simple charts with LANDFIRE data",
+    "title": "Make charts with LANDFIRE data",
     "section": "",
-    "text": "Summarizing data in charts is a quick way to convey patterns and, in the case below, demonstrate which LANDFIRE Biophysical Settings were mapped as most dominant on our landscape."
+    "text": "Use this page to:\n\nPractice summarizing LANDFIRE Biophysical Settings data using R to identify dominant vegetation types across the example landscape\nCreate bar charts to visualize relative percentages and acerage, gaining experience in data grouping, plotting, and interpretation"
   },
   {
     "objectID": "make_charts.html#set-up",
     "href": "make_charts.html#set-up",
-    "title": "Make simple charts with LANDFIRE data",
+    "title": "Make charts with LANDFIRE data",
     "section": "Set up",
     "text": "Set up\nTo run the code below you will need to:\n\nWork through the preceding pages, Download data and Prepare rasters for your own Area of Interest OR\nMake sure you have a datasheet with BpS names and Relative Percentages at the least. We will load in the data for our Area of Interest for you to work with if you do not have your own data.\n\n\nCode to load packages and inputs, summarize data\n\n# load packages\nlibrary(tidyverse)\nlibrary(scales)\nlibrary(stringr)\n\n# read in data for our Area of Interest\nbps_data &lt;- read.csv(\"outputs/bps_aoi_attributes.csv\")\nevt_data &lt;- read.csv(\"outputs/evt_aoi_attributes.csv\")\n\n# summarize data by BpS Name attribute for chart.  We do this as an AoI may have multiple variants if it crosses multiple Map Zones. We also limit output dataframe to the top 10 BpSs.  Customize as needed!\n\nbps_name &lt;- bps_data %&gt;%\n  group_by(BPS_NAME) %&gt;%\n  summarize(ACRES = sum(ACRES),\n            REL_PERCENT = sum(REL_PERCENT)) %&gt;%\n  arrange(desc(REL_PERCENT)) %&gt;%\n  top_n(n = 10, wt = REL_PERCENT)\n\n# plot\nbps_percent_chart &lt;- \n  ggplot(data = bps_name, aes(x = BPS_NAME, y = REL_PERCENT)) + \n  geom_bar(stat = \"identity\") +\n  labs(\n    title = \"Top 10 Biophysical Settings\",\n    subtitle = \"Represents dominant vegetation systems pre-European colonization\",\n    caption = \"Data from landfire.gov.\",\n    x = \"\",\n    y = \"Percent of landscape\") +\n  scale_x_discrete(limits = rev(bps_name$BPS_NAME),\n                   labels = function(x) str_wrap(x, width = 18)) +\n  coord_flip() +\n  theme_bw(base_size = 14)\n\n\nbps_acres_chart &lt;-\n  ggplot(data = bps_name, aes(x = BPS_NAME, y = ACRES)) + \n  geom_bar(stat = \"identity\") +\n  labs(\n    title = \"Top 10 Biophysical Settings\",\n    subtitle = \"Represents dominant vegetation systems pre-European colonization\",\n    caption = \"Data from landfire.gov.\",\n    x = \"\",\n    y = \"Acres\") +\n  scale_x_discrete(limits = rev(bps_name$BPS_NAME),\n                   labels = function(x) str_wrap(x, width = 18)) +\n  coord_flip() +\n  theme_bw(base_size = 14) +\n  scale_y_continuous(labels = comma)\n\nbps_acres_chart"
   },

@@ -1,19 +1,21 @@
 ---
-title: "Make simple charts with LANDFIRE data"
+title: "Make charts with LANDFIRE data"
 ---
 
 
 
 ## Skills learned
 
-Summarizing data in charts is a quick way to convey patterns and, in the case below, demonstrate which LANDFIRE Biophysical Settings were mapped as most dominant on our landscape.  
+Use this page to:
 
+- Practice summarizing LANDFIRE Biophysical Settings data using R to identify dominant vegetation types across the example landscape
+- Create bar charts to visualize relative percentages and acerage, gaining experience in data grouping, plotting, and interpretation
 
 ## Set up
 
 To run the code below you will need to:
 
-1. Work through the preceding pages, [Download data](docs/download.html) and [Prepare rasters](docs/prep_rasters.html) for your own Area of Interest OR
+1. Work through the preceding pages, [Download data](docs/download.html){target="blank"} and [Prepare rasters](docs/prep_rasters.html){target="blank"} for your own Area of Interest OR
 2. Make sure you have a datasheet with BpS names and Relative Percentages at the least. We will load in the data for our Area of Interest for you to work with if you do not have your own data.
 
 

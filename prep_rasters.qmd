@@ -4,16 +4,17 @@ title: "Clip and prep LANDFIRE rasters"
 
 ## Skills learned
 
-Once we have LANDFIRE data, we often want to clip it to a specific landscape, which in this demo is LANDFIRE Map Zone 35.
+Use this page to:
+- Clip LANDFIRE data to a specific landscape (for this example, Mapzone 34)
 
-In this demonstration we crop, mask and build attribute table for the area then write the files to our 'outputs' folder for later use. 
+- Crop, mask and build attribute table for the area then write the files to our 'outputs' folder for later use
  
 
 ## Set up
 
 To run the code below you will need to:
 
-1. Follow the set up instructions and run the code on the [Download data](docs/download.html) page, or similar for your landscape and LANDFIRE datasets of interest.
+1. Follow the set up instructions and run the code on the [Download data](docs/download.html){target="blank"} page, or similar for your landscape and LANDFIRE datasets of interest.
 2. Create a new script for the following code. 
 
 
