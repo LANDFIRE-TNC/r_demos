@@ -1,0 +1,148 @@
+---
+title: "Make hexagon maps"
+---
+
+## Skills learned
+
+Few things are more captivating than a map, especially ones of ecosystems as the patterns are often very striking.  As you know LANDFIRE data is delivered as rasters with 30M cell size.  That said, it is not designed for cell to cell comparisons or examinations.  With that it can be useful to summarize the most dominant type (e.g., Biophysical Setting) per polygon such as a watershed or hexagon.  For the work below we will use hexagons.  You will learn how to:
+
+* Make a hexgrid for our area of interest
+* Extract the majority BpS and EVT per hexagon
+* Make a leaflet map of the hexagons with toggle to display BpS or EVT
+
+
+## Set up
+
+For this work we will use the Area of Interest shapefile, and pre-downloaded BpS and EVT rasters.  Before you can complete this page you will need to complete the work on the [Download data](docs/download.html) and [Prepare rasters](docs/prep_rasters.html) pages.
+
+### Code to load packages and inputs
+
+```{r}
+#| label: Set up
+#| message: false
+#| warning: false
+#| echo: true
+#| results: "hide"
+#| code-overflow: wrap
+
+# Load packages
+library(exactextractr)
+library(leaflet)
+library(leaflet.providers)
+library(RColorBrewer)
+library(sf)
+library(terra)
+library(tidyverse)
+
+
+# read in Area of Interest (aoi) shapefile
+
+shp <- st_read("inputs/map_zone_35.shp", quiet = TRUE) %>% 
+  st_transform(crs = 5070) %>%
+  st_union() %>%
+  st_sf()
+
+# read in .csv of CONUS-wide attributes for later joining to AoI BpS table
+
+bps_conus_atts <- read_csv("inputs/LF20_BPS_220.csv")
+
+# another way is directly from landfire.gov
+# bps_url <- "https://landfire.gov/sites/default/files/CSV/LF2016/LF16_BPS.csv" # will likely get warning, but it's OK
+# bps_conus_atts <- read.csv(bps_url)
+
+
+evt_conus_atts <- read_csv("inputs/LF23_EVT_240.csv")
+
+# evt_url <- "https://landfire.gov/sites/default/files/CSV/2024/LF2024_EVT.csv" # will likely get warning, but it's OK
+# evt_conus_atts <- read.csv(evt_url)
+
+# load in landfire stacked raster
+stacked_rasters <- rast("inputs/landfire_data.tif")
+
+# "split" cropped and masked stacked raster into separate layers
+for(lyr in names(stacked_rasters)) assign(lyr, stacked_rasters[[lyr]])
+
+
+
+
+
+```
+
+
+### Make hexgrid ~ 25,000 acres a piece
+
+```{r}
+#| label: Make hexgrid ~ 25,000 acres a piece
+#| echo: true
+#| message: false
+#| warning: false
+#| code-overflow: wrap
+#| include: true
+#| results: hide
+#| eval: true
+
+
+# Hexagon side length in meters for ~25,000 ac hexagons
+hex_side <- 10930
+
+# Create full hex grid
+hex_grid <- st_make_grid(shp,
+                         cellsize = hex_side,
+                         square = FALSE,
+                         what = "polygons") %>%
+                          st_sf()
+
+hex_grid_clipped <- st_intersection(hex_grid, shp) %>%
+  mutate(index = row_number())
+
+
+plot(st_geometry(hex_grid_clipped))
+
+
+# Calculate area in square meters
+hex_grid_size <- hex_grid %>%
+  mutate(area_m2 = st_area(.),
+         area_acres = as.numeric(area_m2) / 4046.86)
+
+
+```
+
+
+### Calculate majority type per hexagon
+
+
+```{r}
+
+
+
+# bps
+bps_majority_hex <- exact_extract(US_200BPS, hex_grid_clipped, 'majority', append_cols = "index") %>%
+  left_join(select(bps_conus_atts,
+                   VALUE,
+                   BPS_MODEL,
+                   BPS_NAME,
+                   FRI_ALLFIR),
+            by = c('majority' = 'VALUE'))
+
+# evt
+evt_majority_hex <- exact_extract(US_240EVT, hex_grid_clipped, 'majority', append_cols = "index") %>%
+  left_join(select(evt_conus_atts,
+                   VALUE,
+                   EVT_NAME,
+                   EVT_PHYS),
+            by = c('majority' = 'VALUE'))
+
+# Join both BpS and EVT attributes to hex shapefile
+hexs_bps_evt <- hex_grid_clipped %>%
+  left_join(bps_majority_hex, by = 'index') %>%
+  left_join(evt_majority_hex, by = 'index')
+
+```
+
+
+
+
+
+
+
+
