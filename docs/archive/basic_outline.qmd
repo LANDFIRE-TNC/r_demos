@@ -1,0 +1,18 @@
+ ---
+title: "Basic Outline"
+---
+
+
+Task centric
+
+1. Download
+2. Clip and prep
+3. Chart
+4. Map
+5. Compare
+6. Other (e.g., connect to outside packages such as GEE)
+
+
+This would be easier to deal with---i.e, would make sense to work with data on charts page you already downloaded in that page.  
+
+

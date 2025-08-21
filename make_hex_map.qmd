@@ -2,7 +2,6 @@
 title: "Make hexagon maps"
 ---
 
-
 ## Skills learned
 
 Few things are more captivating than a map, especially ones of ecosystems as the patterns are often very striking.  As you know LANDFIRE data is delivered as rasters with 30M cell size.  That said, it is not designed for cell to cell comparisons or examinations.  With that it can be useful to summarize the most dominant type (e.g., Biophysical Setting) per polygon such as a watershed or hexagon.  For the work below we will use hexagons.  You will learn how to:
@@ -139,7 +138,6 @@ hexs_bps_evt <- hex_grid_clipped %>%
   left_join(evt_majority_hex, by = 'index')
 
 ```
-
 
 
 

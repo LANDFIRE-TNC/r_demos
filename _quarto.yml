@@ -3,6 +3,17 @@ project:
   output-dir: docs
   preview: 
     watch-inputs: false
+  render:
+    - index.qmd
+    - download.qmd
+    - prep_rasters.qmd
+    - make_charts.qmd
+    - make_hex_map.qmd
+    - about.qmd
+    
+    
+resources:
+  - archive\
 
 website:
   title: "LANDFIRE R Toolkit"

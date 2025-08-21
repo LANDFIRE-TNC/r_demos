@@ -2,3 +2,9 @@
 .mermaid svg {
   font-size: 28px !important;
 }
+
+
+/* Hide chunk options and ticks */
+div.sourceCode pre code::before {
+  content: none !important;
+}

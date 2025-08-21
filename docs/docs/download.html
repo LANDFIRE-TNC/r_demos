@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Clip and prep LANDFIRE rasters – LANDFIRE R Toolkit</title>
+<title>Download LANDFIRE data into R – LANDFIRE-Powered Landscape Assessment</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -276,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">LANDFIRE R Toolkit</span>
+    <span class="navbar-title">LANDFIRE-Powered Landscape Assessment</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -290,11 +290,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./download.html"> 
+    <a class="nav-link active" href="./download.html" aria-current="page"> 
 <span class="menu-text">Download data</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./prep_rasters.html" aria-current="page"> 
+    <a class="nav-link" href="./prep_rasters.html"> 
 <span class="menu-text">Prepare rasters</span></a>
   </li>  
   <li class="nav-item">
@@ -331,10 +331,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#code-to-load-packages-and-inputs" id="toc-code-to-load-packages-and-inputs" class="nav-link" data-scroll-target="#code-to-load-packages-and-inputs">Code to load packages and inputs</a></li>
   </ul></li>
-  <li><a href="#crop-mask-and-split-out-the-raster-layers" id="toc-crop-mask-and-split-out-the-raster-layers" class="nav-link" data-scroll-target="#crop-mask-and-split-out-the-raster-layers">Crop, mask and split out the raster layers</a></li>
-  <li><a href="#build-raster-attribute-table-for-biophysical-settings-data-write-files" id="toc-build-raster-attribute-table-for-biophysical-settings-data-write-files" class="nav-link" data-scroll-target="#build-raster-attribute-table-for-biophysical-settings-data-write-files">Build Raster Attribute Table for Biophysical Settings Data, write files</a></li>
-  <li><a href="#build-raster-attribute-table-for-existing-vegetation-type-data-write-files" id="toc-build-raster-attribute-table-for-existing-vegetation-type-data-write-files" class="nav-link" data-scroll-target="#build-raster-attribute-table-for-existing-vegetation-type-data-write-files">Build Raster Attribute Table for Existing Vegetation Type Data, write files</a></li>
+  <li><a href="#download-manage-and-load-data" id="toc-download-manage-and-load-data" class="nav-link" data-scroll-target="#download-manage-and-load-data">Download manage and load data</a></li>
   <li><a href="#next-steps" id="toc-next-steps" class="nav-link" data-scroll-target="#next-steps">Next steps</a></li>
+  <li><a href="#more-resources" id="toc-more-resources" class="nav-link" data-scroll-target="#more-resources">More resources</a></li>
   </ul>
 </nav>
     </div>
@@ -344,7 +343,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Clip and prep LANDFIRE rasters</h1>
+<h1 class="title">Download LANDFIRE data into R</h1>
 </div>
 
 
@@ -363,15 +362,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="skills-learned" class="level2">
 <h2 class="anchored" data-anchor-id="skills-learned">Skills learned</h2>
-<p>Once we have LANDFIRE data, we often want to clip it to a specific landscape, which in this demo is LANDFIRE Map Zone 35.</p>
-<p>In this demonstration we crop, mask and build attribute table for the area then write the files to our ‘outputs’ folder for later use.</p>
+<p>First step in using LANDFIRE data is getting the data. There are many ways to get the data-here we will use the <a href="https://github.com/bcknr/rlandfire">rlandfire</a> package by Mark Buckner to download LANDFIRE data then prep it for use.</p>
+<p>In this demonstration we download LANDFIRE Biophysical Settings (BpS) and Existing Vegetation Type (EVT) data, extract and rename the files.</p>
 </section>
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set up</h2>
 <p>To run the code below you will need to:</p>
 <ol type="1">
-<li>Follow the set up instructions and run the code on the <a href="docs/download.html">Download data</a> page, or similar for your landscape and LANDFIRE datasets of interest.</li>
-<li>Create a new script for the following code.</li>
+<li>Set up a new R-Studio project named something such as “r_landfire_demos”</li>
+<li>Create two directories, “inputs” and “outputs”</li>
+<li>Download <a href="https://github.com/LANDFIRE-TNC/r_demos/raw/refs/heads/main/inputs/bps_demo.zip?download=">“bps_demo.zip”</a> (clicking will initiate the download that will likely land in your “C:” directory) which contains:
+<ul>
+<li>LANDFIRE Map Zone 35 shapefile</li>
+<li>BpS attributes file as a .csv</li>
+</ul></li>
+<li>Extract the “bps_demo.zip” files into the “inputs” sub-directory of your r-studio project.</li>
+<li>Create and save a new r-script with a name such as “bps_demo_code”.</li>
 </ol>
 <p>Once this set up is complete, you should be able to copy/paste the code below into the r script you created above.</p>
 <section id="code-to-load-packages-and-inputs" class="level3">
@@ -379,213 +385,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install packages if needed</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install.packages("foreign")</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install.packages("sf")</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install.packages("terra")</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install.packages("tidyverse")</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># read in Area of Interest (aoi) shapefile, plot to check</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install.packages("rlandfire")</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install.packages("sf")</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install.packages("terra")</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># install.packages("tidyverse")</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(foreign)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rlandfire)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>shp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"inputs/map_zone_35.shp"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="dv">5070</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_union</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_sf</span>()</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># read in .csv of CONUS-wide attributes for later joining to AoI BpS table</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># read in Area of Interest (aoi) shapefile, plot to check</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>shp <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"inputs/map_zone_35.shp"</span>, <span class="at">quiet =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_transform</span>(<span class="at">crs =</span> <span class="dv">5070</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_union</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_sf</span>()</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>bps_conus_atts <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"inputs/LF20_BPS_220.csv"</span>)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># another way is directly from landfire.gov</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># bps_url &lt;- "https://landfire.gov/sites/default/files/CSV/LF2016/LF16_BPS.csv" # will likely get warning, but it's OK</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># bps_conus_atts &lt;- read.csv(bps_url)</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>evt_conus_atts <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"inputs/LF23_EVT_240.csv"</span>)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># evt_url &lt;- "https://landfire.gov/sites/default/files/CSV/2024/LF2024_EVT.csv" # will likely get warning, but it's OK</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># evt_conus_atts &lt;- read.csv(evt_url)</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first few rows of the CONUS-wide attribute tables</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(bps_conus_atts))</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(evt_conus_atts))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="crop-mask-and-split-out-the-raster-layers" class="level2">
-<h2 class="anchored" data-anchor-id="crop-mask-and-split-out-the-raster-layers">Crop, mask and split out the raster layers</h2>
-<p>Now that we have LANDFIRE data for the <em>extent</em> of our area of interest, we need to crop/mask it to the exact area of interest, build the raster attribute table and do a few calculations:</p>
-<ul>
-<li>First, we load our stacked raster data from the file landfire_data.tif.</li>
-<li>Next, we crop and mask this raster using a shapefile to focus on our area of interest.</li>
-<li>We then plot the cropped and masked raster to visualize our area of interest.</li>
-<li>We set the levels of the raster to match our attribute data and specify the active category.</li>
-</ul>
-<p>Extracting and Processing Values: We extract values from the raster, remove any NA values, and convert the data into a dataframe. This dataframe is then processed to create a frequency table, which is further refined and joined with the raster categories.</p>
-<p>Saving the Results: Finally, we save the processed raster and the attributes dataframe to files for future use.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load in landfire stacked raster</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>stacked_rasters <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"inputs/landfire_data.tif"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># crop and mask stacked raster </span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>aoi_stacked_rasters <span class="ot">&lt;-</span> stacked_rasters <span class="sc">%&gt;%</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">crop</span>(shp) <span class="sc">%&gt;%</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mask</span>(shp)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># "split" cropped and masked stacked raster into separate layers</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(lyr <span class="cf">in</span> <span class="fu">names</span>(aoi_stacked_rasters)) <span class="fu">assign</span>(lyr, aoi_stacked_rasters[[lyr]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="build-raster-attribute-table-for-biophysical-settings-data-write-files" class="level2">
-<h2 class="anchored" data-anchor-id="build-raster-attribute-table-for-biophysical-settings-data-write-files">Build Raster Attribute Table for Biophysical Settings Data, write files</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: Build Raster Attribute Table for Biophysical Settings Data, write files</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-overflow: wrap</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: true</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: hide</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign categories</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(US_200BPS) <span class="ot">&lt;-</span> bps_conus_atts</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">activeCat</span>(US_200BPS) <span class="ot">&lt;-</span> <span class="st">"VALUE"</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Get frequency table </span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>bps_freq <span class="ot">&lt;-</span> <span class="fu">freq</span>(US_200BPS) <span class="sc">%&gt;%</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Join with attributes and calculate acres and percent</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>bps_aoi_atts <span class="ot">&lt;-</span> bps_freq <span class="sc">%&gt;%</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">VALUE =</span> value, <span class="at">COUNT =</span> count) <span class="sc">%&gt;%</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">VALUE =</span> <span class="fu">as.integer</span>(VALUE)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(bps_conus_atts, <span class="at">by =</span> <span class="st">"VALUE"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(COUNT <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">ACRES =</span> <span class="fu">round</span>((COUNT <span class="sc">*</span> <span class="dv">900</span> <span class="sc">/</span> <span class="fl">4046.86</span>), <span class="dv">0</span>),</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">REL_PERCENT =</span> <span class="fu">round</span>((COUNT <span class="sc">/</span> <span class="fu">sum</span>(COUNT)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(REL_PERCENT)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>layer)  <span class="co"># Optional: remove 'layer' column</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co"># write the raster to a file with specified options</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(US_200BPS, <span class="st">"outputs/bps_aoi.tif"</span>,</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>            <span class="at">gdal =</span> <span class="fu">c</span>(<span class="st">"COMPRESS=NONE"</span>, <span class="st">"TFW=YES"</span>),</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">"INT2S"</span>,</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>            <span class="at">overwrite =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-|---------|---------|---------|---------|
-=========================================
-                                          </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write the attributes dataframe to a dbf file</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dbf</span>(bps_aoi_atts, <span class="st">"outputs/bps_aoi.tif.vat.dbf"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># write the attributes dataframe to a csv file</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(bps_aoi_atts, <span class="st">"outputs/bps_aoi_attributes.csv"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the cropped and masked raster-will just show values in the map.  Output not shown here.</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US_200BPS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the shape for fun (not much to look at on it's own!)</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(shp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="prep_rasters_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="download_files/figure-html/Set up-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first few rows of the aoi attributes. Output not shown here.</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(bps_aoi_atts))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  VALUE    COUNT BPS_CODE ZONE         BPS_MODEL
-1  1718 46439852    11320   35    11320_32_34_35
-2  1725 44125598    13830   35    13830_32_35_36
-3  1728 16449562    13930   35       13930_32_35
-4  1730 13609703    14220   35 14220_32_35_36_37
-5  1723 11475228    13080   35       13080_32_35
-6  1737 10387249    15230   35       15230_32_35
-                                             BPS_NAME  GROUPVEG FRI_REPLAC
-1                          Central Mixedgrass Prairie Grassland          7
-2      Edwards Plateau Limestone Savanna and Woodland  Hardwood         15
-3                 Edwards Plateau Limestone Shrubland   Conifer         69
-4                Southern Blackland Tallgrass Prairie Grassland          3
-5                Crosstimbers Oak Forest and Woodland  Hardwood        158
-6 Edwards Plateau Dry-Mesic Slope Forest and Woodland  Hardwood        103
-  FRI_MIXED FRI_SURFAC FRI_ALLFIR PRC_REPLAC PRC_MIXED PRC_SURFAC FRG_NEW   R
-1        44         21          5         65        12         23     I-A 112
-2        24         14          6         38        23         39     I-B 209
-3        44      -9999         27         39        61      -9999     I-C 255
-4       171         35          2         91         2          7    II-A 255
-5        93          5          5          3         5         92     I-A 137
-6       133         30         20         19        15         66     I-C 102
-    G   B      RED    GREEN     BLUE    ACRES REL_PERCENT
-1 168 112 0.439216 0.658824 0.439216 10327974      26.029
-2 255 115 0.819608 1.000000 0.450980  9813297      24.732
-3 203 125 1.000000 0.796078 0.490196  3658295       9.220
-4 127 127 1.000000 0.498039 0.498039  3026725       7.628
-5  90  68 0.537255 0.352941 0.266667  2552029       6.432
-6 255 171 0.400000 1.000000 0.670588  2310069       5.822</code></pre>
-</div>
 </div>
 </section>
-<section id="build-raster-attribute-table-for-existing-vegetation-type-data-write-files" class="level2">
-<h2 class="anchored" data-anchor-id="build-raster-attribute-table-for-existing-vegetation-type-data-write-files">Build Raster Attribute Table for Existing Vegetation Type Data, write files</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign categories</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(US_240EVT) <span class="ot">&lt;-</span> evt_conus_atts</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">activeCat</span>(US_240EVT) <span class="ot">&lt;-</span> <span class="st">"VALUE"</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Get frequency table </span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>evt_freq <span class="ot">&lt;-</span> <span class="fu">freq</span>(US_240EVT) <span class="sc">%&gt;%</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Join with attributes and calculate acres and percent</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>evt_aoi_atts <span class="ot">&lt;-</span> evt_freq <span class="sc">%&gt;%</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">VALUE =</span> value, <span class="at">COUNT =</span> count) <span class="sc">%&gt;%</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">VALUE =</span> <span class="fu">as.integer</span>(VALUE)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(evt_conus_atts, <span class="at">by =</span> <span class="st">"VALUE"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(COUNT <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">ACRES =</span> <span class="fu">round</span>((COUNT <span class="sc">*</span> <span class="dv">900</span> <span class="sc">/</span> <span class="fl">4046.86</span>), <span class="dv">0</span>),</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">REL_PERCENT =</span> <span class="fu">round</span>((COUNT <span class="sc">/</span> <span class="fu">sum</span>(COUNT)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">3</span>)</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(REL_PERCENT)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>layer)  <span class="co"># Optional: remove 'layer' column</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># write the raster to a file with specified options</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(US_240EVT, <span class="st">"outputs/evt_aoi.tif"</span>,</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">gdal =</span> <span class="fu">c</span>(<span class="st">"COMPRESS=NONE"</span>, <span class="st">"TFW=YES"</span>),</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">"INT2S"</span>,</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>            <span class="at">overwrite =</span> T)</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co"># write the attributes dataframe to a dbf file</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dbf</span>(evt_aoi_atts, <span class="st">"outputs/evt_aoi.tif.vat.dbf"</span>)</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co"># write the attributes dataframe to a csv file</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(evt_aoi_atts, <span class="st">"outputs/evt_aoi_attributes.csv"</span>)</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the cropped and masked raster-will just show values in the map.  Output not shown here.</span></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US_240EVT)</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first few rows of the aoi attributes. Output not shown here.</span></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(evt_aoi_atts))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</section>
+<section id="download-manage-and-load-data" class="level2">
+<h2 class="anchored" data-anchor-id="download-manage-and-load-data">Download manage and load data</h2>
+<p>To obtain and manage LANDFIRE data we need to:</p>
+<ul>
+<li>Define the Area of Interest (AOI): The code gets the area of interest from a shapefile.</li>
+<li>Set Parameters for the API Call: It specifies the product code, coordinate system (EPSG:4326), resolution (30 meters), and your email address for the API.</li>
+<li>Create a Temporary File: A temporary file is created to save the downloaded data.</li>
+<li>Call the LANDFIRE API: The API is called with the specified parameters, and the data is saved to the temporary file.</li>
+<li>Make sure the downloaded data lands in a place where you can find and use it easily
+<ul>
+<li>Define the Destination Path: The destination path for the downloaded file is set.</li>
+<li>Move and Rename the File: The temporary file is moved to the destination path and renamed.</li>
+<li>Create a Temporary Directory for Unzipping: A temporary directory is created to unzip the downloaded file.</li>
+<li>Unzip the File: The file is unzipped into the temporary directory.</li>
+<li>Get the List of Unzipped Files: A list of unzipped files is obtained.</li>
+<li>Rename Each Unzipped File: Each unzipped file is renamed to “landfire_data” followed by its original extension.</li>
+<li>Clean Up the Temporary Directory: The temporary directory and its contents are deleted.</li>
+</ul></li>
+</ul>
+<p>The code below does that in roughly 2 minutes with an internet download speed of ~450mbs. Your times may vary.</p>
 </section>
 <section id="next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
-<p>You can now open up the processed raster(s) in ArcGIS pro and/or QGIS to do further GIS. This process really shines when you do multiple LANDFIRE datasets at once and/or process data for multiple landscapes. Further, you can work in Excel, R or other software to make charts of the attributes that are saved as a .csv file. Go to the <a href="docs/make_charts.html">Make Charts</a> page to get started.</p>
-<p>While we are sure it is possible to make attractive, accessible maps with the processed LANDFIRE rasters in R, we typically move to a different GIS software for mapping, or summarize the data by polygons (e.g., watersheds or hexagons) in R. Try the code on the <a href="docs/make_hex_map.html">Make hex map</a> for ways you might map LANDFIRE data in R.</p>
+<p>You should see a set of files with “landfire” in the name. Next go to the <a href="docs/prep_rasters.html">Prepare rasters</a> page to learn how to load them into R, clip/mask and view them.</p>
+</section>
+<section id="more-resources" class="level2">
+<h2 class="anchored" data-anchor-id="more-resources">More resources</h2>
+<ul>
+<li>Mark Buckner’s <a href="https://github.com/bcknr/rlandfire">rlandfire</a> site also has a nice tutorial.</li>
+<li>There is also a Python package for downloading LANDFIRE data, [landfire-python])(https://landfire-python.firesci.io/en/latest/). If you try this please let us know!</li>
+</ul>
 
 
 </section>

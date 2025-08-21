@@ -6,18 +6,19 @@ title: "Make simple charts with LANDFIRE data"
 
 ## Skills learned
 
-Summarizing data in charts is a quick way to convey patterns and, in the case below, demonstrate which LANDFIRE Biophysical Settings were mapped as most dominant on our landscape
+Summarizing data in charts is a quick way to convey patterns and, in the case below, demonstrate which LANDFIRE Biophysical Settings were mapped as most dominant on our landscape.  
 
 
 ## Set up
 
 To run the code below you will need to:
 
-1. Work through the preceding pages, [Download data](docs/download.html) and [Prepare rasters](docs/prep_rasters.html), or otherwise make sure you have a datasheet with BpS names and Relative Percentages at the least. 
-2. 
+1. Work through the preceding pages, [Download data](docs/download.html) and [Prepare rasters](docs/prep_rasters.html) for your own Area of Interest OR
+2. Make sure you have a datasheet with BpS names and Relative Percentages at the least. We will load in the data for our Area of Interest for you to work with if you do not have your own data.
 
 
-### Code to load packages and inputs
+
+### Code to load packages and inputs, summarize data
 
 ```{r}
 #| label: Load packages and data
@@ -28,9 +29,57 @@ To run the code below you will need to:
 #| include: true
 #| results: hide
 
+
+# load packages
 library(tidyverse)
+library(scales)
+library(stringr)
+
+# read in data for our Area of Interest
+bps_data <- read.csv("outputs/bps_aoi_attributes.csv")
+evt_data <- read.csv("outputs/evt_aoi_attributes.csv")
+
+# summarize data by BpS Name attribute for chart.  We do this as an AoI may have multiple variants if it crosses multiple Map Zones. We also limit output dataframe to the top 10 BpSs.  Customize as needed!
+
+bps_name <- bps_data %>%
+  group_by(BPS_NAME) %>%
+  summarize(ACRES = sum(ACRES),
+            REL_PERCENT = sum(REL_PERCENT)) %>%
+  arrange(desc(REL_PERCENT)) %>%
+  top_n(n = 10, wt = REL_PERCENT)
+
+# plot
+bps_percent_chart <- 
+  ggplot(data = bps_name, aes(x = BPS_NAME, y = REL_PERCENT)) + 
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Top 10 Biophysical Settings",
+    subtitle = "Represents dominant vegetation systems pre-European colonization",
+    caption = "Data from landfire.gov.",
+    x = "",
+    y = "Percent of landscape") +
+  scale_x_discrete(limits = rev(bps_name$BPS_NAME),
+                   labels = function(x) str_wrap(x, width = 18)) +
+  coord_flip() +
+  theme_bw(base_size = 14)
 
 
+bps_acres_chart <-
+  ggplot(data = bps_name, aes(x = BPS_NAME, y = ACRES)) + 
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Top 10 Biophysical Settings",
+    subtitle = "Represents dominant vegetation systems pre-European colonization",
+    caption = "Data from landfire.gov.",
+    x = "",
+    y = "Acres") +
+  scale_x_discrete(limits = rev(bps_name$BPS_NAME),
+                   labels = function(x) str_wrap(x, width = 18)) +
+  coord_flip() +
+  theme_bw(base_size = 14) +
+  scale_y_continuous(labels = comma)
+
+bps_acres_chart
 
 
 
@@ -38,4 +87,8 @@ library(tidyverse)
 
 
 ```
+
+
+
+
 
