@@ -27,6 +27,7 @@ For this work we will use the Area of Interest shapefile, and pre-downloaded BpS
 
 # Load packages
 library(exactextractr)
+library(jsonlite)
 library(leaflet)
 library(leaflet.providers)
 library(RColorBrewer)
@@ -71,15 +72,18 @@ for(lyr in names(stacked_rasters)) assign(lyr, stacked_rasters[[lyr]])
 
 ### Make hexgrid ~ 25,000 acres a piece
 
+In this step we make a hexgrid map for our area of interest and confirm hexagon size. 
+
 ```{r}
-#| label: Make hexgrid ~ 25,000 acres a piece
-#| echo: true
-#| message: false
-#| warning: false
-#| code-overflow: wrap
-#| include: true
-#| results: hide
-#| eval: true
+#| label: Make hexgrid ~ 25,000 acres a piece  # This sets a label or title for the code chunk, describing its purpose—creating a hexagonal grid with cells approximately 25,000 acres in size.
+#| echo: true       # Ensures that the code itself will be displayed in the output.
+#| message: false   # Suppresses messages generated during code execution (e.g., package loading messages).
+#| warning: false   # Suppresses warning messages from being shown in the output.
+#| code-overflow: wrap  # Wraps long lines of code instead of overflowing, improving readability.
+#| include: true    # Includes both the code and its output in the final rendered document.
+#| results: hide    # Hides the output of the code chunk, even though the code is included.
+#| eval: true       # Evaluates (runs) the code when the document is rendered.
+
 
 
 # Hexagon side length in meters for ~25,000 ac hexagons
@@ -110,9 +114,17 @@ hex_grid_size <- hex_grid %>%
 
 ### Calculate majority type per hexagon
 
+Below we use the extactextractr package to extract the majority (most dominant) BpS value and EVT value per hexagon, the we join in a minimal number of attributes (e.g., EVT_NAME) for mapping demo. 
 
 ```{r}
-
+#| label: extract bps and evt info per hexagon
+#| echo: true       # Ensures that the code itself will be displayed in the output.
+#| message: false   # Suppresses messages generated during code execution (e.g., package loading messages).
+#| warning: false   # Suppresses warning messages from being shown in the output.
+#| code-overflow: wrap  # Wraps long lines of code instead of overflowing, improving readability.
+#| include: false    # Includes both the code and its output in the final rendered document.
+#| results: hide    # Hides the output of the code chunk, even though the code is included.
+#| eval: false      # Evaluates (runs) the code when the document is rendered.
 
 
 # bps
@@ -137,10 +149,126 @@ hexs_bps_evt <- hex_grid_clipped %>%
   left_join(bps_majority_hex, by = 'index') %>%
   left_join(evt_majority_hex, by = 'index')
 
+
+# save the shapefile for mapping in non-R applications or to read back into R
+
+st_write(hexs_bps_evt, "outputs/bps_evt_hexs.shp")
+
+
 ```
 
+<br>
+
+## Make the map
+
+Below we use our attributed hexgrid to make a clickable leaflet map with the BpS and EVT layers for our area of interest.
+
+```{r}
+#| label: bps and evt map
+#| echo: true       # Ensures that the code itself will be displayed in the output.
+#| message: false   # Suppresses messages generated during code execution (e.g., package loading messages).
+#| warning: false   # Suppresses warning messages from being shown in the output.
+#| code-overflow: wrap  # Wraps long lines of code instead of overflowing, improving readability.
+#| include: true   # Includes both the code and its output in the final rendered document.
+#| eval: true       # Evaluates (runs) the code when the document is rendered.
+#| fig-width: 12
+#| fig-height: 11
 
 
+hexs_bps_evt <- st_read("outputs/bps_evt_hexs.shp") 
+
+hexs_bps_evt <- st_transform(hexs_bps_evt , crs = 4326)
+
+# Create a dynamic color palette
+bps_names <- unique(hexs_bps_evt$BPS_NAME)
+evt_names <- unique(hexs_bps_evt$EVT_NAME)
+
+# Use a colorblind-friendly base palette and expand it
+base_palette <- RColorBrewer::brewer.pal(8, "Set2")  # Set2 is colorblind-friendly
+bps_colors <- colorRampPalette(base_palette)(length(bps_names))
+
+pal_bps <- colorFactor(
+  palette = bps_colors,
+  domain = bps_names
+)
+
+# Repeat for EVT
+evt_colors <- colorRampPalette(base_palette)(length(evt_names))
+
+pal_evt <- colorFactor(
+  palette = evt_colors,
+  domain = evt_names
+)
+
+
+
+
+# Get the bounding box of the shapefile
+bbox <- st_bbox(hexs_bps_evt)
+
+# Convert bounding box to named list
+bbox_list <- as.list(bbox)
+
+# Convert named list to JSON
+json_output <- toJSON(bbox_list, keep_vec_names = TRUE)
+
+
+
+leaflet(hexs_bps_evt) %>%
+  addTiles() %>%
+
+  fitBounds(lng1 = bbox_list$xmin, lat1 = bbox_list$ymin, lng2 = bbox_list$xmax, lat2 = bbox_list$ymax) %>%
+
+  addPolygons(
+    fillColor = ~pal_bps(BPS_NAME),
+    color = "#BDBDC3",
+    weight = 1,
+    opacity = 1,
+    fillOpacity = 1.0,
+    highlightOptions = highlightOptions(
+      weight = 2,
+      color = "#666",
+      fillOpacity = 1.0,
+      bringToFront = TRUE
+    ),
+    label = ~BPS_NAME,
+    labelOptions = labelOptions(
+      style = list("font-weight" = "normal", padding = "3px 8px"),
+      textsize = "15px",
+      direction = "auto"
+    ),
+    group = "Biophysical Settings"
+  ) %>%
+  addPolygons(
+    fillColor = ~pal_evt(EVT_NAME),
+    color = "#BDBDC3",
+    weight = 1,
+    opacity = 1,
+    fillOpacity = 1.0,
+    highlightOptions = highlightOptions(
+      weight = 2,
+      color = "#666",
+      fillOpacity = 1.0,
+      bringToFront = TRUE
+    ),
+    label = ~EVT_NAME,
+    labelOptions = labelOptions(
+      style = list("font-weight" = "normal", padding = "3px 8px"),
+      textsize = "15px",
+      direction = "auto"
+    ),
+    group = "Existing Vegetation Types"
+  ) %>%
+addLayersControl(
+    overlayGroups = c("Biophysical Settings", "Existing Vegetation Types"),
+    options = layersControlOptions(collapsed = FALSE)
+  ) %>%
+  hideGroup("Existing Vegetation Types") %>% # Hide this group initially
+  addScaleBar(position = "bottomleft", options = scaleBarOptions(metric = TRUE, imperial = FALSE))
+
+
+
+```
 
 
 
