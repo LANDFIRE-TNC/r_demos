@@ -148,6 +148,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text"><img src="./assets/LANDFIRE.png" alt="LANDFIRE Logo" style="height:40px;"></span></a>
+  </li>  
+</ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -198,16 +204,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="skills-learned" class="level2">
 <h2 class="anchored" data-anchor-id="skills-learned">Skills learned</h2>
-<p>Few things are more captivating than a map, especially ones of ecosystems as the patterns are often very striking. As you know LANDFIRE data is delivered as rasters with 30M cell size. That said, it is not designed for cell to cell comparisons or examinations. With that it can be useful to summarize the most dominant type (e.g., Biophysical Setting) per polygon such as a watershed or hexagon. For the work below we will use hexagons. You will learn how to:</p>
+<p>Use this page to:</p>
 <ul>
-<li>Make a hexgrid for our area of interest</li>
-<li>Extract the majority BpS and EVT per hexagon</li>
-<li>Make a leaflet map of the hexagons with toggle to display BpS or EVT</li>
+<li><p>Create hexagonal grids to summarize dominant LANFDIRE vegetation types across example landscape, enabling spatial analysis beyond raster cell comparisons</p></li>
+<li><p>Build an interactive Leaflet map with toggle display to visualize dominant BpS and EVT within each hexagon</p></li>
 </ul>
 </section>
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set up</h2>
-<p>For this work we will use the Area of Interest shapefile, and pre-downloaded BpS and EVT rasters. Before you can complete this page you will need to complete the work on the <a href="docs/download.html">Download data</a> and <a href="docs/prep_rasters.html">Prepare rasters</a> pages.</p>
+<p>For this work we will use the Area of Interest shapefile, and pre-downloaded BpS and EVT rasters. Before you can complete this page you will need to complete the work on the <a href="docs/download.html" target="blank">Download data</a> and <a href="docs/prep_rasters.html" target="blank">Prepare rasters</a> pages.</p>
 <section id="code-to-load-packages-and-inputs" class="level3">
 <h3 class="anchored" data-anchor-id="code-to-load-packages-and-inputs">Code to load packages and inputs</h3>
 <div class="cell">

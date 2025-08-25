@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Make simple charts with LANDFIRE data – LANDFIRE R Toolkit</title>
+<title>Make charts with LANDFIRE data – LANDFIRE R Toolkit</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -148,6 +148,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text"><img src="./assets/LANDFIRE.png" alt="LANDFIRE Logo" style="height:40px;"></span></a>
+  </li>  
+</ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -177,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Make simple charts with LANDFIRE data</h1>
+<h1 class="title">Make charts with LANDFIRE data</h1>
 </div>
 
 
@@ -196,13 +202,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="skills-learned" class="level2">
 <h2 class="anchored" data-anchor-id="skills-learned">Skills learned</h2>
-<p>Summarizing data in charts is a quick way to convey patterns and, in the case below, demonstrate which LANDFIRE Biophysical Settings were mapped as most dominant on our landscape.</p>
+<p>Use this page to:</p>
+<ul>
+<li>Practice summarizing LANDFIRE Biophysical Settings data using R to identify dominant vegetation types across the example landscape</li>
+<li>Create bar charts to visualize relative percentages and acerage, gaining experience in data grouping, plotting, and interpretation</li>
+</ul>
 </section>
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set up</h2>
 <p>To run the code below you will need to:</p>
 <ol type="1">
-<li>Work through the preceding pages, <a href="docs/download.html">Download data</a> and <a href="docs/prep_rasters.html">Prepare rasters</a> for your own Area of Interest OR</li>
+<li>Work through the preceding pages, <a href="docs/download.html" target="blank">Download data</a> and <a href="docs/prep_rasters.html" target="blank">Prepare rasters</a> for your own Area of Interest OR</li>
 <li>Make sure you have a datasheet with BpS names and Relative Percentages at the least. We will load in the data for our Area of Interest for you to work with if you do not have your own data.</li>
 </ol>
 <section id="code-to-load-packages-and-inputs-summarize-data" class="level3">

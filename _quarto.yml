@@ -38,7 +38,10 @@ website:
         
       - href: about.qmd
         text: About
-
+    right:
+      - href: index.qmd
+        text: "<img src='/assets/LANDFIRE.png' alt='LANDFIRE Logo' style='height:40px;'>"
+      
 format:
   html:
     page-layout: full

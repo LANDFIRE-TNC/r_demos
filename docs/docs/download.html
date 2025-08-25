@@ -148,6 +148,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text"><img src="./assets/LANDFIRE.png" alt="LANDFIRE Logo" style="height:40px;"></span></a>
+  </li>  
+</ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -165,6 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#skills-learned" id="toc-skills-learned" class="nav-link active" data-scroll-target="#skills-learned">Skills learned</a></li>
+  <li><a href="#datasets-used" id="toc-datasets-used" class="nav-link" data-scroll-target="#datasets-used">Datasets used</a></li>
   <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set up</a>
   <ul class="collapse">
   <li><a href="#code-to-load-packages-and-inputs" id="toc-code-to-load-packages-and-inputs" class="nav-link" data-scroll-target="#code-to-load-packages-and-inputs">Code to load packages and inputs</a></li>
@@ -199,14 +206,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="skills-learned" class="level2">
 <h2 class="anchored" data-anchor-id="skills-learned">Skills learned</h2>
-<p>First step in using LANDFIRE data is getting the data. There are many ways to get the data-here we will use the <a href="https://github.com/bcknr/rlandfire">rlandfire</a> package by Mark Buckner to download LANDFIRE data then prep it for use.</p>
-<p>In this demonstration we download LANDFIRE Biophysical Settings (BpS) and Existing Vegetation Type (EVT) data, extract and rename the files.</p>
+<p>Use this page to:</p>
+<ul>
+<li><p>Download and prepare LANDFIRE data using the <a href="https://github.com/bcknr/rlandfire" target="blank">rlandfire</a> package (developed by Mark Buckner), including setting up a project environment and managing spatial data files.</p></li>
+<li><p>Define an area of interest, interact with the LANDFIRE API, and organize downloaded data for future analysis</p></li>
+</ul>
+</section>
+<section id="datasets-used" class="level2">
+<h2 class="anchored" data-anchor-id="datasets-used">Datasets used</h2>
+<ul>
+<li><a href="https://landfire.gov/vegetation/bps" target="blank">LANDFIRE Biophysical Settings (BpS)</a></li>
+<li><a href="https://landfire.gov/vegetation/evt" target="blank">Existing Vegetation Type (EVT)</a></li>
+</ul>
 </section>
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set up</h2>
 <p>To run the code below you will need to:</p>
 <ol type="1">
-<li>Set up a new R-Studio project named something such as “r_landfire_demos”</li>
+<li>Set up a new R-Studio project, i.e.&nbsp;“r_landfire_demos”</li>
 <li>Create two directories, “inputs” and “outputs”</li>
 <li>Download <a href="https://github.com/LANDFIRE-TNC/r_demos/raw/refs/heads/main/inputs/bps_demo.zip?download=">“bps_demo.zip”</a> (clicking will initiate the download that will likely land in your “C:” directory) which contains:
 <ul>

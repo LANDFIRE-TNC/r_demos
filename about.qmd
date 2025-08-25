@@ -1,12 +1,14 @@
 ---
-title: "About this Project"
+title: "About the LANDFIRE R Toolkit"
 ---
 
 ## (Don't) Start from Scratch
 
-Welcome to LANDFIRE R Toolkit — your go-to hub for accelerating landscape analysis with LANDFIRE and R. Here, you'll find tested, ready-to-use R code that simplifies data access, processing, and visualization for your region. Whether you're a seasoned analyst or just getting started, this site helps you fast-track your workflow and connect with a growing community of LANDFIRE users who are actively coding, sharing, and tackling real-world challenges.
+Welcome to the LANDFIRE R Toolkit — your go-to hub for accelerating landscape analysis with LANDFIRE and R. Here, you'll find tested, ready-to-use R code that simplifies data access, processing, and visualization for your region. Whether you're a seasoned analyst or just getting started, this site helps you fast-track your workflow and connect with a growing community of LANDFIRE users who are actively coding, sharing, and tackling real-world challenges.
 
-## LANDFIRE & The Nature Conservancy 
+This site will be updated frequently throughout the year to ensure accuracy and when advances are made, we'll share updated code. 
+
+## LANDFIRE
 
 [LANDFIRE](https://landfire.gov){target="blank"} (Landscape Fire and Resource Management Planning Tools) LANDFIRE is a shared interagency wildland fire management data program across the United States and Territories. Leadership, management, and oversight are through the U.S. Department of Agriculture Forest Service - Fire and Aviation Management and the U.S. Department of the Interior – Office of Wildland Fire. 
 
@@ -29,11 +31,18 @@ LANDFIRE provides more than twenty landscape-scale geospatial products of biolog
 
 
 
+## Have questions? LANDFIRE is here to help. 
 
-## Still have questions? LANDFIRE is here to help. 
+- Do you have a LANDFIRE R Toolkit/coding question? Ask [TNC](mailto:landfire@tnc.org){target="blank"} 
+- Do you have a LANDFIRE question? Ask the [LANDFIRE Helpdesk](mailto:helpdesk@landfire.gov){target="blank"} 
+- Search (& subscribe to) the [LANDFIRE YouTube Channel](https://www.youtube.com/@LANDFIREvideo){target="blank} (see tutorials, Office Hours, quick demonstrations) 
 
-Ask the [LANDFIRE Helpdesk](mailto:helpdesk@landfire.gov){target="blank"} 
+<br>
 
-Search the [LANDFIRE Helpdesk Dashboard](https://landfire.gov/helpdesk ){target="blank"} (see what others are asking and find solutions to common problems) 
+::: {.logo-row style="display: flex; justify-content: space-around; align-items: center; margin-top: 2em;"}
 
-Search (& subscribe to) the [LANDFIRE YouTube Channel](https://www.youtube.com/@LANDFIREvideo){target="blank} (see tutorials, Office Hours, quick demonstrations) 
+<img src="assets/doi.png" alt="Logo 1" style="height: 80px; margin: 0 20px;" />
+<img src="assets/usfs.png" alt="Logo 2" style="height: 80px; margin: 0 20px;" />
+<img src="assets/LANDFIRE.png" alt="Logo 3" style="height: 80px; margin: 0 10px;"/>
+
+:::
