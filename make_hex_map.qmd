@@ -4,16 +4,16 @@ title: "Make hexagon maps"
 
 ## Skills learned
 
-Few things are more captivating than a map, especially ones of ecosystems as the patterns are often very striking.  As you know LANDFIRE data is delivered as rasters with 30M cell size.  That said, it is not designed for cell to cell comparisons or examinations.  With that it can be useful to summarize the most dominant type (e.g., Biophysical Setting) per polygon such as a watershed or hexagon.  For the work below we will use hexagons.  You will learn how to:
+Use this page to:
 
-* Make a hexgrid for our area of interest
-* Extract the majority BpS and EVT per hexagon
-* Make a leaflet map of the hexagons with toggle to display BpS or EVT
+- Create hexagonal grids to summarize dominant LANFDIRE vegetation types across example landscape, enabling spatial analysis beyond raster cell comparisons
+
+- Build an interactive Leaflet map with toggle display to visualize dominant BpS and EVT within each hexagon
 
 
 ## Set up
 
-For this work we will use the Area of Interest shapefile, and pre-downloaded BpS and EVT rasters.  Before you can complete this page you will need to complete the work on the [Download data](docs/download.html) and [Prepare rasters](docs/prep_rasters.html) pages.
+For this work we will use the Area of Interest shapefile, and pre-downloaded BpS and EVT rasters.  Before you can complete this page you will need to complete the work on the [Download data](docs/download.html){target="blank"} and [Prepare rasters](docs/prep_rasters.html){target="blank"} pages.
 
 ### Code to load packages and inputs
 

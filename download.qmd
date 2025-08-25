@@ -5,16 +5,23 @@ title: "Download LANDFIRE data into R"
 
 ## Skills learned
 
-First step in using LANDFIRE data is getting the data.  There are many ways to get the data-here we will use the [rlandfire](https://github.com/bcknr/rlandfire) package by Mark Buckner to download LANDFIRE data then prep it for use. 
+Use this page to:
 
-In this demonstration we download LANDFIRE Biophysical Settings (BpS) and Existing Vegetation Type (EVT) data, extract and rename the files.
+- Download and prepare LANDFIRE data using the [rlandfire](https://github.com/bcknr/rlandfire){target="blank"} package (developed by Mark Buckner), including setting up a project environment and managing spatial data files. 
+
+- Define an area of interest, interact with the LANDFIRE API, and organize downloaded data for future analysis
+
+## Datasets used
+
+- [LANDFIRE Biophysical Settings (BpS)](https://landfire.gov/vegetation/bps){target="blank"}
+- [Existing Vegetation Type (EVT)](https://landfire.gov/vegetation/evt){target="blank"} 
 
 
 ## Set up
 
 To run the code below you will need to:
 
-1. Set up a new R-Studio project named something such as "r_landfire_demos"
+1. Set up a new R-Studio project, i.e.  "r_landfire_demos"
 2. Create two directories, "inputs" and "outputs"
 3. Download ["bps_demo.zip"](https://github.com/LANDFIRE-TNC/r_demos/raw/refs/heads/main/inputs/bps_demo.zip?download=) (clicking will initiate the download that will likely land in your "C:\Users\YOURNAME\Downloads" directory) which contains:
     * LANDFIRE Map Zone 35 shapefile
