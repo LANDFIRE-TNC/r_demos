@@ -28,6 +28,13 @@
     "text": "Have questions? LANDFIRE is here to help.\n\nDo you have a LANDFIRE R Toolkit/coding question? Ask TNC\nDo you have a LANDFIRE question? Ask the LANDFIRE Helpdesk\nSearch (& subscribe to) the LANDFIRE YouTube Channel (see tutorials, Office Hours, quick demonstrations)"
   },
   {
+    "objectID": "about.html#r-session-information",
+    "href": "about.html#r-session-information",
+    "title": "About the LANDFIRE R Toolkit",
+    "section": "R Session Information",
+    "text": "R Session Information\nWe will try our best to keep code up to date and use modern versions of R, R-Studio and all packages. That said, if you run into issues knowing our R Session info may help you troubleshoot. Here’s the specifics of our code runs:\n\nlibrary(sessioninfo)\n\n# Capture the printed output\nraw_output &lt;- capture.output(session_info())\n\n# Remove lines that contain any Windows-style library paths\nclean_output &lt;- grep(\"Library path|C:/Users|C:/Program Files\", raw_output, invert = TRUE, value = TRUE)\n\n# Print the cleaned output\ncat(paste(clean_output, collapse = \"\\n\"))\n\n─ Session info ───────────────────────────────────────────────────────────────\n setting  value\n version  R version 4.4.3 (2025-02-28 ucrt)\n os       Windows 11 x64 (build 22631)\n system   x86_64, mingw32\n ui       RTerm\n language (EN)\n collate  English_United States.utf8\n ctype    English_United States.utf8\n tz       America/New_York\n date     2025-08-27\n quarto   NA @ C:\\\\PROGRA~1\\\\Quarto\\\\bin\\\\quarto.exe\n\n─ Packages ───────────────────────────────────────────────────────────────────\n package     * version date (UTC) lib source\n cli           3.6.5   2025-04-23 [1] CRAN (R 4.4.3)\n digest        0.6.37  2024-08-19 [1] CRAN (R 4.4.3)\n evaluate      1.0.4   2025-06-18 [1] CRAN (R 4.4.3)\n fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.4.3)\n htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.4.3)\n htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.4.3)\n jsonlite      2.0.0   2025-03-27 [1] CRAN (R 4.4.3)\n knitr         1.50    2025-03-16 [1] CRAN (R 4.4.3)\n rlang         1.1.6   2025-04-11 [1] CRAN (R 4.4.3)\n rmarkdown     2.29    2024-11-04 [1] CRAN (R 4.4.3)\n rstudioapi    0.17.1  2024-10-22 [1] CRAN (R 4.4.3)\n sessioninfo * 1.2.3   2025-02-05 [1] CRAN (R 4.4.3)\n xfun          0.52    2025-04-02 [1] CRAN (R 4.4.3)\n yaml          2.3.10  2024-07-26 [1] CRAN (R 4.4.2)\n\n * ── Packages attached to the search path.\n\n──────────────────────────────────────────────────────────────────────────────"
+  },
+  {
     "objectID": "make_charts.html",
     "href": "make_charts.html",
     "title": "Make charts with LANDFIRE data",
@@ -165,19 +172,14 @@
     "href": "index.html#getting-started",
     "title": "LANDFIRE + R: Accelerate Your Analysis",
     "section": "Getting Started",
-    "text": "Getting Started\n\nCheck your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio.\nCheck file paths - is your your R-Studio project correctly set up?\nLet us know if you run into code bugs landfire@tnc.org"
+    "text": "Getting Started\n\nCheck your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio. Our R Session info is at the bottom of the About page.\nCheck file paths - is your your R-Studio project correctly set up?\nLet us know if you run into code bugs landfire@tnc.org"
   },
   {
     "objectID": "index.html#disclaimer-the-fine-print",
     "href": "index.html#disclaimer-the-fine-print",
     "title": "LANDFIRE + R: Accelerate Your Analysis",
-<<<<<<< HEAD
     "section": "Disclaimer (the fine print)",
     "text": "Disclaimer (the fine print)\nThe code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose. Like any open-source code, it may not perform identically across all systems, versions of R, RStudio, or associated packages. This content is intended for educational and illustrative purposes only and should not be considered a comprehensive guide to R programming. Users are responsible for validating and adapting the code to suit their specific needs and environments. We cannot assume responsibility for any issues, errors, or outcomes resulting from its use."
-=======
-    "section": "Disclaimer",
-    "text": "Disclaimer\nThe code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose. Like any open-source code, it may not perform identically across all systems, versions of R, RStudio, or associated packages. This content is intended for educational and illustrative purposes only and should not be considered a comprehensive guide to R programming. Users are responsible for validating and adapting the code to suit their specific needs and environments. We cannot assume responsibility for any issues, errors, or outcomes resulting from its use."
->>>>>>> ab9e1114a146b6038fbbc567b85e9029a48bb49e
   },
   {
     "objectID": "prep_rasters.html",

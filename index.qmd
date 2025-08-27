@@ -64,7 +64,7 @@ Contained in Map Zone 35 are multiple ecosystems that provide a colorful sandbox
 
 ## Getting Started
 
-1. Check your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio.
+1. Check your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio.  Our R Session info is at the bottom of the  [About](about.qmd) page. 
 2. Check file paths - is your your R-Studio project correctly set up?
 3. Let us know if you run into code bugs [landfire@tnc.org](mailto:landfire@tnc.org){target="blank"}
 

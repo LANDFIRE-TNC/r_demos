@@ -39,6 +39,35 @@ LANDFIRE provides more than twenty landscape-scale geospatial products of biolog
 
 <br>
 
+## R Session Information
+
+We will try our best to keep code up to date and use modern versions of R, R-Studio and all packages.  That said, if you run into issues knowing our R Session info may help you troubleshoot.  Here's the specifics of our code runs:
+
+```{r}
+#| echo: true
+#| message: false
+#| warning: false
+
+library(sessioninfo)
+
+# Capture the printed output
+raw_output <- capture.output(session_info())
+
+# Remove lines that contain any Windows-style library paths
+clean_output <- grep("Library path|C:/Users|C:/Program Files", raw_output, invert = TRUE, value = TRUE)
+
+# Print the cleaned output
+cat(paste(clean_output, collapse = "\n"))
+
+
+
+
+```
+
+
+
+
+
 ::: {.logo-row style="display: flex; justify-content: space-around; align-items: center; margin-top: 2em;"}
 
 <img src="assets/doi.png" alt="Logo 1" style="height: 80px; margin: 0 20px;" />
