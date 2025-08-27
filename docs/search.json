@@ -171,13 +171,8 @@
     "objectID": "index.html#disclaimer-the-fine-print",
     "href": "index.html#disclaimer-the-fine-print",
     "title": "LANDFIRE + R: Accelerate Your Analysis",
-<<<<<<< HEAD
     "section": "Disclaimer (the fine print)",
     "text": "Disclaimer (the fine print)\nThe code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose. Like any open-source code, it may not perform identically across all systems, versions of R, RStudio, or associated packages. This content is intended for educational and illustrative purposes only and should not be considered a comprehensive guide to R programming. Users are responsible for validating and adapting the code to suit their specific needs and environments. We cannot assume responsibility for any issues, errors, or outcomes resulting from its use."
-=======
-    "section": "Disclaimer",
-    "text": "Disclaimer\nThe code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose. Like any open-source code, it may not perform identically across all systems, versions of R, RStudio, or associated packages. This content is intended for educational and illustrative purposes only and should not be considered a comprehensive guide to R programming. Users are responsible for validating and adapting the code to suit their specific needs and environments. We cannot assume responsibility for any issues, errors, or outcomes resulting from its use."
->>>>>>> ab9e1114a146b6038fbbc567b85e9029a48bb49e
   },
   {
     "objectID": "prep_rasters.html",
