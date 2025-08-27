@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -396,50 +361,177 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="r-session-information">R Session Information</h2>
 <p>We will try our best to keep code up to date and use modern versions of R, R-Studio and all packages. That said, if you run into issues knowing our R Session info may help you troubleshoot. Here’s the specifics of our code runs:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sessioninfo)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Capture the printed output</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>raw_output <span class="ot">&lt;-</span> <span class="fu">capture.output</span>(<span class="fu">session_info</span>())</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove lines that contain any Windows-style library paths</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>clean_output <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">"Library path|C:/Users|C:/Program Files"</span>, raw_output, <span class="at">invert =</span> <span class="cn">TRUE</span>, <span class="at">value =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the cleaned output</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste</span>(clean_output, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>─ Session info ───────────────────────────────────────────────────────────────
- setting  value
- version  R version 4.4.3 (2025-02-28 ucrt)
- os       Windows 11 x64 (build 22631)
- system   x86_64, mingw32
- ui       RTerm
- language (EN)
- collate  English_United States.utf8
- ctype    English_United States.utf8
- tz       America/New_York
- date     2025-08-27
- quarto   NA @ C:\\PROGRA~1\\Quarto\\bin\\quarto.exe
-
-─ Packages ───────────────────────────────────────────────────────────────────
- package     * version date (UTC) lib source
- cli           3.6.5   2025-04-23 [1] CRAN (R 4.4.3)
- digest        0.6.37  2024-08-19 [1] CRAN (R 4.4.3)
- evaluate      1.0.4   2025-06-18 [1] CRAN (R 4.4.3)
- fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.4.3)
- htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.4.3)
- htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.4.3)
- jsonlite      2.0.0   2025-03-27 [1] CRAN (R 4.4.3)
- knitr         1.50    2025-03-16 [1] CRAN (R 4.4.3)
- rlang         1.1.6   2025-04-11 [1] CRAN (R 4.4.3)
- rmarkdown     2.29    2024-11-04 [1] CRAN (R 4.4.3)
- rstudioapi    0.17.1  2024-10-22 [1] CRAN (R 4.4.3)
- sessioninfo * 1.2.3   2025-02-05 [1] CRAN (R 4.4.3)
- xfun          0.52    2025-04-02 [1] CRAN (R 4.4.3)
- yaml          2.3.10  2024-07-26 [1] CRAN (R 4.4.2)
-
- * ── Packages attached to the search path.
-
-──────────────────────────────────────────────────────────────────────────────</code></pre>
+<pre><code>### Platform Information</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 86%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Component</th>
+<th style="text-align: left;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">R version 4.4.3 (2025-02-28 ucrt)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">os</td>
+<td style="text-align: left;">Windows 11 x64 (build 22631)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">system</td>
+<td style="text-align: left;">x86_64, mingw32</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ui</td>
+<td style="text-align: left;">RTerm</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">language</td>
+<td style="text-align: left;">(EN)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">collate</td>
+<td style="text-align: left;">English_United States.utf8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ctype</td>
+<td style="text-align: left;">English_United States.utf8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tz</td>
+<td style="text-align: left;">America/New_York</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">date</td>
+<td style="text-align: left;">2025-08-27</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">pandoc</td>
+<td style="text-align: left;">3.4 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">quarto</td>
+<td style="text-align: left;">NA @ C:~1.exe</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Library path</td>
+<td style="text-align: left;">[hidden]</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Finding R package dependencies ... Done!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+### Packages Used Across the Website</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Package</th>
+<th style="text-align: left;">Version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">knitr</td>
+<td style="text-align: left;">knitr</td>
+<td style="text-align: left;">1.50</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">renv</td>
+<td style="text-align: left;">renv</td>
+<td style="text-align: left;">1.1.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">sessioninfo</td>
+<td style="text-align: left;">sessioninfo</td>
+<td style="text-align: left;">1.2.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rmarkdown</td>
+<td style="text-align: left;">rmarkdown</td>
+<td style="text-align: left;">2.29</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">exactextractr</td>
+<td style="text-align: left;">exactextractr</td>
+<td style="text-align: left;">0.10.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">foreign</td>
+<td style="text-align: left;">foreign</td>
+<td style="text-align: left;">0.8.90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">htmlwidgets</td>
+<td style="text-align: left;">htmlwidgets</td>
+<td style="text-align: left;">1.6.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">leaflet</td>
+<td style="text-align: left;">leaflet</td>
+<td style="text-align: left;">2.2.2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">rlandfire</td>
+<td style="text-align: left;">rlandfire</td>
+<td style="text-align: left;">2.0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sf</td>
+<td style="text-align: left;">sf</td>
+<td style="text-align: left;">1.0.21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">terra</td>
+<td style="text-align: left;">terra</td>
+<td style="text-align: left;">1.8.54</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">tidyverse</td>
+<td style="text-align: left;">tidyverse</td>
+<td style="text-align: left;">2.0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">scales</td>
+<td style="text-align: left;">scales</td>
+<td style="text-align: left;">1.4.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stringr</td>
+<td style="text-align: left;">stringr</td>
+<td style="text-align: left;">1.5.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">jsonlite</td>
+<td style="text-align: left;">jsonlite</td>
+<td style="text-align: left;">2.0.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">leaflet.providers</td>
+<td style="text-align: left;">leaflet.providers</td>
+<td style="text-align: left;">2.0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">RColorBrewer</td>
+<td style="text-align: left;">RColorBrewer</td>
+<td style="text-align: left;">1.1.3</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="logo-row" style="display: flex; justify-content: space-around; align-items: center; margin-top: 2em;">
