@@ -2,30 +2,30 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About this Project",
+    "title": "About the LANDFIRE R Toolkit",
     "section": "",
-    "text": "Welcome to LANDFIRE R Toolkit — your go-to hub for accelerating landscape analysis with LANDFIRE and R. Here, you’ll find tested, ready-to-use R code that simplifies data access, processing, and visualization for your region. Whether you’re a seasoned analyst or just getting started, this site helps you fast-track your workflow and connect with a growing community of LANDFIRE users who are actively coding, sharing, and tackling real-world challenges."
+    "text": "Welcome to the LANDFIRE R Toolkit — your go-to hub for accelerating landscape analysis with LANDFIRE and R. Here, you’ll find tested, ready-to-use R code that simplifies data access, processing, and visualization for your region. Whether you’re a seasoned analyst or just getting started, this site helps you fast-track your workflow and connect with a growing community of LANDFIRE users who are actively coding, sharing, and tackling real-world challenges.\nThis site will be updated frequently throughout the year to ensure accuracy and when advances are made, we’ll share updated code."
   },
   {
     "objectID": "about.html#dont-start-from-scratch",
     "href": "about.html#dont-start-from-scratch",
-    "title": "About this Project",
+    "title": "About the LANDFIRE R Toolkit",
     "section": "",
-    "text": "Welcome to LANDFIRE R Toolkit — your go-to hub for accelerating landscape analysis with LANDFIRE and R. Here, you’ll find tested, ready-to-use R code that simplifies data access, processing, and visualization for your region. Whether you’re a seasoned analyst or just getting started, this site helps you fast-track your workflow and connect with a growing community of LANDFIRE users who are actively coding, sharing, and tackling real-world challenges."
+    "text": "Welcome to the LANDFIRE R Toolkit — your go-to hub for accelerating landscape analysis with LANDFIRE and R. Here, you’ll find tested, ready-to-use R code that simplifies data access, processing, and visualization for your region. Whether you’re a seasoned analyst or just getting started, this site helps you fast-track your workflow and connect with a growing community of LANDFIRE users who are actively coding, sharing, and tackling real-world challenges.\nThis site will be updated frequently throughout the year to ensure accuracy and when advances are made, we’ll share updated code."
   },
   {
-    "objectID": "about.html#landfire-the-nature-conservancy",
-    "href": "about.html#landfire-the-nature-conservancy",
-    "title": "About this Project",
-    "section": "LANDFIRE & The Nature Conservancy",
-    "text": "LANDFIRE & The Nature Conservancy\nLANDFIRE (Landscape Fire and Resource Management Planning Tools) LANDFIRE is a shared interagency wildland fire management data program across the United States and Territories. Leadership, management, and oversight are through the U.S. Department of Agriculture Forest Service - Fire and Aviation Management and the U.S. Department of the Interior – Office of Wildland Fire.\nLANDFIRE provides more than twenty landscape-scale geospatial products of biological and ecological data, including (900+) vegetation types and (13/40) fire behavior fuel models that support all-lands planning, fire and natural resources management, operations, analyses and assessments.\nProject Team: USGS EROS, EROS Technical Support Services Contract (KBR), The Nature Conservancy, USDA Forest Service (Rocky Mountain Research Station) RMRS, Forest Inventory & Analysis (FIA)\nPartners: USGS Gap Analysis, National Land Imaging Programs\nThe Nature Conservancy (TNC) is part of the Project Team, supported by a cooperative agreement through USDA Forest Service. TNC’s LANDFIRE Team works closely with the LANDFIRE Business Leads, program staff, and other partners to provide support to LANDFIRE and the user community by:\n\nHelping users understand the strengths, weaknesses, and appropriate uses of LANDFIRE products.\nLocating, obtaining, and using geospatial data, tools, and models for fire and natural resource management, planning, and implementation.\nIdentifying and comparing management priorities, evaluating threats to ecosystems, and exploring outcomes under alternative management scenarios.\n\n\nTNC’s LANDFIRE Team is advancing conservation outcomes through collaborative ecosystem science by supporting LANDFIRE users as they locate, obtain and apply the diverse suite of LANDFIRE products and data."
+    "objectID": "about.html#landfire",
+    "href": "about.html#landfire",
+    "title": "About the LANDFIRE R Toolkit",
+    "section": "LANDFIRE",
+    "text": "LANDFIRE\nLANDFIRE (Landscape Fire and Resource Management Planning Tools) LANDFIRE is a shared interagency wildland fire management data program across the United States and Territories. Leadership, management, and oversight are through the U.S. Department of Agriculture Forest Service - Fire and Aviation Management and the U.S. Department of the Interior – Office of Wildland Fire.\nLANDFIRE provides more than twenty landscape-scale geospatial products of biological and ecological data, including (900+) vegetation types and (13/40) fire behavior fuel models that support all-lands planning, fire and natural resources management, operations, analyses and assessments.\nProject Team: USGS EROS, EROS Technical Support Services Contract (KBR), The Nature Conservancy, USDA Forest Service (Rocky Mountain Research Station) RMRS, Forest Inventory & Analysis (FIA)\nPartners: USGS Gap Analysis, National Land Imaging Programs\nThe Nature Conservancy (TNC) is part of the Project Team, supported by a cooperative agreement through USDA Forest Service. TNC’s LANDFIRE Team works closely with the LANDFIRE Business Leads, program staff, and other partners to provide support to LANDFIRE and the user community by:\n\nHelping users understand the strengths, weaknesses, and appropriate uses of LANDFIRE products.\nLocating, obtaining, and using geospatial data, tools, and models for fire and natural resource management, planning, and implementation.\nIdentifying and comparing management priorities, evaluating threats to ecosystems, and exploring outcomes under alternative management scenarios.\n\n\nTNC’s LANDFIRE Team is advancing conservation outcomes through collaborative ecosystem science by supporting LANDFIRE users as they locate, obtain and apply the diverse suite of LANDFIRE products and data."
   },
   {
-    "objectID": "about.html#still-have-questions-landfire-is-here-to-help.",
-    "href": "about.html#still-have-questions-landfire-is-here-to-help.",
-    "title": "About this Project",
-    "section": "Still have questions? LANDFIRE is here to help.",
-    "text": "Still have questions? LANDFIRE is here to help.\nAsk the LANDFIRE Helpdesk\nSearch the LANDFIRE Helpdesk Dashboard (see what others are asking and find solutions to common problems)\nSearch (& subscribe to) the LANDFIRE YouTube Channel (see tutorials, Office Hours, quick demonstrations)"
+    "objectID": "about.html#have-questions-landfire-is-here-to-help.",
+    "href": "about.html#have-questions-landfire-is-here-to-help.",
+    "title": "About the LANDFIRE R Toolkit",
+    "section": "Have questions? LANDFIRE is here to help.",
+    "text": "Have questions? LANDFIRE is here to help.\n\nDo you have a LANDFIRE R Toolkit/coding question? Ask TNC\nDo you have a LANDFIRE question? Ask the LANDFIRE Helpdesk\nSearch (& subscribe to) the LANDFIRE YouTube Channel (see tutorials, Office Hours, quick demonstrations)"
   },
   {
     "objectID": "make_charts.html",
@@ -123,21 +123,21 @@
     "href": "index.html",
     "title": "LANDFIRE + R: Accelerate Your Analysis",
     "section": "",
-    "text": "Do you work with LANDFIRE data and want a faster way to dig into ecological patterns across your landscape? You’re in the right place.\nThis site features quick R code demonstrations to help you get started (or go deeper) with LANDFIRE data. We recognize the power of well-written code and encourage the LANDFIRE community to build on this foundation of work. These r code examples are designed to be practical, repeatable, and flexible to fit your needs. We hope the coding tools provided can help you automate your work, leverage LANDFIRE, and get solution-oriented support.\nWe want to hear from you. Do you have feedback, ideas, or a cool way you’re using LANDFIRE data with R? -&gt; Send them our way. Let’s build a community of practice together."
+    "text": "Do you work with LANDFIRE data and want a faster way to dig into ecological patterns across your landscape? You’re in the right place.\nThis site features quick R code snippets to help you get started (or go deeper) with LANDFIRE data. We recognize the power of well-written code and encourage the LANDFIRE community to build on this foundation of work. These R code examples are designed to be practical, repeatable, and flexible to fit your needs. We hope the coding tools provided can help you automate your work, leverage LANDFIRE, and get solution-oriented support.\nWe want to hear from you. Do you have feedback, ideas, or a cool way you’re using LANDFIRE data with R? -&gt; Send them our way. Let’s build a community of practice together."
   },
   {
     "objectID": "index.html#why-this-site",
     "href": "index.html#why-this-site",
     "title": "LANDFIRE + R: Accelerate Your Analysis",
     "section": "",
-    "text": "Do you work with LANDFIRE data and want a faster way to dig into ecological patterns across your landscape? You’re in the right place.\nThis site features quick R code demonstrations to help you get started (or go deeper) with LANDFIRE data. We recognize the power of well-written code and encourage the LANDFIRE community to build on this foundation of work. These r code examples are designed to be practical, repeatable, and flexible to fit your needs. We hope the coding tools provided can help you automate your work, leverage LANDFIRE, and get solution-oriented support.\nWe want to hear from you. Do you have feedback, ideas, or a cool way you’re using LANDFIRE data with R? -&gt; Send them our way. Let’s build a community of practice together."
+    "text": "Do you work with LANDFIRE data and want a faster way to dig into ecological patterns across your landscape? You’re in the right place.\nThis site features quick R code snippets to help you get started (or go deeper) with LANDFIRE data. We recognize the power of well-written code and encourage the LANDFIRE community to build on this foundation of work. These R code examples are designed to be practical, repeatable, and flexible to fit your needs. We hope the coding tools provided can help you automate your work, leverage LANDFIRE, and get solution-oriented support.\nWe want to hear from you. Do you have feedback, ideas, or a cool way you’re using LANDFIRE data with R? -&gt; Send them our way. Let’s build a community of practice together."
   },
   {
     "objectID": "index.html#overview",
     "href": "index.html#overview",
     "title": "LANDFIRE + R: Accelerate Your Analysis",
     "section": "🔍 Overview",
-    "text": "🔍 Overview\nStep 1: LANDFIRE Data – Choose the LANDFIRE Product for your analysis. (Need help deciding? Check our cheatsheet here)\nStep 2: R Code Demos – Use the sample R code on this site to explore your area of interest.\nStep 3: Adjust LANDFIRE to match local conditions. (Not sure how to do that? Try our tutorial)\nStep 4: Insights & Innovations – Build your own tools, share your work, connect with us."
+    "text": "🔍 Overview\nStep 1: LANDFIRE Data – Choose the LANDFIRE Product for your analysis. Need help deciding? Check the LANDFIRE Products here.\nStep 2: R Code Demos – Use the sample R code on this site to explore your area of interest.\nStep 3: Adjust LANDFIRE to match local conditions. Not sure how to do that? Check out our tutorial.\nStep 4: Insights & Innovations – Build your own tools, share your work, connect with us."
   },
   {
     "objectID": "index.html#making-connections",
@@ -150,15 +150,8 @@
     "objectID": "index.html#working-example",
     "href": "index.html#working-example",
     "title": "LANDFIRE + R: Accelerate Your Analysis",
-    "section": "Working Example",
-    "text": "Working Example"
-  },
-  {
-    "objectID": "index.html#use-this-code",
-    "href": "index.html#use-this-code",
-    "title": "LANDFIRE + R: Accelerate Your Analysis",
-    "section": "🔧 Use this Code",
-    "text": "🔧 Use this Code\nUsing R and LANDFIRE products to explore trends and automate analyses can improve outcomes. Based on current LANDFIRE Products, the example code and visualizations will all be based on Map Zone 35, located in Central Texas.\nContained in Map Zone 35 are multiple ecosystems that provide a colorful sandbox to explore these coding demonstrations."
+    "section": "🔧 Working Example",
+    "text": "🔧 Working Example\nUsing R and LANDFIRE products to explore trends and automate analyses can improve outcomes. Based on current LANDFIRE Products, the example code and visualizations will all be based on Map Zone 35, located in Central Texas.\nContained in Map Zone 35 are multiple ecosystems that provide a colorful sandbox to explore these coding demonstrations."
   },
   {
     "objectID": "index.html#map-zone-35",
@@ -175,11 +168,16 @@
     "text": "Getting Started\n\nCheck your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio.\nCheck file paths - is your your R-Studio project correctly set up?\nLet us know if you run into code bugs landfire@tnc.org"
   },
   {
-    "objectID": "index.html#disclaimer",
-    "href": "index.html#disclaimer",
+    "objectID": "index.html#disclaimer-the-fine-print",
+    "href": "index.html#disclaimer-the-fine-print",
     "title": "LANDFIRE + R: Accelerate Your Analysis",
+<<<<<<< HEAD
+    "section": "Disclaimer (the fine print)",
+    "text": "Disclaimer (the fine print)\nThe code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose. Like any open-source code, it may not perform identically across all systems, versions of R, RStudio, or associated packages. This content is intended for educational and illustrative purposes only and should not be considered a comprehensive guide to R programming. Users are responsible for validating and adapting the code to suit their specific needs and environments. We cannot assume responsibility for any issues, errors, or outcomes resulting from its use."
+=======
     "section": "Disclaimer",
     "text": "Disclaimer\nThe code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose. Like any open-source code, it may not perform identically across all systems, versions of R, RStudio, or associated packages. This content is intended for educational and illustrative purposes only and should not be considered a comprehensive guide to R programming. Users are responsible for validating and adapting the code to suit their specific needs and environments. We cannot assume responsibility for any issues, errors, or outcomes resulting from its use."
+>>>>>>> ab9e1114a146b6038fbbc567b85e9029a48bb49e
   },
   {
     "objectID": "prep_rasters.html",

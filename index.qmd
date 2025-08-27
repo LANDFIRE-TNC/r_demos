@@ -7,7 +7,7 @@ author: "Randy Swaty and Megan Dettenmaier"
 
 Do you work with LANDFIRE data and want a faster way to dig into ecological patterns across your landscape? You’re in the right place.
 
-This site features quick R code demonstrations to help you get started (or go deeper) with LANDFIRE data. We recognize the power of well-written code and encourage the LANDFIRE community to build on this foundation of work. These r code examples are designed to be practical, repeatable, and flexible to fit your needs. We hope the coding tools provided can help you automate your work, leverage LANDFIRE, and get solution-oriented support.
+This site features quick R code snippets to help you get started (or go deeper) with LANDFIRE data. We recognize the power of well-written code and encourage the LANDFIRE community to build on this foundation of work. These R code examples are designed to be practical, repeatable, and flexible to fit your needs. We hope the coding tools provided can help you automate your work, leverage LANDFIRE, and get solution-oriented support.
 
 We want to hear from you. Do you have feedback, ideas, or a cool way you’re using LANDFIRE data with R? -> [Send them our way](mailto:landfire@tnc.org){target="blank"}. Let’s build a community of practice together.
 
@@ -18,12 +18,12 @@ We want to hear from you. Do you have feedback, ideas, or a cool way you’re us
 ## 🔍 Overview
 
 **Step 1:** LANDFIRE Data – Choose the LANDFIRE Product for your analysis. 
-*(Need help deciding? Check our cheatsheet here)*  
+Need help deciding? [Check the LANDFIRE Products here.](https://landfire-tnc.github.io/LANDFIRE_101/1_what-is-landfire.html){target="blank"}  
 
 **Step 2:** R Code Demos – Use the sample R code on this site to explore your area of interest.
 
 **Step 3:** Adjust LANDFIRE to match local conditions.
-*(Not sure how to do that? Try our tutorial)*  
+Not sure how to do that? [Check out our tutorial.](https://conservationgateway.org/ConservationPractices/FireLandscapes/LANDFIRE/Documents/ModifyingLF_DataGuide_V1.pdf){target="blank"}   
 
 **Step 4:** Insights & Innovations – Build your own tools, share your work, connect with us.
 
@@ -31,18 +31,16 @@ We want to hear from you. Do you have feedback, ideas, or a cool way you’re us
 
 ::: {.column width="60%"}
 ## 🔍 Making Connections
-![](assets/connect.png){fig-alt="4 boxes LANDFIRE Data, R code Demos (you are here), Tinker around, Insights and Innovations." width="100%"}
+![](assets/connect.png){fig-alt="4 boxes LANDFIRE Data, R code toolkit (you are here), Tinker around, Insights and Innovations." width="100%"}
 ::: 
 
 :::
 
 
-## Working Example
-
 ::: {.columns}
 
 ::: {.column width="40%"}
-## 🔧 Use this Code
+## 🔧 Working Example
 
 Using R and LANDFIRE products to explore trends and automate analyses can improve outcomes. Based on current LANDFIRE Products, the example code and visualizations will **all** be based on Map Zone 35, located in Central Texas.
 
@@ -68,10 +66,17 @@ Contained in Map Zone 35 are multiple ecosystems that provide a colorful sandbox
 
 1. Check your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio.
 2. Check file paths - is your your R-Studio project correctly set up?
-3. Let us know if you run into code bugs [landfire@tnc.org](mailto:landfire@tnc.org)
+3. Let us know if you run into code bugs [landfire@tnc.org](mailto:landfire@tnc.org){target="blank"}
 
 
-## Disclaimer
+## Disclaimer (the fine print)
 
 The code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose. Like any open-source code, it may not perform identically across all systems, versions of R, RStudio, or associated packages. This content is intended for educational and illustrative purposes only and should not be considered a comprehensive guide to R programming. Users are responsible for validating and adapting the code to suit their specific needs and environments. We cannot assume responsibility for any issues, errors, or outcomes resulting from its use.
 
+::: {.logo-row style="display: flex; justify-content: space-around; align-items: center; margin-top: 2em;"}
+
+<img src="assets/doi.png" alt="Logo 1" style="height: 80px; margin: 0 20px;" />
+<img src="assets/usfs.png" alt="Logo 2" style="height: 80px; margin: 0 20px;" />
+<img src="assets/LANDFIRE.png" alt="Logo 3" style="height: 80px; margin: 0 10px;"/>
+
+:::
