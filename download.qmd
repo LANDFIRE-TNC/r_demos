@@ -102,9 +102,10 @@ The code below does that in roughly 2 minutes with an internet download speed of
 #| message: false
 #| warning: false
 #| code-overflow: wrap
-#| include: false
+#| include: true
 #| results: hide
 #| eval: false
+
 
 aoi <- getAOI(shp)
 
