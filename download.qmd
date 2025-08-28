@@ -161,7 +161,7 @@ unlink(temp_dir, recursive = TRUE)
 
 ## Next steps
 
-You should see a set of files with "landfire" in the name. Next go to the [Prepare rasters](docs/prep_rasters.html) page to learn how to load them into R, clip/mask and view them. 
+You should see a set of files with "landfire" in the name. Next go to the [Prepare rasters](prep_rasters.qmd) page to learn how to load them into R, clip/mask and view them. 
 
 
 ## More resources
