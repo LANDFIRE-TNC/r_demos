@@ -64,9 +64,31 @@ Contained in Map Zone 35 are multiple ecosystems that provide a colorful sandbox
 
 ## Getting Started
 
-1. Check your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio.
+1. Check your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio. [See what we used](about.qmd){target="blank"} 
 2. Check file paths - is your your R-Studio project correctly set up?
 3. Let us know if you run into code bugs [landfire@tnc.org](mailto:landfire@tnc.org){target="blank"}
+
+
+## LANDFIRE
+
+[LANDFIRE](https://landfire.gov){target="blank"} (Landscape Fire and Resource Management Planning Tools) LANDFIRE is a shared interagency wildland fire management data program across the United States and Territories. Leadership, management, and oversight are through the U.S. Department of Agriculture Forest Service - Fire and Aviation Management and the U.S. Department of the Interior – Office of Wildland Fire. 
+
+LANDFIRE provides more than twenty landscape-scale geospatial products of biological and ecological data, including (900+) vegetation types and (13/40) fire behavior fuel models that support all-lands planning, fire and natural resources management, operations, analyses and assessments.  
+
+**Project Team:** [USGS EROS](https://www.usgs.gov/centers/eros){target="blank"}, EROS Technical Support Services Contract (KBR), [The Nature Conservancy](https://www.nature.org/en-us/){target="blank"}, [USDA Forest Service (Rocky Mountain Research Station) RMRS](https://research.fs.usda.gov/rmrs){target="blank"}, [Forest Inventory & Analysis (FIA)](https://research.fs.usda.gov/programs/fia){target="blank"} 
+
+**Partners:** [USGS Gap Analysis](https://www.usgs.gov/programs/gap-analysis-project){target="blank"}, [National Land Imaging Programs](https://www.usgs.gov/programs/national-land-imaging-program){target="blank"} 
+
+[The Nature Conservancy (TNC)](https://landfire.gov/about-landfire/lf-team){target="blank"} is part of the Project Team, supported by a cooperative agreement through USDA Forest Service. TNC’s LANDFIRE Team works closely with the LANDFIRE Business Leads, program staff, and other partners to provide support to LANDFIRE and the user community by: 
+
+* Helping users understand the strengths, weaknesses, and appropriate uses of LANDFIRE products. 
+
+* Locating, obtaining, and using geospatial data, tools, and models for fire and natural resource management, planning, and implementation. 
+
+* Identifying and comparing management priorities, evaluating threats to ecosystems, and exploring outcomes under alternative management scenarios. 
+
+
+> TNC’s LANDFIRE Team is advancing conservation outcomes through collaborative ecosystem science by supporting LANDFIRE users as they locate, obtain and apply the diverse suite of LANDFIRE products and data.
 
 
 ## Disclaimer (the fine print)
