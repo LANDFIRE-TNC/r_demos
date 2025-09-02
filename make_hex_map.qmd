@@ -122,9 +122,11 @@ Below we use the extactextractr package to extract the majority (most dominant) 
 #| message: false   # Suppresses messages generated during code execution (e.g., package loading messages).
 #| warning: false   # Suppresses warning messages from being shown in the output.
 #| code-overflow: wrap  # Wraps long lines of code instead of overflowing, improving readability.
-#| include: false    # Includes both the code and its output in the final rendered document.
+#| include: true   # Includes both the code and its output in the final rendered document.
 #| results: hide    # Hides the output of the code chunk, even though the code is included.
 #| eval: false      # Evaluates (runs) the code when the document is rendered.
+
+
 
 
 # bps

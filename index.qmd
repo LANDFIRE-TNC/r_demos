@@ -52,9 +52,11 @@ Not sure how to do that? [Check out our tutorial.](https://conservationgateway.o
 ::: {.column width="40%"}
 ## 🔧 Working Example
 
-Using R and LANDFIRE products to explore trends and automate analyses can improve outcomes. Based on current LANDFIRE Products, the example code and visualizations will **all** be based on Map Zone 35, located in Central Texas.
+Using R and LANDFIRE products to explore trends and automate analyses can improve outcomes. Based on current LANDFIRE Products, the example code and visualizations will **all** be based on Map Zone 35, located in Central Texas.   
 
 Contained in Map Zone 35 are multiple ecosystems that provide a colorful sandbox to explore these coding demonstrations.
+
+See map of LANDFIRE Map Zones [here](https://landfirereview.org/IMG/USmapzones-v1_July2015.jpg).  Note: some datasets are compiled by Map Zone so maps or analysis that crosses multiple may result in seamlines or other complications.  Contact us to discuss at [landfire@tnc.org](mailto:landfire@tnc.org){target="blank"}. 
 
 :::
 
