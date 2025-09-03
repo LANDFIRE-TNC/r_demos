@@ -239,10 +239,19 @@ print(head(evt_aoi_atts))
 
 ## Next steps
 
-You can now open up the processed raster(s) in ArcGIS pro and/or QGIS to do further GIS.  This process really shines when you do multiple LANDFIRE datasets at once and/or process data for multiple landscapes.  Further, you can work in Excel, R or other software to make charts of the attributes that are saved as a .csv file.  Go to the [Make Charts](docs/make_charts.html) page to get started. 
+You can now open up the processed raster(s) in ArcGIS pro and/or QGIS to do further GIS.  This process really shines when you do multiple LANDFIRE datasets at once and/or process data for multiple landscapes. Further, you can work in Excel, R or other software to make charts of the attributes that are saved as a .csv file.  Go to the [Make Charts](docs/make_charts.html){target="blank"} page to get started. 
 
-While we are sure it is possible to make attractive, accessible maps with the processed LANDFIRE rasters in R, we typically move to a different GIS software for mapping, or summarize the data by polygons (e.g., watersheds or hexagons) in R.  Try the code on the [Make hex map](make_hex_map.qmd) for ways you might map LANDFIRE data in R. 
-
-
+While we are sure it is possible to make attractive, accessible maps with the processed LANDFIRE rasters in R, we typically move to a different GIS software for mapping, or summarize the data by polygons (e.g., watersheds or hexagons) in R. Try the code on the [Make hex map](make_hex_map.html){target="blank"} for ways you might map LANDFIRE data in R. 
 
 
+
+<br>
+</br>
+
+::: {.logo-row style="display: flex; justify-content: space-around; align-items: center; margin-top: 2em;"}
+
+<img src="assets/usda.png" alt="Logo 3" style="height: 70px; margin: 0 20px;"/>
+<img src="assets/usfs.png" alt="Logo 2" style="height: 80px; margin: 0 20px;" />
+<img src="assets/doi.png" alt="Logo 1" style="height: 80px; margin: 0 20px;" />
+<img src="assets/LANDFIRE.png" alt="Logo 3" style="height: 83px; margin: 0 10px;"/>
+:::
