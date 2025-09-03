@@ -161,15 +161,23 @@ unlink(temp_dir, recursive = TRUE)
 
 ## Next steps
 
-You should see a set of files with "landfire" in the name. Next go to the [Prepare rasters](prep_rasters.qmd) page to learn how to load them into R, clip/mask and view them. 
+You should see a set of files with "landfire" in the name. Next go to the [Prepare rasters](prep_rasters.html){target="blank"} page to learn how to load them into R, clip/mask and view them. 
 
 
 ## More resources
 
-* Mark Buckner's [rlandfire](https://github.com/bcknr/rlandfire) site also has a nice tutorial. 
-* There is also a Python package for downloading LANDFIRE data, [landfire-python])(https://landfire-python.firesci.io/en/latest/).  If you try this please let us know!
+* Mark Buckner's [rlandfire](https://github.com/bcknr/rlandfire){target="blank"} site also has a useful tutorial. 
+* There is also a Python package for downloading LANDFIRE data, [landfire-python](https://landfire-python.firesci.io/en/latest/){target="blank"}. If you try this please [let us know](mailto:landfire@tnc.org){target="blank"}!
 
+<br>
+</br>
 
+::: {.logo-row style="display: flex; justify-content: space-around; align-items: center; margin-top: 2em;"}
 
+<img src="assets/usda.png" alt="Logo 3" style="height: 70px; margin: 0 20px;"/>
+<img src="assets/usfs.png" alt="Logo 2" style="height: 80px; margin: 0 20px;" />
+<img src="assets/doi.png" alt="Logo 1" style="height: 80px; margin: 0 20px;" />
+<img src="assets/LANDFIRE.png" alt="Logo 3" style="height: 83px; margin: 0 10px;"/>
+:::
 
 

@@ -491,21 +491,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(US_200BPS, <span class="st">"outputs/bps_aoi.tif"</span>,</span>
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>            <span class="at">gdal =</span> <span class="fu">c</span>(<span class="st">"COMPRESS=NONE"</span>, <span class="st">"TFW=YES"</span>),</span>
 <span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">"INT2S"</span>,</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>            <span class="at">overwrite =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-|---------|---------|---------|---------|
-=========================================
-                                          </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># write the attributes dataframe to a dbf file</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dbf</span>(bps_aoi_atts, <span class="st">"outputs/bps_aoi.tif.vat.dbf"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># write the attributes dataframe to a csv file</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(bps_aoi_atts, <span class="st">"outputs/bps_aoi_attributes.csv"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the cropped and masked raster-will just show values in the map.  Output not shown here.</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US_200BPS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>            <span class="at">overwrite =</span> T)</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="co"># write the attributes dataframe to a dbf file</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dbf</span>(bps_aoi_atts, <span class="st">"outputs/bps_aoi.tif.vat.dbf"</span>)</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="co"># write the attributes dataframe to a csv file</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(bps_aoi_atts, <span class="st">"outputs/bps_aoi_attributes.csv"</span>)</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the cropped and masked raster-will just show values in the map.  Output not shown here.</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US_200BPS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -513,8 +508,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first few rows of the aoi attributes. Output not shown here.</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(bps_aoi_atts))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first few rows of the aoi attributes. Output not shown here.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(bps_aoi_atts))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  VALUE    COUNT BPS_CODE ZONE         BPS_MODEL
 1  1718 46439852    11320   35    11320_32_34_35
@@ -550,50 +545,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="build-raster-attribute-table-for-existing-vegetation-type-data-write-files" class="level2">
 <h2 class="anchored" data-anchor-id="build-raster-attribute-table-for-existing-vegetation-type-data-write-files">Build Raster Attribute Table for Existing Vegetation Type Data, write files</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign categories</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(US_240EVT) <span class="ot">&lt;-</span> evt_conus_atts</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">activeCat</span>(US_240EVT) <span class="ot">&lt;-</span> <span class="st">"VALUE"</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Get frequency table </span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>evt_freq <span class="ot">&lt;-</span> <span class="fu">freq</span>(US_240EVT) <span class="sc">%&gt;%</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Join with attributes and calculate acres and percent</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>evt_aoi_atts <span class="ot">&lt;-</span> evt_freq <span class="sc">%&gt;%</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">VALUE =</span> value, <span class="at">COUNT =</span> count) <span class="sc">%&gt;%</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">VALUE =</span> <span class="fu">as.integer</span>(VALUE)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(evt_conus_atts, <span class="at">by =</span> <span class="st">"VALUE"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(COUNT <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">ACRES =</span> <span class="fu">round</span>((COUNT <span class="sc">*</span> <span class="dv">900</span> <span class="sc">/</span> <span class="fl">4046.86</span>), <span class="dv">0</span>),</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">REL_PERCENT =</span> <span class="fu">round</span>((COUNT <span class="sc">/</span> <span class="fu">sum</span>(COUNT)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">3</span>)</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(REL_PERCENT)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>layer)  <span class="co"># Optional: remove 'layer' column</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># write the raster to a file with specified options</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(US_240EVT, <span class="st">"outputs/evt_aoi.tif"</span>,</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">gdal =</span> <span class="fu">c</span>(<span class="st">"COMPRESS=NONE"</span>, <span class="st">"TFW=YES"</span>),</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">"INT2S"</span>,</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>            <span class="at">overwrite =</span> T)</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co"># write the attributes dataframe to a dbf file</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dbf</span>(evt_aoi_atts, <span class="st">"outputs/evt_aoi.tif.vat.dbf"</span>)</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co"># write the attributes dataframe to a csv file</span></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(evt_aoi_atts, <span class="st">"outputs/evt_aoi_attributes.csv"</span>)</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the cropped and masked raster-will just show values in the map.  Output not shown here.</span></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US_240EVT)</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first few rows of the aoi attributes. Output not shown here.</span></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(evt_aoi_atts))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign categories</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(US_240EVT) <span class="ot">&lt;-</span> evt_conus_atts</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">activeCat</span>(US_240EVT) <span class="ot">&lt;-</span> <span class="st">"VALUE"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Get frequency table </span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>evt_freq <span class="ot">&lt;-</span> <span class="fu">freq</span>(US_240EVT) <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Join with attributes and calculate acres and percent</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>evt_aoi_atts <span class="ot">&lt;-</span> evt_freq <span class="sc">%&gt;%</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">VALUE =</span> value, <span class="at">COUNT =</span> count) <span class="sc">%&gt;%</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">VALUE =</span> <span class="fu">as.integer</span>(VALUE)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(evt_conus_atts, <span class="at">by =</span> <span class="st">"VALUE"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(COUNT <span class="sc">!=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">ACRES =</span> <span class="fu">round</span>((COUNT <span class="sc">*</span> <span class="dv">900</span> <span class="sc">/</span> <span class="fl">4046.86</span>), <span class="dv">0</span>),</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">REL_PERCENT =</span> <span class="fu">round</span>((COUNT <span class="sc">/</span> <span class="fu">sum</span>(COUNT)) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">3</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(REL_PERCENT)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>layer)  <span class="co"># Optional: remove 'layer' column</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co"># write the raster to a file with specified options</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="fu">writeRaster</span>(US_240EVT, <span class="st">"outputs/evt_aoi.tif"</span>,</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            <span class="at">gdal =</span> <span class="fu">c</span>(<span class="st">"COMPRESS=NONE"</span>, <span class="st">"TFW=YES"</span>),</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>            <span class="at">datatype =</span> <span class="st">"INT2S"</span>,</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>            <span class="at">overwrite =</span> T)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co"># write the attributes dataframe to a dbf file</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="fu">write.dbf</span>(evt_aoi_atts, <span class="st">"outputs/evt_aoi.tif.vat.dbf"</span>)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co"># write the attributes dataframe to a csv file</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(evt_aoi_atts, <span class="st">"outputs/evt_aoi_attributes.csv"</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the cropped and masked raster-will just show values in the map.  Output not shown here.</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US_240EVT)</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="co"># look at the first few rows of the aoi attributes. Output not shown here.</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(evt_aoi_atts))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
-<p>You can now open up the processed raster(s) in ArcGIS pro and/or QGIS to do further GIS. This process really shines when you do multiple LANDFIRE datasets at once and/or process data for multiple landscapes. Further, you can work in Excel, R or other software to make charts of the attributes that are saved as a .csv file. Go to the <a href="docs/make_charts.html">Make Charts</a> page to get started.</p>
-<p>While we are sure it is possible to make attractive, accessible maps with the processed LANDFIRE rasters in R, we typically move to a different GIS software for mapping, or summarize the data by polygons (e.g., watersheds or hexagons) in R. Try the code on the <a href="./make_hex_map.html">Make hex map</a> for ways you might map LANDFIRE data in R.</p>
+<p>You can now open up the processed raster(s) in ArcGIS pro and/or QGIS to do further GIS. This process really shines when you do multiple LANDFIRE datasets at once and/or process data for multiple landscapes. Further, you can work in Excel, R or other software to make charts of the attributes that are saved as a .csv file. Go to the <a href="docs/make_charts.html" target="blank">Make Charts</a> page to get started.</p>
+<p>While we are sure it is possible to make attractive, accessible maps with the processed LANDFIRE rasters in R, we typically move to a different GIS software for mapping, or summarize the data by polygons (e.g., watersheds or hexagons) in R. Try the code on the <a href="make_hex_map.html" target="blank">Make hex map</a> for ways you might map LANDFIRE data in R.</p>
+<p><br> <br></p>
+<div class="logo-row" style="display: flex; justify-content: space-around; align-items: center; margin-top: 2em;">
+<p><img src="assets/usda.png" alt="Logo 3" style="height: 70px; margin: 0 20px;"> <img src="assets/usfs.png" alt="Logo 2" style="height: 80px; margin: 0 20px;"> <img src="assets/doi.png" alt="Logo 1" style="height: 80px; margin: 0 20px;"> <img src="assets/LANDFIRE.png" alt="Logo 3" style="height: 83px; margin: 0 10px;"></p>
+</div>
 
 
 </section>
