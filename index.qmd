@@ -5,22 +5,21 @@ author: "Randy Swaty and Megan Dettenmaier"
 
 ## Why this site?
 
-Do you work with LANDFIRE data and want a faster way to dig into ecological patterns across your landscape? You’re in the right place.
+Do you work with [LANDFIRE](https://landfire.gov){target="blank"} data and want a faster way to dig into ecological patterns across your landscape? You’re in the right place.
 
 This site features quick R code snippets to help you get started (or go deeper) with LANDFIRE data. We recognize the power of well-written code and encourage the LANDFIRE community to build on this foundation of work. These R code examples are designed to be practical, repeatable, and flexible to fit your needs. We hope the coding tools provided can help you automate your work, leverage LANDFIRE, and get solution-oriented support.
 
 We want to hear from you. Do you have feedback, ideas, or a cool way you’re using LANDFIRE data with R? -> [Send them our way](mailto:landfire@tnc.org){target="blank"}. Let’s build a community of practice together.
 
 ## LANDFIRE
-
-[LANDFIRE](https://landfire.gov){target="blank"} (Landscape Fire and Resource Management Planning Tools) is a shared interagency wildland fire management data program across the United States and Territories. Leadership, management, and oversight are through the U.S. Department of Agriculture Forest Service - Fire and Aviation Management and the U.S. Department of the Interior – Office of Wildland Fire. 
-
-LANDFIRE provides more than twenty landscape-scale geospatial products of biological and ecological data, including (900+) vegetation types and (13/40) fire behavior fuel models that support all-lands planning, fire and natural resources management, operations, analyses and assessments.  
-
-**Project Team:** [USGS EROS](https://www.usgs.gov/centers/eros){target="blank"}, EROS Technical Support Services Contract (KBR), [The Nature Conservancy](https://www.nature.org/en-us/){target="blank"}, [USDA Forest Service (Rocky Mountain Research Station) RMRS](https://research.fs.usda.gov/rmrs){target="blank"}, [Forest Inventory & Analysis (FIA)](https://research.fs.usda.gov/programs/fia){target="blank"} 
-
-**Partners:** [USGS Gap Analysis](https://www.usgs.gov/programs/gap-analysis-project){target="blank"}, [National Land Imaging Programs](https://www.usgs.gov/programs/national-land-imaging-program){target="blank"} 
-
+ 
+[LANDFIRE](https://landfire.gov){target="blank"} (Landscape Fire and Resource Management Planning Tools) LANDFIRE is a shared interagency wildland fire management data program across the United States and Territories. Leadership, management, and oversight are through the U.S. Department of Agriculture Forest Service - Fire and Aviation Management and the U.S. Department of the Interior – Office of Wildland Fire.
+ 
+LANDFIRE provides more than twenty landscape-scale geospatial products of biological and ecological data, including data such as (900+) vegetation types and (13/40) fire behavior fuel models that support all-lands planning, fire and natural resources management, operations, analyses and assessments.   
+ 
+**Project Team:** [USGS EROS](https://www.usgs.gov/centers/eros){target="blank"}, EROS Technical Support Services Contract (KBR), [The Nature Conservancy](https://www.nature.org/en-us/){target="blank"}, [USDA Forest Service (Rocky Mountain Research Station) RMRS](https://research.fs.usda.gov/rmrs){target="blank"}, and [Forest Inventory & Analysis (FIA)](https://research.fs.usda.gov/programs/fia){target="blank"}
+ 
+**Partners:** [USGS Gap Analysis](https://www.usgs.gov/programs/gap-analysis-project){target="blank"}, [USGS National Land Imaging Program](https://www.usgs.gov/programs/national-land-imaging-program){target="blank"} 
 
 ::: {.columns}
 
@@ -56,7 +55,7 @@ Using R and LANDFIRE products to explore trends and automate analyses can improv
 
 Contained in Map Zone 35 are multiple ecosystems that provide a colorful sandbox to explore these coding demonstrations.
 
-See map of LANDFIRE Map Zones [here](https://landfirereview.org/IMG/USmapzones-v1_July2015.jpg).  Note: some datasets are compiled by Map Zone so maps or analysis that crosses multiple may result in seamlines or other complications.  Contact us to discuss at [landfire@tnc.org](mailto:landfire@tnc.org){target="blank"}. 
+See map of LANDFIRE Map Zones [here](https://landfirereview.org/IMG/USmapzones-v1_July2015.jpg){target="blank"}.  Note: some datasets are compiled by Map Zone so maps or analysis that crosses multiple may result in seamlines or other complications.  Contact us to discuss at [landfire@tnc.org](mailto:landfire@tnc.org){target="blank"}. 
 
 :::
 
@@ -68,8 +67,6 @@ See map of LANDFIRE Map Zones [here](https://landfirereview.org/IMG/USmapzones-v
 :::
 
 :::
-
-
 
 
 <br>

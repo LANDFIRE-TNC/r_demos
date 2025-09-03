@@ -7,7 +7,7 @@ title: "Download LANDFIRE data into R"
 
 Use this page to:
 
-- Download and prepare LANDFIRE data using the [rlandfire](https://github.com/bcknr/rlandfire){target="blank"} package (developed by Mark Buckner), including setting up a project environment and managing spatial data files. 
+- Download and prepare LANDFIRE data using the [rlandfire](https://github.com/bcknr/rlandfire){target="blank"} package (developed by [Mark Buckner](https://markabuckner.com/)), including setting up a project environment and managing spatial data files 
 
 - Define an area of interest, interact with the LANDFIRE API, and organize downloaded data for future analysis
 
