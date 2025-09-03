@@ -79,17 +79,6 @@ See map of LANDFIRE Map Zones [here](https://landfirereview.org/IMG/USmapzones-v
 3. Let us know if you run into code bugs [landfire@tnc.org](mailto:landfire@tnc.org){target="blank"}
 
 
-## LANDFIRE
-
-[LANDFIRE](https://landfire.gov){target="blank"} (Landscape Fire and Resource Management Planning Tools) LANDFIRE is a shared interagency wildland fire management data program across the United States and Territories. Leadership, management, and oversight are through the U.S. Department of Agriculture Forest Service - Fire and Aviation Management and the U.S. Department of the Interior – Office of Wildland Fire. 
-
-LANDFIRE provides more than twenty landscape-scale geospatial products of biological and ecological data, including data such as (900+) vegetation types and (13/40) fire behavior fuel models that support all-lands planning, fire and natural resources management, operations, analyses and assessments.   
-
-**Project Team:** [USGS EROS](https://www.usgs.gov/centers/eros){target="blank"}, EROS Technical Support Services Contract (KBR), [The Nature Conservancy](https://www.nature.org/en-us/){target="blank"}, [USDA Forest Service (Rocky Mountain Research Station) RMRS](https://research.fs.usda.gov/rmrs){target="blank"}, and [Forest Inventory & Analysis (FIA)](https://research.fs.usda.gov/programs/fia){target="blank"} 
-
-**Partners:** [USGS Gap Analysis](https://www.usgs.gov/programs/gap-analysis-project){target="blank"}, [USGS National Land Imaging Program](https://www.usgs.gov/programs/national-land-imaging-program){target="blank"} 
-
-
 ## Disclaimer (the fine print)
 
 The code provided here is offered as-is, without warranty or guarantee of accuracy, functionality, or fitness for a particular purpose. Like any open-source code, it may not perform identically across all systems, versions of R, RStudio, or associated packages. This content is intended for educational and illustrative purposes only and should not be considered a comprehensive guide to R programming. Users are responsible for validating and adapting the code to suit their specific needs and environments. We cannot assume responsibility for any issues, errors, or outcomes resulting from its use.
