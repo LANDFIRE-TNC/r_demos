@@ -175,13 +175,6 @@
     "text": "Getting Started\n\nCheck your R, R-Studio and package versions. We recommend running the most current version of R or R-Studio. See what we used\nCheck file paths - is your your R-Studio project correctly set up?\nLet us know if you run into code bugs landfire@tnc.org"
   },
   {
-    "objectID": "index.html#landfire-1",
-    "href": "index.html#landfire-1",
-    "title": "LANDFIRE + R: Accelerate Your Analysis",
-    "section": "LANDFIRE",
-    "text": "LANDFIRE\nLANDFIRE (Landscape Fire and Resource Management Planning Tools) LANDFIRE is a shared interagency wildland fire management data program across the United States and Territories. Leadership, management, and oversight are through the U.S. Department of Agriculture Forest Service - Fire and Aviation Management and the U.S. Department of the Interior – Office of Wildland Fire.\nLANDFIRE provides more than twenty landscape-scale geospatial products of biological and ecological data, including data such as (900+) vegetation types and (13/40) fire behavior fuel models that support all-lands planning, fire and natural resources management, operations, analyses and assessments.\nProject Team: USGS EROS, EROS Technical Support Services Contract (KBR), The Nature Conservancy, USDA Forest Service (Rocky Mountain Research Station) RMRS, and Forest Inventory & Analysis (FIA)\nPartners: USGS Gap Analysis, USGS National Land Imaging Program"
-  },
-  {
     "objectID": "index.html#disclaimer-the-fine-print",
     "href": "index.html#disclaimer-the-fine-print",
     "title": "LANDFIRE + R: Accelerate Your Analysis",
