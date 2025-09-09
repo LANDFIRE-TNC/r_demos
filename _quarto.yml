@@ -11,7 +11,10 @@ project:
     - make_hex_map.qmd
     - about.qmd
     
-    
+
+website:  
+  google-analytics: G-T03MCC6N19
+  
 resources:
   - archive\
 
