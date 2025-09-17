@@ -12,14 +12,12 @@ project:
     - about.qmd
     
 
-website:  
-  google-analytics: G-T03MCC6N19
-  
 resources:
   - archive\
 
 website:
   title: "LANDFIRE R Toolkit"
+  google-analytics: G-T03MCC6N19
   navbar:
     search: TRUE
     pinned: true
@@ -29,6 +27,7 @@ website:
         
       - href: download.qmd
         text: Download data
+
         
       - href: prep_rasters.qmd
         text: Prepare rasters
