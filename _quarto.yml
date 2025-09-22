@@ -10,16 +10,10 @@ project:
     - make_charts.qmd
     - make_hex_map.qmd
     - about.qmd
-    
-
-website:  
-  google-analytics: G-T03MCC6N19
   
-resources:
-  - archive\
-
 website:
   title: "LANDFIRE R Toolkit"
+  google-analytics: G-T03MCC6N19
   navbar:
     search: TRUE
     pinned: true
