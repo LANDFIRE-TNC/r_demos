@@ -10,15 +10,7 @@ project:
     - make_charts.qmd
     - make_hex_map.qmd
     - about.qmd
-<<<<<<< HEAD
-    
 
-resources:
-  - archive\
-
-=======
-  
->>>>>>> 4ea617fadcdb357ae990fb5ab2de6f0a43df5813
 website:
   title: "LANDFIRE R Toolkit"
   google-analytics: G-T03MCC6N19
