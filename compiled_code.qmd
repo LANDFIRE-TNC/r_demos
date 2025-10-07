@@ -1,0 +1,22 @@
+---
+title: "Compiled Code"
+---
+
+Below you will find several scripts that you can download and use for your convenience.  Note, not all scripts totally stand alone, e.g., you will need to run previous code to get files.  That said, we hope these speed up your work!
+
+
+## Download and manage LANDFIRE data
+
+Get [download_landfire_data.R](code/download_landfire_data.R) that will access LANDFIRE's data server, download data to your computer then unzip and rename the files.
+
+## Prepare LANDFIRE raster(s)
+
+Get [prepare_rasters.R](code/prepare_rasters.R) that crops, masks and splits out downloaded LANDFIRE layer from stacked raster, build attribute tables, write files for use in R or other applications (e.g., ArcGIS pro or QGIS).
+
+## Make charts
+
+Get [make_charts.R](code/make_charts.R) to make a couple basic charts with Biophysical Settings data.  Easy to amend for other processed LANDFIRE datasets.
+
+# Hex maps
+
+Get [hex_maps.R](code/hex_maps.R) to make hexgrids, then to summarize majority BpS and EVT per hexagon, and make an interactive leaflet map.
