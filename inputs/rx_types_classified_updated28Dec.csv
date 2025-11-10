@@ -1,0 +1,678 @@
+Event_Type,Event_Subtype,Class
+Prescribed Fire,Act Fuels Underburn,Broadcast
+Prescribed Fire,ActFuel Jkpt Brn,Pile
+Prescribed Fire,Activity Fuels Broadcast Burn,Broadcast
+Prescribed Fire,Activity Fuels Jackpot Burn,Pile
+Prescribed Fire,Activity Fuels Prescribe burning,Unknown
+Prescribed Fire,Activity Fuels Underburn,Broadcast
+Prescribed Fire,Biological/NONE,Unknown
+Prescribed Fire,Brn ActFuel Piles,Pile
+Prescribed Fire,Brn NatFuel Piles,Pile
+Prescribed Fire,BRN_BRD_CS,Broadcast
+Prescribed Fire,BRN_BRD_CS/,Broadcast
+Prescribed Fire,BRN_BRD_CS/BRN_HAND_P/BRN_MACH_P,Pile
+Prescribed Fire,BRN_BRD_CS/BRN_MACH_P,Pile
+Prescribed Fire,BRN_HAND_P,Pile
+Prescribed Fire,BRN_HAND_P/,Pile
+Prescribed Fire,BRN_MACH_P,Pile
+Prescribed Fire,BRN_MACH_P/,Pile
+Prescribed Fire,Broadcast,Broadcast
+Prescribed Fire,BROADCAST,Broadcast
+Prescribed Fire,Broadcast Burn,Broadcast
+Prescribed Fire,BROADCAST BURN,Broadcast
+Prescribed Fire,Broadcast burn,Broadcast
+Prescribed Fire,Broadcast burn.  Agency.,Broadcast
+Prescribed Fire,Broadcast Burn/Fire,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majorit,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Aerial Ignition Device_Prescribed Burn,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Aerial Ignition Device_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Drip torch_Fire,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Drip torch_Fire_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Drip torch_Fire_keypoint6,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Drip torch_Prescribed Burn,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Drip torch_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Drip torch_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Hand Work_Manual_keypoint6,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Helicopter (non-harvest)_Aerial_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Helicopter (non-harvest)_Aerial_keypoint6,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Helicopter (non-harvest)_Fire_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Helicopter (non-harvest)_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Helitorch_Prescribed Burn,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Helitorch_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Helitorch_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_NA_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Ping Pong Balls_Fire_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Ping Pong Balls_Prescribed Burn,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Ping Pong Balls_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Ping Pong Balls_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Propane torch_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Removal_keypoint6,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Drip torch_Fire,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Drip torch_Prescribed Burn,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Hand Work_Manual,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Propane torch_Prescribed Burn,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_x_Drip torch_Prescribed Burn,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_x_Hand Work_Manual,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_x_Propane torch_Prescribed Burn,Broadcast
+Prescribed Fire,Burn,Unknown
+Prescribed Fire,Burn Act Fuels Piles,Pile
+Prescribed Fire,Burn and Seed,Unknown
+Prescribed Fire,Burn Grapple Piles,Pile
+Prescribed Fire,burn hand piles,Pile
+Prescribed Fire,burn handpiles,Pile
+Prescribed Fire,Burn landing piles,Pile
+Prescribed Fire,Burn Landing Piles,Pile
+Prescribed Fire,Burn machine piles,Pile
+Prescribed Fire,burn machine piles,Pile
+Prescribed Fire,Burn NatFuel Piles,Pile
+Prescribed Fire,Burn of Activity Fuels Piles,Pile
+Prescribed Fire,Burn of Natural Fuels Piles,Pile
+Prescribed Fire,Burn Pile ActFuel,Pile
+Prescribed Fire,Burning,Unknown
+Prescribed Fire,Burning handpiles,Pile
+Prescribed Fire,Burning landing piles,Pile
+Prescribed Fire,Burning of Piled Material,Pile
+Prescribed Fire,Burning of Piled Material/Manual,Pile
+Prescribed Fire,Burning of Piled Material_Drip torch_Fire,Pile
+Prescribed Fire,Burning of Piled Material_Drip torch_Manual,Pile
+Prescribed Fire,Burning of Piled Material_Drip torch_Prescribed Burn,Pile
+Prescribed Fire,Burning of Piled Material_Excavator_Fire,Pile
+Prescribed Fire,Burning of Piled Material_Fire,Pile
+Prescribed Fire,Burning of Piled Material_Grapple Piler_Mechanical,Pile
+Prescribed Fire,Burning of Piled Material_Hand Work_Manual,Pile
+Prescribed Fire,Burning of Piled Material_Helitorch_Fire,Pile
+Prescribed Fire,Burning of Piled Material_Helitorch_Prescribed Burn,Pile
+Prescribed Fire,Burning of Piled Material_Loppers_Manual,Pile
+Prescribed Fire,Burning of Piled Material_Lumagel_Prescribed Burn,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Chain Saw_Hand piling_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Chain Saw_Manual,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Chain Saw_Manual_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Chain Saw_Manual_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Chain Saw_Mechanical_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Chain Saw_Power Hand_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Drip torch_Fire,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Drip torch_Fire_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Drip torch_Fire_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Drip torch_Manual,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Drip torch_Manual_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Drip torch_Prescribed Burn,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Drip torch_Prescribed Burn_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Drip torch_Prescribed Burn_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Excavator_Fire,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Excavator_Fire_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Excavator_Mechanical_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Fire,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Fire_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Fire_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Forwarder_Mechanical_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Grapple Piler_Mechanical,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Grapple Piler_Mechanical pile,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Grapple Piler_Mechanical pile_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Grapple Piler_Mechanical_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Grapple Piler_Mechanical_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Ground Base Skidder *_Mechanical,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Ground Base Skidder *_Mechanical_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Hand Work_Fire,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Hand Work_Fire_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Hand Work_Manual,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Hand Work_Manual_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Hand Work_Manual_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Hazel hoe_Fire_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Helitorch_Fire,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Helitorch_Fire_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Helitorch_Prescribed Burn,Broadcast
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Helitorch_Prescribed Burn_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Logging Methods_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Loppers_Manual_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Lumagel_Fire_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Lumagel_Prescribed Burn,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Lumagel_Prescribed Burn_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Lumagel_Prescribed Burn_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Manual,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Manual_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Manual_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Mobile Ground_Mechanical_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_NA_Fire_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_NA_Fire_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_NA_Manual,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_NA_Manual_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_NA_Manual_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_NA_Not Applicable_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_NA_Prescribed Burn_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_NA_Prescribed Burn_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Prescribed Burn_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Prescribed Burn_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Propane torch_Fire,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Propane torch_Fire_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Propane torch_Fire_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Propane torch_Manual,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Propane torch_Manual_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Propane torch_Manual_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Propane torch_Prescribed Burn,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Propane torch_Prescribed Burn_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Propane torch_Prescribed Burn_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Rubber tired skidder logging_Mechanical,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Rubber tired skidder logging_Mechanical_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Rubber tired skidder logging_Mechanical_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Rubber tired skidder logging_Tractor Logging_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Terra torch_Manual_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Manual,Pile
+Prescribed Fire,Burning of Piled Material_Prescribed Burn,Pile
+Prescribed Fire,Burning of Piled Material_Propane torch_Fire,Pile
+Prescribed Fire,Burning of Piled Material_Propane torch_Manual,Pile
+Prescribed Fire,Burning of Piled Material_Propane torch_Prescribed Burn,Pile
+Prescribed Fire,Burning of Piled Material_x,Pile
+Prescribed Fire,Burning of Piled Material_x_Drip torch_Fire,Pile
+Prescribed Fire,Burning of Piled Material_x_Drip torch_Manual,Pile
+Prescribed Fire,Burning of Piled Material_x_Drip torch_Prescribed Burn,Pile
+Prescribed Fire,Burning of Piled Material_x_Hand Work_Fire,Pile
+Prescribed Fire,Burning of Piled Material_x_Hand Work_Manual,Pile
+Prescribed Fire,Burning of Piled Material_x_Helitorch_Fire,Pile
+Prescribed Fire,Burning of Piled Material_x_NA_Fire,Pile
+Prescribed Fire,Burning of Piled Material_x_NA_Manual,Pile
+Prescribed Fire,Burning of Piled Material_x_NA_Not Applicable,Pile
+Prescribed Fire,Burning of Piled Material_x_NA_Prescribed Burn,Pile
+Prescribed Fire,Burning of Piled Material_x_Propane torch_Fire,Pile
+Prescribed Fire,Burning of Piled Material_x_Propane torch_Manual,Pile
+Prescribed Fire,Burning of Piled Material_x_Propane torch_Prescribed Burn,Pile
+Prescribed Fire,Burning site preparation for natural regeneration,Broadcast
+Prescribed Fire,Burning site preparation for planting,Broadcast
+Prescribed Fire,Control of Understory Vegetation- Burning,Broadcast
+Prescribed Fire,Crooked crk RX,Unknown
+Prescribed Fire,Cut/Pile/Burn,Pile
+Prescribed Fire,Drip Torch,Unknown
+Prescribed Fire,Ecosystem Burning - Natural Fuels,Broadcast
+Prescribed Fire,Fire,Unknown
+Prescribed Fire,FIRE,Unknown
+Prescribed Fire,Fire -,Unknown
+Prescribed Fire,Fire - Broadcast Burn,Broadcast
+Prescribed Fire,FIre - Broadcast Burn,Broadcast
+Prescribed Fire,Fire - Broadcast Burning - Covers a majority of the unit,Broadcast
+Prescribed Fire,FIre - Broadcast Burning - Covers a majority of the unit,Broadcast
+Prescribed Fire,Fire - Burning of Piled Material,Pile
+Prescribed Fire,Fire - Canjilon WUI Piles Rx FY21,Pile
+Prescribed Fire,Fire - CAT MESA PILE RX 2020,Pile
+Prescribed Fire,Fire - Deer Trail Piles Rx FY21,Pile
+Prescribed Fire,Fire - EAST FORK PILE RX 2021,Pile
+Prescribed Fire,Fire - EAST FORK TO PILE BURN RX,Pile
+Prescribed Fire,Fire - FALLS TO PILE RX,Pile
+Prescribed Fire,Fire - FY21 El Rito Canyon Piles Rx,Pile
+Prescribed Fire,Fire - FY21 KSC Piles Rx,Pile
+Prescribed Fire,Fire - Hand Pile Burn,Pile
+Prescribed Fire,Fire - Handpile Burn,Pile
+Prescribed Fire,Fire - HWY 96 PILE RX 2021,Pile
+Prescribed Fire,Fire - HYDE PARK UNIT 1 PILE BURN 2020,Pile
+Prescribed Fire,Fire - Jackpot Burn,Pile
+Prescribed Fire,Fire - KSC Piles Rx FY21,Pile
+Prescribed Fire,Fire - Machine Pile Burn,Pile
+Prescribed Fire,Fire - OJITOS PILE RX 2021,Pile
+Prescribed Fire,Fire - PACHECO CANYON UNIT 1 PILE RX 2021,Pile
+Prescribed Fire,Fire - PINO WEST TO PILE RX 2021,Pile
+Prescribed Fire,Fire - Prescribed Fire,Unknown
+Prescribed Fire,Fire - SAN DIEGO UNIT 1 PILE BURN,Pile
+Prescribed Fire,Fire Use,Broadcast
+Prescribed Fire,Fire Use/Fire,Unknown
+Prescribed Fire,"Fire, - Jackpot Burning - Scattered concentrations",Pile
+Prescribed Fire,Fire/Broadcast Burn,Broadcast
+Prescribed Fire,Fire/Broadcast Burning - Covers a majority of the unit,Broadcast
+Prescribed Fire,Fire/Burning of Piled Material,Pile
+Prescribed Fire,FIre/Burning of Piled Material,Pile
+Prescribed Fire,Fire/Fire Use,Broadcast
+Prescribed Fire,Fire/Hand Pile Burn,Pile
+Prescribed Fire,Fire/Jackpot Burn,Pile
+Prescribed Fire,Fire/Machine Pile Burn,Pile
+Prescribed Fire,Fire/PF,Unknown
+Prescribed Fire,Fire/PFB,Unknown
+Prescribed Fire,Fire/PFH,Unknown
+Prescribed Fire,Fire/PFJ,Unknown
+Prescribed Fire,Fire/Pile Burn,Pile
+Prescribed Fire,Fire/Prescribed Burn,Unknown
+Prescribed Fire,Fire/Underburn - Low Intensity (Majority of Unit),Broadcast
+Prescribed Fire,Fire/Wildlife Habitat Prescribed fire,Broadcast
+Prescribed Fire,Fire_Broadcast Burn,Broadcast
+Prescribed Fire,Fire_Hand Pile Burn,Pile
+Prescribed Fire,Fire_Jackpot Burn,Pile
+Prescribed Fire,Fire_Machine Pile Burn,Pile
+Prescribed Fire,FIRE_TYPE:48,Unknown
+Prescribed Fire,Fire-Broadcast Burn / Underburn,Broadcast
+Prescribed Fire,Fire-Broadcast Burn Maintenance,Broadcast
+Prescribed Fire,Fire-Broadcast Burn/ Underburn,Broadcast
+Prescribed Fire,Fire-Hand Pile Burn,Pile
+Prescribed Fire,FireType 48: Management-ignited prescribed fires,Unknown
+Prescribed Fire,Forest Restoration Unit,Unknown
+Prescribed Fire,Fuel Break,Unknown
+Prescribed Fire,Fuels,Unknown
+Prescribed Fire,Fuels and Fire Activities,Unknown
+Prescribed Fire,Hand Pile Burn,Pile
+Prescribed Fire,hand pile burn,Pile
+Prescribed Fire,Hand Pile Burn/Broadcast Burn,Unknown
+Prescribed Fire,Hand Pile Burn/Chemical,Pile
+Prescribed Fire,Hand Pile Burn/Fire,Pile
+Prescribed Fire,Hand thin/ipile burn,Pile
+Prescribed Fire,Hand thin/pile burn,Pile
+Prescribed Fire,handpile burn,Pile
+Prescribed Fire,Handthin/Piles burn,Pile
+Prescribed Fire,HELITORCH,Broadcast
+Prescribed Fire,IncidentTypeCategory-CX,Unknown
+Prescribed Fire,IncidentTypeCategory-RX,Broadcast
+Prescribed Fire,Invasive Species Treatment/Fire,Unknown
+Prescribed Fire,Invasives - Cultural /Fire,Broadcast
+Prescribed Fire,JACKPOT,Pile
+Prescribed Fire,Jackpot Burn,Pile
+Prescribed Fire,Jackpot Burn/Fire,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentr,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_Drip torch_Fire,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_Drip torch_Prescribed Burn,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_Jackpot Burn,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_Jackpot Burn_Drip torch_Fire,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_Jackpot Burn_Drip torch_Fire_keypoint3,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_Jackpot Burn_Drip torch_Fire_keypoint6,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_Jackpot Burn_Drip torch_Prescribed Burn,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_Jackpot Burn_Drip torch_Prescribed Burn_keypoint3,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_Jackpot Burn_Drip torch_Prescribed Burn_keypoint6,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_Jackpot Burn_Helitorch_Prescribed Burn_keypoint3,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_Jackpot Burn_keypoint3,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_Jackpot Burn_Ping Pong Balls_Prescribed Burn,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_Jackpot Burn_Ping Pong Balls_Prescribed Burn_keypoint6,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_Jackpot Burn_Propane torch_Manual_keypoint3,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_x_Drip torch_Fire,Pile
+Prescribed Fire,Jackpot Burning - Scattered concentrations_x_Drip torch_Prescribed Burn,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_Drip torch_Prescribed Burn,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_Machine Pile Burn_Drip torch_Prescribed Burn_keypoint3,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_Machine Pile Burn_Drip torch_Prescribed Burn_keypoint6,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_Machine Pile Burn_Hand Work_Manual_keypoint3,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_Machine Pile Burn_Hand Work_Manual_keypoint6,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_Machine Pile Burn_keypoint6,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_Machine Pile Burn_Manual_keypoint6,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_Machine Pile Burn_NA_Not Applicable_keypoint6,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_Machine Pile Burn_Propane torch_Fire_keypoint6,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_Machine Pile Burn_Propane torch_Manual_keypoint6,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_Machine Pile Burn_Terra torch_Manual_keypoint3,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_N/A_Drip torch_Prescribed Burn,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_N/A_Propane torch_Manual,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_Propane torch_Manual,Pile
+Prescribed Fire,Landing Treated - Area Mitigated_x_Drip torch_Prescribed Burn,Pile
+Prescribed Fire,Machine Pile Burn,Pile
+Prescribed Fire,Machine Pile Burn/Fire,Pile
+Prescribed Fire,Management Ignited Prescribed Fire,Unknown
+Prescribed Fire,Management of Prescribed Wildland Fire - Activity,Unknown
+Prescribed Fire,Management of Prescribed Wildland Fire - Natural Fuels,Broadcast
+Prescribed Fire,MIPF,Unknown
+Prescribed Fire,NatFuel Rx Brn,Broadcast
+Prescribed Fire,NatFuel UnderBurn,Broadcast
+Prescribed Fire,Natural Fuels Broadcast Burn,Broadcast
+Prescribed Fire,Natural Fuels Jackpot Burns,Pile
+Prescribed Fire,Natural Fuels Prescribed Burn,Broadcast
+Prescribed Fire,Natural Fuels Underburn,Broadcast
+Prescribed Fire,Natural regeneration - prescribed fire,Broadcast
+Prescribed Fire,OTH,Unknown
+Prescribed Fire,Other,Unknown
+Prescribed Fire,Other Mechanical_Site Preparation (RxBurn),Unknown
+Prescribed Fire,P2,Unknown
+Prescribed Fire,PHYSICAL,Unknown
+Prescribed Fire,Physical/,Unknown
+Prescribed Fire,PHYSICAL/ALTER,Unknown
+Prescribed Fire,Physical/ALTER,Unknown
+Prescribed Fire,PHYSICAL/NONE,Unknown
+Prescribed Fire,Physical/NONE,Unknown
+Prescribed Fire,PHYSICAL/OTHER,Unknown
+Prescribed Fire,Physical/OTHER,Unknown
+Prescribed Fire,Physical/Range Cover Manipulation,Broadcast
+Prescribed Fire,PHYSICAL/REMOVE,Unknown
+Prescribed Fire,Physical/REMOVE,Unknown
+Prescribed Fire,Physical/Wildlife Habitat Prescribed fire,Broadcast
+Prescribed Fire,Pile burn,Pile
+Prescribed Fire,Pile Burn,Pile
+Prescribed Fire,pile burn,Pile
+Prescribed Fire,Pile Burn ActFuel,Pile
+Prescribed Fire,Pile Burn Nat Fuel,Pile
+Prescribed Fire,Pile Burning,Pile
+Prescribed Fire,Pile Burning_Pile Burning,Pile
+Prescribed Fire,PILE_BURN,Pile
+Prescribed Fire,PileAndBurn,Pile
+Prescribed Fire,Piles burn,Pile
+Prescribed Fire,"Piling of Fuels, Hand or Machine_Machine Pile_Chain Saw_Fire_keypoint3",Pile
+Prescribed Fire,"Piling of Fuels, Hand or Machine_Machine Pile_Drip torch_Fire",Pile
+Prescribed Fire,"Piling of Fuels, Hand or Machine_Machine Pile_Drip torch_Fire_keypoint3",Pile
+Prescribed Fire,"Piling of Fuels, Hand or Machine_Machine Pile_Drip torch_Fire_keypoint6",Pile
+Prescribed Fire,"Piling of Fuels, Hand or Machine_Machine Pile_Drip torch_Prescribed Burn",Pile
+Prescribed Fire,"Piling of Fuels, Hand or Machine_Machine Pile_Drip torch_Prescribed Burn_keypoint3",Pile
+Prescribed Fire,"Piling of Fuels, Hand or Machine_Machine Pile_Drip torch_Prescribed Burn_keypoint6",Pile
+Prescribed Fire,"Piling of Fuels, Hand or Machine_Machine Pile_Helitorch_Mechanical_keypoint3",Pile
+Prescribed Fire,"Piling of Fuels, Hand or Machine_Machine Pile_Propane torch_Fire_keypoint6",Pile
+Prescribed Fire,"Piling of Fuels, Hand or Machine_x_Propane torch_Fire",Pile
+Prescribed Fire,"Plant or Seed Shrubs, Forbs, Grasses_Drip torch_Prescribed Burn",Unknown
+Prescribed Fire,PRESC NAT,Broadcast
+Prescribed Fire,PRESCRIBE BURN ONLY,Unknown
+Prescribed Fire,Prescribed,Unknown
+Prescribed Fire,Prescribed Burn,Unknown
+Prescribed Fire,prescribed burn,Unknown
+Prescribed Fire,Prescribed burning,Unknown
+Prescribed Fire,Prescribed Fire,Unknown
+Prescribed Fire,PRESCRIBED FIRE,Unknown
+Prescribed Fire,Prescribed fire,Unknown
+Prescribed Fire,Prescribed Fire (Fire type 48),Unknown
+Prescribed Fire,"Prescribed Fire, management ignited",Unknown
+Prescribed Fire,PRESCRIBED FIRE/,Unknown
+Prescribed Fire,Prescribed Fire/,Unknown
+Prescribed Fire,Prescribed fire/,Unknown
+Prescribed Fire,Prescribed Fire/ Broadcast Burn,Broadcast
+Prescribed Fire,PRESCRIBED FIRE/Broadcast Burn,Broadcast
+Prescribed Fire,Prescribed Fire/Broadcast Burn,Broadcast
+Prescribed Fire,Prescribed Fire/Broadcast/Prescribed Burn,Broadcast
+Prescribed Fire,Prescribed Fire/Chemical/Planting,Unknown
+Prescribed Fire,Prescribed Fire/Chemical/Planting/ Machine Planting,Unknown
+Prescribed Fire,Prescribed fire/Fire,Unknown
+Prescribed Fire,Prescribed Fire/Hand Pile Burn,Pile
+Prescribed Fire,PRESCRIBED FIRE/Handpile Burn,Pile
+Prescribed Fire,Prescribed fire/Handpile Burn,Pile
+Prescribed Fire,Prescribed Fire/NONE,Unknown
+Prescribed Fire,Prescribed Fire/None,Unknown
+Prescribed Fire,Prescribed fire/NONE,Unknown
+Prescribed Fire,Prescribed Fire/OTHER,Unknown
+Prescribed Fire,Prescribed Fire/Other,Unknown
+Prescribed Fire,Prescribed fire/Pile burn,Pile
+Prescribed Fire,Prescribed Fire/Pile Burning,Pile
+Prescribed Fire,Prescribed Fire/Planting,Unknown
+Prescribed Fire,Prescribed Fire/Planting/ Machine Planting,Unknown
+Prescribed Fire,PRESCRIBED FIRE/Prescribed Fire,Unknown
+Prescribed Fire,Prescribed fire/Prescribed fire,Unknown
+Prescribed Fire,Prescribed Fire/REMOVE,Unknown
+Prescribed Fire,Prescribed Fire/Treatment on FWS lands by another agency,Unknown
+Prescribed Fire,Prescribed Fire/Treatment on FWS lands by another Federal Agency,Unknown
+Prescribed Fire,Prescribed Fire/Treatment on FWS lands by FWS,Unknown
+Prescribed Fire,Prescribed Fire/Treatment on Other lands by an Agreement,Unknown
+Prescribed Fire,Prescribed Fire_Broadcast Burn,Broadcast
+Prescribed Fire,PRESCRIBED FIRE_NONE,Unknown
+Prescribed Fire,Prescribed Fires,Unknown
+Prescribed Fire,Pruning to Raise Canopy Height and Discourage Crown Fire_Thinning_Drip torch_Fire_keypoint3,Unknown
+Prescribed Fire,Range Control Vegetation_Grazing_Drip torch_Fire,Broadcast
+Prescribed Fire,Range Control Vegetation_Grazing_Drip torch_Fire_keypoint6,Broadcast
+Prescribed Fire,Range Control Vegetation_Grazing_Helicopter (non-harvest)_Prescribed Burn,Broadcast
+Prescribed Fire,Range Control Vegetation_Grazing_NA_Fire,Broadcast
+Prescribed Fire,Range Cover Manipulation,Broadcast
+Prescribed Fire,Range Cover Manipulation_Grazing_Drip torch_Fire,Broadcast
+Prescribed Fire,Range Cover Manipulation_Grazing_Drip torch_Prescribed Burn,Broadcast
+Prescribed Fire,Range Cover Manipulation_Grazing_Fire,Broadcast
+Prescribed Fire,Range Cover Manipulation_Grazing_NA_Wildfire,Broadcast
+Prescribed Fire,Range Cover Manipulation_Grazing_Ping Pong Balls_Prescribed Burn,Broadcast
+Prescribed Fire,Range Forage Improvement_N/A_Drip torch_Prescribed Burn,Broadcast
+Prescribed Fire,Rearrangement of Fuels_Drip torch_Fire,Unknown
+Prescribed Fire,Rearrangement of Fuels_Lop and Scatter_Drip torch_Fire,Broadcast
+Prescribed Fire,Rearrangement of Fuels_Lop and Scatter_Drip torch_Fire_keypoint6,Broadcast
+Prescribed Fire,Rearrangement of Fuels_Lop and Scatter_Drip torch_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Rx,Unknown
+Prescribed Fire,rx,Unknown
+Prescribed Fire,Rx & WF,Unknown
+Prescribed Fire,Rx / Chemical / Seeding-Drill,Unknown
+Prescribed Fire,Rx / Seeding-Drill,Unknown
+Prescribed Fire,Rx Burn,Unknown
+Prescribed Fire,RX Burns,Unknown
+Prescribed Fire,RX fire,Unknown
+Prescribed Fire,Rx Fire,Unknown
+Prescribed Fire,RX_FIRE,Unknown
+Prescribed Fire,"Salvage Cut (intermediate treatment, not regeneration)_Salvage cut (interme_Propane torch_Manual",Unknown
+Prescribed Fire,"Salvage Cut (intermediate treatment, not regeneration)_Thinning_Propane torch_Manual_keypoint6",Unknown
+Prescribed Fire,Site Preparation (RxBurn),Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Drip torch_Fire,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Drip torch_Fire_keypoint6,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Drip torch_Prescribed Burn,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Drip torch_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Drip torch_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Helitorch_Fire,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_NA_Wildfire,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Propane torch_Fire,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Propane torch_Prescribed Burn,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Propane torch_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Site Preparation for Planting - Burning,Broadcast
+Prescribed Fire,Site Preparation for Planting - Burning_Broadcast Burn_Drip torch_Fire,Broadcast
+Prescribed Fire,Site Preparation for Planting - Burning_Broadcast Burn_Drip torch_Fire_keypoint6,Broadcast
+Prescribed Fire,Site Preparation for Planting - Burning_Broadcast Burn_Drip torch_Prescribed Burn,Broadcast
+Prescribed Fire,Site Preparation for Planting - Burning_Broadcast Burn_Drip torch_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Site Preparation for Planting - Burning_Broadcast Burn_Drip torch_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Site Preparation for Planting - Burning_Broadcast Burn_Propane torch_Manual_keypoint6,Broadcast
+Prescribed Fire,Site Preparation for Planting - Burning_Broadcast Burn_Propane torch_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,SP- Burn Broadcast Burn,Broadcast
+Prescribed Fire,SP- Burn Landing Only,Pile
+Prescribed Fire,SP- Burn Method Unspecified,Broadcast
+Prescribed Fire,SP- Burn Pile and Burn,Pile
+Prescribed Fire,SP- Burn Piles,Pile
+Prescribed Fire,Thin-handpile-burn,Pile
+Prescribed Fire,Thinning for Hazardous Fuels Reduction_Thinning_Drip torch_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Treatment,Unknown
+Prescribed Fire,Tree Release and Weed_Thinning_NA_Wildfire,Unknown
+Prescribed Fire,Tree Release and Weed_Thinning_Ping Pong Balls_Prescribed Burn,Broadcast
+Prescribed Fire,UBURN,Broadcast
+Prescribed Fire,Underburn,Broadcast
+Prescribed Fire,underburn,Broadcast
+Prescribed Fire,Underburn - Low Int,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit),Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Aerial Ignition Device_Fire_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Aerial Ignition Device_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Drip torch_Fire,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Drip torch_Fire_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Drip torch_Fire_keypoint6,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Drip torch_Prescribed Burn,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Drip torch_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Drip torch_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Fire_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Hand Work_Manual_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Helicopter (non-harvest)_Fire,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Helicopter (non-harvest)_Fire_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Helicopter (non-harvest)_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Helitorch_Prescribed Burn,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Helitorch_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Helitorch_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Low ground pressure machinery (non-harvest)_Mechanical_keypoint6,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_NA_Not Applicable_keypoint6,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Ping Pong Balls_Fire_keypoint6,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Ping Pong Balls_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Propane torch_Fire_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Propane torch_Fire_keypoint6,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Propane torch_Manual,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Propane torch_Manual_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Propane torch_Manual_keypoint6,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Propane torch_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Propane torch_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Unmanned Aerial System (UAS)_Aerial,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Unmanned Aerial System (UAS)_Aerial_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Drip torch_Fire,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Drip torch_Prescribed Burn,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Propane torch_Fire,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Propane torch_Manual,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Propane torch_Prescribed Burn,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_x_Drip torch_Fire,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_x_Drip torch_Prescribed Burn,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_x_NA_Not Applicable,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_x_Propane torch_Fire,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_x_Propane torch_Prescribed Burn,Broadcast
+Prescribed Fire,Vegetation Improvements/Prescribed fire,Unknown
+Prescribed Fire,Vegetation removal / hand crew/Lop-pile-burn,Pile
+Prescribed Fire,Wildlife Habitat Prescribed fire,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Drip torch_Fire_keypoint6,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Drip torch_Prescribed Burn,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Drip torch_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Drip torch_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Helitorch_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Helitorch_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Ping Pong Balls_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Ping Pong Balls_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Yarding - Removal of Fuels by Carrying or Dragging_Biomass Removal_Drip torch_Fire,Unknown
+Prescribed Fire,NA,Unknown
+Prescribed Fire,Site Prep,Unknown
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Aerial Ignition Device_Fire_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Aerial Ignition Device_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Fixed wing aircraft_Wildfire_keypoint6,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Manual_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Plowing Machine_Fire_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Terra torch_Fire_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Terra torch_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Wildfire,Broadcast
+Prescribed Fire,Broadcast Burning - Covers a majority of the unit_Broadcast Burn_Wildfire_keypoint6,Broadcast
+Prescribed Fire,burn,Unknown
+Prescribed Fire,Burn - Site Prep (CS RT22 Only),Unknown
+Prescribed Fire,Burn - Wildlife Habitat Improvement,Unknown
+Prescribed Fire,Burn/Opening,Unknown
+Prescribed Fire,Burn/Other,Unknown
+Prescribed Fire,Burn/Slash,Unknown
+Prescribed Fire,Burn/Understory,Broadcast
+Prescribed Fire,Burn/Unspecified,Unknown
+Prescribed Fire,Burning of Piled Material_Dozer_Mechanical,Pile
+Prescribed Fire,Burning of Piled Material_Drip torch_Mechanical,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Chipper_Mechanical_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Dozer_Mechanical_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Dozer_Mechanical_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Drip torch_Mechanical_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Fuses_Fire_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Mechanical,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Mechanical_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_Mechanical_keypoint6,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_NA_Mechanical,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_NA_Mechanical_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Machine Pile Burn_NA_Not Applicable_keypoint3,Pile
+Prescribed Fire,Burning of Piled Material_Mechanical,Pile
+Prescribed Fire,Burning site preparation for seeding,Unknown
+Prescribed Fire,Control of Understory Vegetation- Burning_Broadcast Burn_Drip torch_Fire_keypoint6,Broadcast
+Prescribed Fire,escaped,Unknown
+Prescribed Fire,Fall/Prescribed Burn,Unknown
+Prescribed Fire,Fill-in or Replant Trees_Planting_Fire,Unknown
+Prescribed Fire,Fire Type = 48,Unknown
+Prescribed Fire,Fire-PRESCRIBED,Unknown
+Prescribed Fire,FR/Wildlife,Unknown
+Prescribed Fire,Fuel Break_Thinning_Drip torch_Prescribed Burn_keypoint3,Unknown
+Prescribed Fire,Fuel Patch Burn,Unknown
+Prescribed Fire,Fuel Reduction,Unknown
+Prescribed Fire,Fuel Reduction MA22,Unknown
+Prescribed Fire,fuel/wildlife,Unknown
+Prescribed Fire,fuels,Unknown
+Prescribed Fire,Fuels/Site Prep,Unknown
+Prescribed Fire,Fuels/Wildlife,Unknown
+Prescribed Fire,IncidentTypeCategory-WF,Unknown
+Prescribed Fire,KRAL COMPLEX RX,Unknown
+Prescribed Fire,KV Wildlife & Fuels,Unknown
+Prescribed Fire,Management-Ignited Prescribed Fire,Unknown
+Prescribed Fire,Monitoring/Prescribed Burn,Unknown
+Prescribed Fire,NPS FireType 48- Management-ignited prescribed fires,Unknown
+Prescribed Fire,P-Burn,Unknown
+Prescribed Fire,P-Burn CWKV,Unknown
+Prescribed Fire,P-Burn Stevens Grant,Unknown
+Prescribed Fire,P-Burn WFHF,Unknown
+Prescribed Fire,perscribed fire,Unknown
+Prescribed Fire,Plant Trees_Planting_Drip torch_Fire,Unknown
+Prescribed Fire,Plant Trees_Planting_NA_Fire,Unknown
+Prescribed Fire,PreBurn,Unknown
+Prescribed Fire,Prescrbed,Unknown
+Prescribed Fire,prescribed,Unknown
+Prescribed Fire,PRESCRIBED BURN,Unknown
+Prescribed Fire,Prescribed Burn Completed,Unknown
+Prescribed Fire,Prescribed burn control of understory vegetation,Unknown
+Prescribed Fire,prescribed burning,Unknown
+Prescribed Fire,Prescribed Burning,Unknown
+Prescribed Fire,PRESCRIBED BURNING:PRESCRIBED BURN,Unknown
+Prescribed Fire,Prescribed FIre,Unknown
+Prescribed Fire,prescribed fire,Unknown
+Prescribed Fire,Prescribed fire escape,Unknown
+Prescribed Fire,Prescribed Fire Treatment,Unknown
+Prescribed Fire,Prescribed Fire/Fire Cause 10,Unknown
+Prescribed Fire,Prescribed Fire/Fire Type 3,Unknown
+Prescribed Fire,Prescribed Fire/FireType 48,Unknown
+Prescribed Fire,Prescribed Fire/Herbicide/Mechanical,Unknown
+Prescribed Fire,Prescribed Fire/Long Draw RX,Unknown
+Prescribed Fire,Prescribed fire/Pile Burning,Pile
+Prescribed Fire,Prescribed Fire/Silver Mountain RX,Unknown
+Prescribed Fire,Prescribed Fire/Treatment on FWS lands by another Non-Federal Agency,Unknown
+Prescribed Fire,Prescribed_fire,Unknown
+Prescribed Fire,Prescribed_Fire,Unknown
+Prescribed Fire,Prescribeed,Unknown
+Prescribed Fire,PVT,Unknown
+Prescribed Fire,Range Cover Manipulation_Grazing_Aerial Ignition Device_Prescribed Burn,Broadcast
+Prescribed Fire,RX,Unknown
+Prescribed Fire,Rx Burn -State,Unknown
+Prescribed Fire,RX Fire,Unknown
+Prescribed Fire,Rx Fuel Reduction,Unknown
+Prescribed Fire,Rx Fuels,Unknown
+Prescribed Fire,Rx Site Prep,Unknown
+Prescribed Fire,Rx SP & FR,Unknown
+Prescribed Fire,Rx Wildlife,Unknown
+Prescribed Fire,Rx WL & FR,Unknown
+Prescribed Fire,Rx/Fuel Reduction,Unknown
+Prescribed Fire,Rx/fuel reduction,Unknown
+Prescribed Fire,Rx/Fuels,Unknown
+Prescribed Fire,Rx/Site Prep,Unknown
+Prescribed Fire,Rx/SIte Prep,Unknown
+Prescribed Fire,Rx/site prep,Unknown
+Prescribed Fire,Rx/SP & FR,Unknown
+Prescribed Fire,Rx/Wildlife,Unknown
+Prescribed Fire,Rx/Wildlife/Fuels,Unknown
+Prescribed Fire,Rx/Wl & FR,Unknown
+Prescribed Fire,Rx/WL/FR,Unknown
+Prescribed Fire,RX_Fire,Unknown
+Prescribed Fire,RxBurn,Unknown
+Prescribed Fire,RxFire,Unknown
+Prescribed Fire,SEEDBED PREPARATION FOR NATURAL OR DIRECT SEEDING/PRESCRIBED FIRE,Unknown
+Prescribed Fire,site prep,Unknown
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Fire,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Fire_keypoint6,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Hand Work_Manual,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Hand Work_Manual_keypoint6,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Helicopter (non-harvest)_Fire,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Burning_Broadcast Burn_Helicopter (non-harvest)_Fire_keypoint6,Broadcast
+Prescribed Fire,Site Preparation for Natural Regeneration - Manual_Lop and Scatter_Drip torch_Fire,Unknown
+Prescribed Fire,Site Preparation for Natural Regeneration - Manual_Lop and Scatter_Drip torch_Fire_keypoint6,Unknown
+Prescribed Fire,Site Preparation for Natural Regeneration - Manual_Lop and Scatter_Ping Pong Balls_Prescribed Burn,Broadcast
+Prescribed Fire,Site Preparation for Planting - Burning_Broadcast Burn_Hand Work_Fire_keypoint6,Broadcast
+Prescribed Fire,Site Preparation for Planting - Burning_Broadcast Burn_keypoint6,Broadcast
+Prescribed Fire,Site Preparation for Planting - Burning_Broadcast Burn_NA_Not Applicable_keypoint6,Broadcast
+Prescribed Fire,Site Preparation for Planting - Burning_Broadcast Burn_Ping Pong Balls_Fire,Broadcast
+Prescribed Fire,Site Preparation for Planting - Burning_Broadcast Burn_Ping Pong Balls_Fire_keypoint6,Broadcast
+Prescribed Fire,Site Preparation for Planting - Manual_Lop and Scatter_Drip torch_Fire_keypoint6,Unknown
+Prescribed Fire,Site Preparation for Planting - Mechanical_Machine Pile_Drip torch_Prescribed Burn_keypoint6,Pile
+Prescribed Fire,Site Preparation for Planting - Mechanical_Machine Pile_NA_Prescribed Burn_keypoint6,Pile
+Prescribed Fire,Site Preparation for Planting - Mechanical_Machine Pile_Prescribed Burn_keypoint6,Pile
+Prescribed Fire,Site preparation for re-vegetation - prescribed fire,Unknown
+Prescribed Fire,Site Preparation for Seeding - Burning,Unknown
+Prescribed Fire,SP & FR,Unknown
+Prescribed Fire,Spring/Prescribed Burn,Unknown
+Prescribed Fire,Spring/Private Burn,Unknown
+Prescribed Fire,State P-Burn,Unknown
+Prescribed Fire,Tree Release and Weed_Thinning_Aerial Ignition Device_Prescribed Burn,Broadcast
+Prescribed Fire,Tree Release and Weed_Thinning_Drip torch_Prescribed Burn,Unknown
+Prescribed Fire,Tree Release and Weed_Thinning_Ping Pong Balls_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Tree Release and Weed_Thinning_Ping Pong Balls_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Aerial Ignition Device_Prescribed Burn,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Ping Pong Balls_Fire_keypoint3,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Ping Pong Balls_Prescribed Burn,Broadcast
+Prescribed Fire,Underburn - Low Intensity (Majority of Unit)_Broadcast Burn_Ping Pong Balls_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Understory,Broadcast
+Prescribed Fire,understory,Broadcast
+Prescribed Fire,Visual Resource Prescribed burning,Unknown
+Prescribed Fire,Wildlife,Unknown
+Prescribed Fire,wildlife,Unknown
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Aerial Ignition Device_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Fire_keypoint6,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Hand Work_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Helicopter (non-harvest)_Fire_keypoint6,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Helitorch_Prescribed Burn,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_keypoint6,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Ping Pong Balls_Fire_keypoint6,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Ping Pong Balls_Prescribed Burn,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Prescribed Burn,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Prescribed Burn_keypoint6,Broadcast
+Prescribed Fire,Wildlife Habitat Prescribed fire_Broadcast Burn_Unmanned Aerial System (UAS)_Prescribed Burn_keypoint3,Broadcast
+Prescribed Fire,Wildlife MA22,Unknown
+Prescribed Fire,wildlife T&E,Unknown
+Prescribed Fire,Wildlife/Vegetation,Unknown
+Prescribed Fire,WL & FR,Unknown
+Prescribed Fire,Wl & FR,Unknown
