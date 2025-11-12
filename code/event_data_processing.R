@@ -1,8 +1,19 @@
+###
+# code by Kori Blankenship
+# last updated 11/12/2025
+#
 # Process selected LANDFIRE Model Ready and Raw Events
-# Process Overview:
+# Output is a layer with selected fire and non fire treatments
+# for a selected time period. 
+#
+# Steps:
 # 1 - Process non-fire treatments from Model Ready Events
 # 2 - Process prescribed fire treatments from Raw Events
 # 3 - Make a single treatment layer with non-fire + prescribed fire
+###
+
+
+### SET UP ----
 
 library(tidyverse)
 library(sf)
@@ -12,13 +23,13 @@ library(arcgisbinding)
 # initialize arc
 arc.check_product() 
 
-### DATA
+
+### ANCILLARY DATA ----
 
 # prescribed fire type classification
-# *I made this classification. It is not a LANDFIRE
-# product and should be reviewed by the user.*
+# NOTE: I made this classification. It is not a LANDFIRE
+# product and should be reviewed by the user.
 rx_class <- read_csv("inputs/rx_types_classified_updated28Dec.csv")
-
 
 
 ### NON FIRE TREATMENTS ----
@@ -31,14 +42,16 @@ ready_path <- 'inputs\\events_example_data.gdb\\events_ready'
 # get the ready data from the gdb
 ready_open <- arc.open(path = ready_path)
 
-# make a where clause to select non-fire treatments of interest
+# select non-fire treatments of interest for time period
 # list of non-fire treatment types of interest
 nonfire_types <- c("Other Mechanical", "Mastication", "Thinning", "Harvest")
 # where clause including the year and type of treatments
-where_types <- paste0("Year >= 2004 AND EVENT_TYPE IN ('", paste(nonfire_types, collapse = "', '"), "')")
+where_nonfire <- paste0(
+  "Year >= 2004 AND EVENT_TYPE IN ('", paste(nonfire_types, collapse = "', '"), "')"
+  )
 
 # select features using the where clause
-ready_select <- arc.select(ready_open, where_clause = where_types)
+ready_select <- arc.select(ready_open, where_clause = where_nonfire)
 
 # convert the selected data to an sf object
 ready_sf <- arc.data2sf(ready_select)
@@ -51,7 +64,7 @@ ggplot(data = ready_sf) +
 
 ## Clean ----
 
-ready_clean <- ready_sf %>%
+tx_nonfire <- ready_sf %>%
   # select columns of interest
   select(Event_ID, Year, Event_Type, Event_Subtype, Agency, DB_Source, Start_Date, End_Date) %>%
   # add acres
@@ -59,8 +72,8 @@ ready_clean <- ready_sf %>%
   # convert Start_Date and End_Date to date only fields; no time
   mutate(DateStart = ymd(substring(Start_Date, first = 1, last = 10))) %>%
   mutate(DateEnd = ymd(substring(End_Date, first = 1, last = 10))) %>%
-  # remove some columns
-  select(-c(Start_Date, End_Date))
+  # select final columns
+  select(Year, Event_Type)
 
 
 ### FIRE TREATMENTS ----
@@ -73,14 +86,16 @@ raw_path <- 'inputs\\events_example_data.gdb\\events_raw'
 # get the ready data from the gdb
 raw_open <- arc.open(path = raw_path)
 
-# make a where clause to select fire treatments
+# select fire treatments for the time period
 # list of fire treatment types of interest
 fire_types <- c("Prescribed Fire")
 # where clause including the year and type of treatments
-where_types <- paste0("Year >= 2004 AND EVENT_TYPE IN ('", paste(fire_types, collapse = "', '"), "')")
+where_fire <- paste0(
+  "Year >= 2004 AND EVENT_TYPE IN ('", paste(fire_types, collapse = "', '"), "')"
+  )
 
 # select features using the where clause
-raw_select <- arc.select(raw_open, where_clause = where_types)
+raw_select <- arc.select(raw_open, where_clause = where_fire)
 
 # convert the selected data to an sf object
 raw_sf <- arc.data2sf(raw_select) %>%
@@ -108,7 +123,6 @@ raw_clean <- raw_sf %>%
   # remove some columns
   select(-c(Start_Date, End_Date))
 
-
 ## Remove overlaps ----
 
 # List of years to process
@@ -128,8 +142,9 @@ rawsimple <- raw_clean %>%
   # select columns of interest
   select(Year, Event_Type)
 
-
-### RESOLVE OVERLAPPING POLYGONS OF THE SAME TYPE ----
+## Remove overlaps, within type ----
+# remove overlapping polygons of the same type within the same year
+# e.g. 2 pile burns in the same location in the same year
 
 union_polys <- list()
 
@@ -158,17 +173,22 @@ for (year in year_list) {
   }
 }
 
-# combine all year/type unioned layers - using r bind
-#rawsimple_union <- do.call(rbind, union_polys) 
-
-# try bind_rows in stead
+# combine all year/type unioned layers
 rawsimple_union <- bind_rows(union_polys)
-# explictly make an sf object
+
+# explicitly make a valid sf object
 rawsimple_union <- st_as_sf(rawsimple_union)
 rawsimple_union <- st_make_valid(rawsimple_union)
 
-
-### RESOLVE OVERLAPPING POLYGONS OF DIFFERENT TYPE ----
+## Remove overlaps, between types ----
+# remove overlapping polygons of different types within the same year
+# e.g. a broadcast and a pile burn in the same location in the same year
+# When overlpping fire polygons are found in the same year, overlaps are
+# removed based on this order of priority: broadcast, pile, unknown. In
+# other words, if a broadcast burn overlaps a pile burn in the same year,
+# the area of overlap is assigned the type broadcast. When a pile
+# burn overlaps an unknown burn in the same year, the area of overlap is
+# assigned the type pile.
 
 # Initialize an empty list to store final results
 final_results <- list()
@@ -202,8 +222,11 @@ for (year in year_list) {
   final_results[[paste0("final", year)]] <- bcast_pile_unk
 }
 
+## Note ----
+# a warning is generated here. I'm not sure why and multiple
+# attempts to resolve the warning have failed. The results seem OK.
+
 # combine final results for all years
-#tx_fire <- do.call(rbind, final_results) 
 tx_fire <- bind_rows(final_results)
 
 # check it out
@@ -213,58 +236,47 @@ ggplot(data = tx_fire) +
   theme_minimal()
 
 
-### EXPORT ----
+### COMBINE ALL TREATMENTS ----
 
-st_write(events_west, "out/spatial/events/events_nofire.shp", append = FALSE) 
+tx_all <- tx_nonfire %>%
+  bind_rows(tx_fire)
+
+# check it out
+ggplot(data = tx_all) +
+  geom_sf(aes(fill = Event_Type)) +
+  scale_fill_viridis_d() +
+  theme_minimal()
 
 
-# ARCHIVE **************************
+### NOTES ON RESULTS ----
 
-################################
-### MAKE THE MINIMUM DATA ----
-################################
+# The tx_nonfire layer represents individual treatment polygons.
 
-# This section documents how I made the minimum working 
-# dataset that this example uses. I include it here 
-# as a demonstration of how a user could go directly
-# to the Events gdb and extract the info that they want.
+# The tx_fire layer represents the footprint of a given prescribed
+# fire type in a given year. For example, a give year, e.g. 2020,
+# can have up to 3 polygons: one for the footprint for broadcast 
+# burns, one for pile, and one for unknown burns. Some years have
+# fewer than three polygons because not all burn types were present
+# in all years. Because the original treatment polygons were unioned, 
+# individual treatment units are no longer present in the data.
 
-# # read in Area of Interest (aoi) shapefile, plot to check
-# shp <- st_read("inputs/map_zone_35.shp", quiet = TRUE) %>% 
-#   st_transform(crs = 5070) %>%
-#   st_union() %>%
-#   st_sf()
+# The tx_nofire layer could be further processed to union polygons
+# by year to produce a layer equivalent to tx_fire. 
 
-# # plot the shape for fun (not much to look at on it's own!)
-# plot(shp)
+# As processed here, the data are adequate for visualizing and
+# calculating footprint area of non-fire and fire treatments 
+# per year. 
 
-# # location of the gdb layers
-# ready_path <- 'C:\\PRJ\\LF\\EVENTS\\LF_Public_Events_1999_2022.gdb\\CONUS\\CONUS_230_PublicModelReadyEvents'
-# 
-# # get the ready data from the gdb
-# ready_open <- arc.open(path = ready_path)
-# 
-# # select the actual data 
-# ready_select <- arc.select(ready_open)
-# 
-# # make it an sf object
-# ready_sf <- arc.data2sf(ready_select) 
+# "Footprint" area is the area of non-overlapping polygons.
+# overlapping polygons are not present in the Events Ready data used
+# to create tx_nonfire, and I removed overlapping polygons from the
+# Events Raw to produce tx_fire in the code above.
 
-# # repair geometry, project to match shp
-# ready_sf_valid <- st_make_valid(ready_sf) %>%
-#   st_transform(st_crs(shp))  # match shp projection
-# 
-# # clip to shp
-# ready_zone35 <- ready_sf_valid %>%
-#   st_intersection(shp)  
-# 
-# # export clipped example data 
-# 
-# # convert sf to arc.data
-# #arc_ready <- arc.data(ready_zone35)
-# 
-# # Write to GDB
-# arc.write(
-#   path = "inputs/events_example_data.gdb/events_ready_example",  # full path including feature class name
-#   data = ready_zone35
-# )
+# In many areas, treatments overlap between years; e.g.,
+# a thin in 2020 followed by a pile burn in 2021. Use transparency
+# to better visualize where multiple entries have occurred.
+
+# Users should review documentation on landfire.gov to understand 
+# Events data, especially the difference between Events Ready and
+# Events raw. 
+
