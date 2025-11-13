@@ -20,3 +20,7 @@ Get [make_charts.R](code/make_charts.R) to make a couple basic charts with Bioph
 # Hex maps
 
 Get [hex_maps.R](code/hex_maps.R) to make hexgrids, then to summarize majority BpS and EVT per hexagon, and make an interactive leaflet map.
+
+## Process Events data
+
+Get [event_data_processing.R](code/event_data_processing.R) to load Events data from tester geodatabase, process the data and clean up overlaps.

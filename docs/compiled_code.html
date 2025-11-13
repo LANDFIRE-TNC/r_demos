@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -283,6 +283,10 @@ gtag('config', 'G-T03MCC6N19', { 'anonymize_ip': true});
 <span class="menu-text">Make hex map</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./events.html"> 
+<span class="menu-text">Process events data</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link active" href="./compiled_code.html" aria-current="page"> 
 <span class="menu-text">Compiled code</span></a>
   </li>  
@@ -316,7 +320,10 @@ gtag('config', 'G-T03MCC6N19', { 'anonymize_ip': true});
   <li><a href="#download-and-manage-landfire-data" id="toc-download-and-manage-landfire-data" class="nav-link active" data-scroll-target="#download-and-manage-landfire-data">Download and manage LANDFIRE data</a></li>
   <li><a href="#prepare-landfire-rasters" id="toc-prepare-landfire-rasters" class="nav-link" data-scroll-target="#prepare-landfire-rasters">Prepare LANDFIRE raster(s)</a></li>
   <li><a href="#make-charts" id="toc-make-charts" class="nav-link" data-scroll-target="#make-charts">Make charts</a></li>
-  <li><a href="#hex-maps" id="toc-hex-maps" class="nav-link" data-scroll-target="#hex-maps">Hex maps</a></li>
+  <li><a href="#hex-maps" id="toc-hex-maps" class="nav-link" data-scroll-target="#hex-maps">Hex maps</a>
+  <ul class="collapse">
+  <li><a href="#process-events-data" id="toc-process-events-data" class="nav-link" data-scroll-target="#process-events-data">Process Events data</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -359,8 +366,12 @@ gtag('config', 'G-T03MCC6N19', { 'anonymize_ip': true});
 <section id="hex-maps" class="level1">
 <h1>Hex maps</h1>
 <p>Get <a href="code/hex_maps.R">hex_maps.R</a> to make hexgrids, then to summarize majority BpS and EVT per hexagon, and make an interactive leaflet map.</p>
+<section id="process-events-data" class="level2">
+<h2 class="anchored" data-anchor-id="process-events-data">Process Events data</h2>
+<p>Get <a href="code/event_data_processing.R">event_data_processing.R</a> to load Events data from tester geodatabase, process the data and clean up overlaps.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

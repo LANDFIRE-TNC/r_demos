@@ -9,6 +9,7 @@ project:
     - prep_rasters.qmd
     - make_charts.qmd
     - make_hex_map.qmd
+    - events.qmd
     - compiled_code.qmd
     - about.qmd
 
@@ -34,6 +35,9 @@ website:
         
       - href: make_hex_map.qmd
         text: Make hex map
+        
+      - href: events.qmd
+        text: Process events data
         
       - href: compiled_code.qmd
         text: Compiled code
