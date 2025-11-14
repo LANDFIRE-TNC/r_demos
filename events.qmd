@@ -2,11 +2,11 @@
 title: "Work with LANDFIRE's Events Data"
 ---
 
-[Kori Blankenship](https://storymaps.arcgis.com/stories/f37983671094430ebd23035596deccb6) from The Nature Conservancy's LANDFIRE team has been working with LANDFIRE's [Public Events Geodatabase](https://landfire.gov/reference/publicevents) which is a large collection of disturbance and vegetation/fuel treatment events.  This database is used by LANDFIRE to determine disturbance causality, and is useful for tracking trends in treatments.  She kindly contributed the code for our use. 
+[Kori Blankenship](https://storymaps.arcgis.com/stories/f37983671094430ebd23035596deccb6), fire ecologist from The Nature Conservancy has been working with LANDFIRE's [Public Events Geodatabase](https://landfire.gov/reference/publicevents) which is a large collection of disturbance and vegetation/fuel treatment events.  This database is used by LANDFIRE to determine disturbance causality, and is useful for tracking trends in treatments.  
 
 
 
-## What this code does, and the basic process
+## What this code can do for you
 
 The code below will process selected LANDFIRE Model Ready and Raw Events. The output is a layer with selected fire and non fire treatments for a selected time period. 
 
@@ -25,7 +25,7 @@ Basic steps:
 
 ## Set up
 
-For this demo Kori downloaded the LANDFIRE Public Events Database then clipped it to a rectangle in north central Washington on the Okanogan-Wenatchee National Forest. For other landscapes or the entire US you can replace this .gdb, with the LANDFIRE gdb and work with that.
+For this demo Kori downloaded the LANDFIRE Public Events Database then clipped it to a rectangle in north central Washington on the Okanogan-Wenatchee National Forest. For other landscapes or the entire US you can replace this .gdb file with the LANDFIRE geodatabase or one for your area of interest.
 
 ### Code to load packages and inputs
 
@@ -72,7 +72,7 @@ ready_open <- arc.open(path = ready_path)
 
 ```
 
-## Explore non-fire treatments for a time period of interest and make a quick map
+## Explore non-fire treatments for a time period of interest (and make a quick map!)
 
 ```{r}
 #| label: Non-fire treatment processing
@@ -332,7 +332,7 @@ ggplot(data = tx_all) +
 
 ## Notes on results
 
-*  The tx_nonfire layer represents individual treatment polygons.
+* The tx_nonfire layer represents individual treatment polygons.
 
 * The tx_fire layer represents the footprint of a given prescribed  fire type in a given year. For example, a give year, e.g. 2020, can have up to 3 polygons: one for the footprint for broadcast burns, one for pile, and one for unknown burns. Some years have fewer than three polygons because not all burn types were present in all years. Because the original treatment polygons were unioned, individual treatment units are no longer present in the data.
 
@@ -347,6 +347,14 @@ ggplot(data = tx_all) +
 
 * Users should review documentation on landfire.gov to understand Events data, especially the difference between Events Ready and
  Events raw. 
+ 
+::: {.logo-row style="display: flex; justify-content: space-around; align-items: center; margin-top: 2em;"}
+
+<img src="assets/usda.png" alt="usda logo" style="height: 70px; margin: 0 20px;"/>
+<img src="assets/usfs.png" alt="usfs logo" style="height: 80px; margin: 0 20px;" />
+<img src="assets/doi.png" alt="department of interior logo" style="height: 80px; margin: 0 20px;" />
+<img src="assets/LANDFIRE.png" alt="landfire logo" style="height: 83px; margin: 0 10px;"/>
+:::
 
 
 

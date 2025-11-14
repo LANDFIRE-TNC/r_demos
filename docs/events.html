@@ -352,13 +352,13 @@ gtag('config', 'G-T03MCC6N19', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-this-code-does-and-the-basic-process" id="toc-what-this-code-does-and-the-basic-process" class="nav-link active" data-scroll-target="#what-this-code-does-and-the-basic-process">What this code does, and the basic process</a></li>
+  <li><a href="#what-this-code-can-do-for-you" id="toc-what-this-code-can-do-for-you" class="nav-link active" data-scroll-target="#what-this-code-can-do-for-you">What this code can do for you</a></li>
   <li><a href="#skills-learned" id="toc-skills-learned" class="nav-link" data-scroll-target="#skills-learned">Skills learned</a></li>
   <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set up</a>
   <ul class="collapse">
   <li><a href="#code-to-load-packages-and-inputs" id="toc-code-to-load-packages-and-inputs" class="nav-link" data-scroll-target="#code-to-load-packages-and-inputs">Code to load packages and inputs</a></li>
   </ul></li>
-  <li><a href="#explore-non-fire-treatments-for-a-time-period-of-interest-and-make-a-quick-map" id="toc-explore-non-fire-treatments-for-a-time-period-of-interest-and-make-a-quick-map" class="nav-link" data-scroll-target="#explore-non-fire-treatments-for-a-time-period-of-interest-and-make-a-quick-map">Explore non-fire treatments for a time period of interest and make a quick map</a></li>
+  <li><a href="#explore-non-fire-treatments-for-a-time-period-of-interest-and-make-a-quick-map" id="toc-explore-non-fire-treatments-for-a-time-period-of-interest-and-make-a-quick-map" class="nav-link" data-scroll-target="#explore-non-fire-treatments-for-a-time-period-of-interest-and-make-a-quick-map">Explore non-fire treatments for a time period of interest (and make a quick map!)</a></li>
   <li><a href="#explore-fire-treatments" id="toc-explore-fire-treatments" class="nav-link" data-scroll-target="#explore-fire-treatments">Explore fire treatments</a></li>
   <li><a href="#clean-overlaps" id="toc-clean-overlaps" class="nav-link" data-scroll-target="#clean-overlaps">Clean overlaps</a></li>
   <li><a href="#combine-all-treatments" id="toc-combine-all-treatments" class="nav-link" data-scroll-target="#combine-all-treatments">Combine all treatments</a></li>
@@ -389,9 +389,9 @@ gtag('config', 'G-T03MCC6N19', { 'anonymize_ip': true});
 </header>
 
 
-<p><a href="https://storymaps.arcgis.com/stories/f37983671094430ebd23035596deccb6">Kori Blankenship</a> from The Nature Conservancy’s LANDFIRE team has been working with LANDFIRE’s <a href="https://landfire.gov/reference/publicevents">Public Events Geodatabase</a> which is a large collection of disturbance and vegetation/fuel treatment events. This database is used by LANDFIRE to determine disturbance causality, and is useful for tracking trends in treatments. She kindly contributed the code for our use.</p>
-<section id="what-this-code-does-and-the-basic-process" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-code-does-and-the-basic-process">What this code does, and the basic process</h2>
+<p><a href="https://storymaps.arcgis.com/stories/f37983671094430ebd23035596deccb6">Kori Blankenship</a>, fire ecologist from The Nature Conservancy has been working with LANDFIRE’s <a href="https://landfire.gov/reference/publicevents">Public Events Geodatabase</a> which is a large collection of disturbance and vegetation/fuel treatment events. This database is used by LANDFIRE to determine disturbance causality, and is useful for tracking trends in treatments.</p>
+<section id="what-this-code-can-do-for-you" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-code-can-do-for-you">What this code can do for you</h2>
 <p>The code below will process selected LANDFIRE Model Ready and Raw Events. The output is a layer with selected fire and non fire treatments for a selected time period.</p>
 <p>Basic steps:</p>
 <ol type="1">
@@ -411,7 +411,7 @@ gtag('config', 'G-T03MCC6N19', { 'anonymize_ip': true});
 </section>
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set up</h2>
-<p>For this demo Kori downloaded the LANDFIRE Public Events Database then clipped it to a rectangle in north central Washington on the Okanogan-Wenatchee National Forest. For other landscapes or the entire US you can replace this .gdb, with the LANDFIRE gdb and work with that.</p>
+<p>For this demo Kori downloaded the LANDFIRE Public Events Database then clipped it to a rectangle in north central Washington on the Okanogan-Wenatchee National Forest. For other landscapes or the entire US you can replace this .gdb file with the LANDFIRE geodatabase or one for your area of interest.</p>
 <section id="code-to-load-packages-and-inputs" class="level3">
 <h3 class="anchored" data-anchor-id="code-to-load-packages-and-inputs">Code to load packages and inputs</h3>
 <div class="cell">
@@ -451,7 +451,7 @@ gtag('config', 'G-T03MCC6N19', { 'anonymize_ip': true});
 </section>
 </section>
 <section id="explore-non-fire-treatments-for-a-time-period-of-interest-and-make-a-quick-map" class="level2">
-<h2 class="anchored" data-anchor-id="explore-non-fire-treatments-for-a-time-period-of-interest-and-make-a-quick-map">Explore non-fire treatments for a time period of interest and make a quick map</h2>
+<h2 class="anchored" data-anchor-id="explore-non-fire-treatments-for-a-time-period-of-interest-and-make-a-quick-map">Explore non-fire treatments for a time period of interest (and make a quick map!)</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-overflow-wrap code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select non-fire treatments of interest for time period</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># list of non-fire treatment types of interest</span></span>
@@ -706,6 +706,9 @@ gtag('config', 'G-T03MCC6N19', { 'anonymize_ip': true});
 <li><p>In many areas, treatments overlap between years; e.g., a thin in 2020 followed by a pile burn in 2021. Use transparency to better visualize where multiple entries have occurred.</p></li>
 <li><p>Users should review documentation on landfire.gov to understand Events data, especially the difference between Events Ready and Events raw.</p></li>
 </ul>
+<div class="logo-row" style="display: flex; justify-content: space-around; align-items: center; margin-top: 2em;">
+<p><img src="assets/usda.png" alt="usda logo" style="height: 70px; margin: 0 20px;"> <img src="assets/usfs.png" alt="usfs logo" style="height: 80px; margin: 0 20px;"> <img src="assets/doi.png" alt="department of interior logo" style="height: 80px; margin: 0 20px;"> <img src="assets/LANDFIRE.png" alt="landfire logo" style="height: 83px; margin: 0 10px;"></p>
+</div>
 
 
 </section>
